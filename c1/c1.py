@@ -250,7 +250,7 @@ def card_w():
     return (c + "\n- date without time: `#2026-03-01`\n\nSUBMISSION: the COMPLETE new state in this format, in a ```weft block. It replaces the whole state, "
                 "so every order must be present, in the same order. Keep the types: keywords `:unpaid`, decimals `12.50m`, dates `#2026-03-01`, a missing note `nil`.")
 def card_s():
-    return open(_R + "/CARD.md", encoding="utf-8").read().rstrip()
+    return open(HERE + "/CARD-v6r10.md", encoding="utf-8").read().rstrip()   # the card frozen for C-1 (the top-level CARD.md has moved on)
 
 def parse_cell(cell):
     arm, task, n, rep = cell.rsplit("-", 3)

@@ -1,4 +1,4 @@
-"""Shuttle v6 r10 — an operation language and executor over Weft next values (prototype).
+"""Shuttle v7 — an operation language and executor over Weft next values (prototype).
 
 The state is a log of transactions over a typed, schema-declared store. The AI writes one
 transaction per message: a few lines of operations addressed by conditions, never a document.
@@ -25,6 +25,7 @@ Grammar (one statement per line; `;` starts a comment):
   count <path> [where <cond>]                query (allowed in a read-only message)
   show <path> [where <cond>] [limit n] [cols a,b] [order <col> [asc|desc]]
   get <path> where <cond>                    exactly one row
+  done                                       last line only: the task is closed if the whole message succeeds (Store.done)
 
   <path>  = table | table.child            (child rows are addressed through their parent:
                                             `set orders.lines where id=7006 and sku=:p03 : qty=3`
@@ -179,13 +180,18 @@ def _statements(text):
             start = no
         buf.append(raw)
         j = 0
-        line = raw if inq else _strip_comment(raw)
-        while j < len(line):
-            c = line[j]
-            if inq and c == "\\":
-                j += 2; continue
-            if c == '"':
-                inq = not inq
+        while j < len(raw):                        # V7R3-01: one character at a time, carrying the quote state across lines;
+            c = raw[j]                             # a `;` outside a string ends the scan of this line, so quotes in a comment
+            if inq:                                # (also on the line where a multi-line string closes) never open a string
+                if c == "\\":
+                    j += 2; continue
+                if c == '"':
+                    inq = False
+            else:
+                if c == ";":
+                    break
+                if c == '"':
+                    inq = True
             j += 1
         if not inq:
             yield start, "\n".join(buf)
@@ -517,6 +523,19 @@ def _ord_fn(op, const, line):
     raise ShuttleError(f"cannot use `{op}` with a {type(const).__name__} (lists, maps and symbols have no order)", line)
 
 # ------------------------------------------------------------------ store
+_FLAT = (int, bool, str, type(None), K, S)
+def _unchanged(old, new):
+    """True iff writing `new` over `old` leaves the stored value the same, by the same identity the rest of the executor uses
+    (W.same: canonical binary equality). The shortcut is taken only for values with nothing inside them and exactly the same
+    type; anything else (decimals, floats, dates, lists, maps, or two different Python types) is compared canonically, so
+    {n: 1} vs {n: true} differ (V7-01) and OrderedDict(n=1) vs {n: 1} do not (V7R2-02)."""
+    if old is new:
+        return True
+    t = type(old)
+    if t is type(new) and t in _FLAT:
+        return old == new
+    return W.same(old, new)       # V7R2-02: also when the Python types differ (OrderedDict vs dict, IntEnum vs int): identity is canonical
+
 class Store:
     def __init__(self, schema: Schema):
         self.schema = schema
@@ -526,6 +545,7 @@ class Store:
         self.vid = "0" * 12                # version identifier: chained hash of committed transactions
         self.log = []                      # committed transactions
         self.receipts = {}                 # tx id -> receipt (idempotency)
+        self.done = False                  # True after a message that ended with `done` succeeded (v7)
         self.index = {}                    # table name -> {key tuple: row} (top-level tables with a key)
         self._undo = None                  # list of callables that revert mutations, newest last
 
@@ -905,14 +925,27 @@ class Store:
         tx_id, at = None, None
         body = text.strip()
         stmts = []
+        done_line = None                       # v7: a last line `done` closes the task if this message succeeds
+        self.done = False
+        NOT_DONE = "\n  (not done: fix the message and send it again)"
+        # V7-03 / V7R2-01: a failure anywhere in a message that has a `done` statement says "not done". The look-ahead uses the same
+        # statement splitter as the parser, so `done` inside a multi-line string or a comment is not a statement. A `done` after an
+        # unclosed quote is part of that string (the lexer reports the quote), so it is not a request either.
+        asked_done = any(_strip_comment(raw).strip().lower() == "done" for _, raw in _statements(text))
         try:
             for no, raw in _statements(text):
                 s = _strip_comment(raw).strip()
                 if not s:
                     continue
+                if done_line is not None:
+                    raise ShuttleError("`done` must be the last line of the message", done_line,
+                                       hint="put `done` after all operations; it closes the task only if every line before it succeeds")
                 toks = _lex(s)
                 p = P(toks, no, raw)
                 kind = p.take("atom")
+                if kind.lower() == "done" and p.at_end():
+                    done_line = no
+                    continue
                 if kind == "tx":
                     tx_id = p.take("atom")
                     if p.peek() == ("atom", "at"):
@@ -932,21 +965,24 @@ class Store:
                     kind = kind[:-1]
                 stmts.append((no, kind, p, raw, zero_ok))
         except ShuttleError as e:
-            return f"fail line {e.line}: {e.msg}" + (f"\n  hint: {e.hint}" if e.hint else "") + "\n  (nothing applied)"
+            return f"fail line {e.line}: {e.msg}" + (f"\n  hint: {e.hint}" if e.hint else "") + "\n  (nothing applied)" + (NOT_DONE if (done_line or asked_done) else "")
         except Exception as e:
-            return f"fail: internal error {type(e).__name__}: {str(e)[:120]}\n  (nothing applied)"
+            return f"fail: internal error {type(e).__name__}: {str(e)[:120]}\n  (nothing applied)" + (NOT_DONE if (done_line or asked_done) else "")
+        NOT_DONE = NOT_DONE if done_line else ""
         if tx_id is not None and tx_id in self.receipts:
             prev_body, prev_receipt = self.receipts[tx_id]
             if prev_body == body:
-                return prev_receipt + "  ; (replay)"
+                self.done = done_line is not None
+                return prev_receipt + "  ; (replay)" + ("\ndone" if done_line is not None else "")   # V7-02: `done` stays the last line
             return (f"fail: tx id {tx_id!r} was already used for a different message; a tx id names one message "
-                    f"(reuse it only to re-send the same message). Pick a new id.\n  (nothing applied)")
+                    f"(reuse it only to re-send the same message). Pick a new id.\n  (nothing applied)") + NOT_DONE
         if at is not None and at != self.version:
             r = (f"fail stale: you assumed version {at}, current is {self.version}\n"
                  f"  hint: another writer changed the store. Read again before writing (the rows you chose may differ now), "
                  f"and guard the write with the condition you relied on (e.g. `and status=:unpaid`)")
-            return r
+            return r + NOT_DONE
         self._undo = []
+        details = []                           # v7: per-statement (line, verb, path, matched, changed) for set/del
         counts = {"set": 0, "add": 0, "del": 0, "put": 0}
         expects, outputs, shown_zero = [], [], set()
         try:
@@ -981,18 +1017,29 @@ class Store:
                     key_changes = bool(t.key) and any(col in t.key for col, _, _ in assigns)
                     simple = not key_changes and all(aop == "=" for _, aop, _ in assigns)
                     plan = [(col, None if aop == "=" else self._relative_fn(t, col, aop, v, no), v) for col, aop, v in assigns]
+                    nchanged = 0
                     for lst, i, row, pr, t in self._top(list(self._select(path, cond, no, need_pos=False)), topn, path, no):
                         if simple:
+                            ch = False
                             for col, _, v in plan:
+                                old = row[col]
+                                if not ch and not _unchanged(old, v):
+                                    ch = True
                                 self._mut_cell(row, col, v)
                             n += 1
+                            nchanged += ch
                             continue
                         if key_changes and pr is None:
                             self._idx_del(tname, t, row)
+                        ch = False
                         for col, rel, v in plan:
                             if rel is not None:
                                 v = rel(row[col])
+                            old = row[col]
+                            if not ch and not _unchanged(old, v):
+                                ch = True
                             self._mut_cell(row, col, v)
+                        nchanged += ch
                         if key_changes:
                             if pr is None:
                                 k = self._key_of(t, row)
@@ -1005,6 +1052,7 @@ class Store:
                     if n == 0 and not zero_ok:
                         raise ShuttleError(f"set matched no rows in {path}", no, hint=self._hint_nomatch(path, cond, no, "set"))
                     counts["set"] += n
+                    details.append((no, "set", path, n, nchanged))
                 elif kind == "add":
                     path = p.take("atom")
                     name = path.split(".")
@@ -1093,6 +1141,7 @@ class Store:
                         if pr is None:
                             self._idx_del(tname, t, row)
                     counts["del"] += len(hits)
+                    details.append((no, "del", path, len(hits), len(hits)))
                 elif kind == "put":
                     field = p.take("atom"); p.take("op", "=")
                     v = self._resolve(p.value(), no, outputs)
@@ -1121,7 +1170,10 @@ class Store:
                 op = p.take("op")
                 want = self._resolve(p.value(), no, outputs)
                 if not p.at_end():
-                    raise ShuttleError(f"unexpected {p.peek()[1]!r} after the end of the statement", no)
+                    raise ShuttleError(f"unexpected {p.peek()[1]!r} after the end of the statement", no,
+                                       hint=("an expect compares ONE aggregate with ONE value, and the comparison comes last: "
+                                             "`expect count <table> where <cond> and <cond> = <n>`. Put every condition inside `where`; "
+                                             "for a second check write a second expect line") if p.peek()[1] in ("and", "or") else None)
                 if op == "=":
                     ok_ = _eq_fn(want)(got)
                 elif op == "!=":
@@ -1137,14 +1189,14 @@ class Store:
                 if st_[0] == e.line and not st_[2].at_end() and st_[2].embedded_query():   # only when parsing stopped mid-statement
                     hint = (f"a `{st_[2].embedded_query()}` query cannot be used as a value or inside a condition. To change the top row directly write "
                             "`set <table> where <cond> order <col> desc limit 1 : col=value, ...`; otherwise run the query in its own message and use the id from the receipt")
-            r = f"fail line {e.line}: {e.msg}" + (f"\n  hint: {hint}" if hint else "") + "\n  (nothing applied)"
+            r = f"fail line {e.line}: {e.msg}" + (f"\n  hint: {hint}" if hint else "") + "\n  (nothing applied)" + NOT_DONE
             return r                                 # a failed message reserves no tx id (v6 r4): fix it and re-send with the same id
         except Exception as e:                       # anything unexpected: still all-or-nothing
             self._rollback()
-            r = f"fail: internal error {type(e).__name__}: {str(e)[:120]}\n  (nothing applied)"
+            r = f"fail: internal error {type(e).__name__}: {str(e)[:120]}\n  (nothing applied)" + NOT_DONE
             return r
         self._undo = None
-        changed = any(counts.values())
+        changed = bool(counts["add"] or counts["del"] or counts["put"] or any(c for _, verb, _, _, c in details if verb == "set"))   # v7: a set that changed no value does not make a new version
         for k in ("set", "del"):
             if counts[k] == 0 and any(kind == k and zero_ok for _, kind, _, _, zero_ok in stmts):
                 counts[k] = 0; shown_zero.add(k)
@@ -1153,10 +1205,16 @@ class Store:
             self.vid = hashlib.sha256((self.vid + "\n" + text).encode("utf-8")).hexdigest()[:12]
             self.log.append((tx_id, text))
         r = f"ok v={self.version} " + " ".join(f"{k}:{v}" for k, v in counts.items() if v or k in shown_zero) + (f" expect:{len(expects)}" if expects else "") + f" vid={self.vid}"
+        if len(details) > 1 or any(m != c for _, _, _, m, c in details):
+            for no_, verb, path_, m, c in details:   # v7: which statement touched what; matched vs really changed
+                r += f"\n  line {no_}: {verb} {path_} {m} row(s)" + ("" if m == c else f", {c} changed" + (" (the others already had these values)" if c else " (every row already had these values)"))
         if outputs:
             r += "\n" + "\n".join(outputs)
         if tx_id is not None and changed:            # only a message that changed the store owns its id
-            self.receipts[tx_id] = (body, r)
+            self.receipts[tx_id] = (body, r)         # stored without the `done` line; a replay adds it back after its note
+        if done_line is not None:
+            self.done = True
+            r += "\ndone"
         return r
 
     def _doc_ref(self, path, line, create=False):

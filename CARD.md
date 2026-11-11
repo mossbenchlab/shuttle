@@ -37,5 +37,10 @@ Values: integers 42, decimals 1.50m (the m is required; digits are kept exactly)
 dates #2026-11-05 or #2026-11-05T18:05:00Z, true/false, nil, lists [:a, :b], maps {k: v, k2: v2} (space after the colon).
 
 Receipts: `ok v=<version> set:<rows> add:<rows> ... vid=<id>` followed by query results, or `fail line N: <why>` (nothing applied).
-Reply with exactly one message per turn, inside one fenced code block opened with ```shuttle (or a plain ```; no other language tag such as sql). Prefer one conditional write over reading rows and writing them one by one.
-When the store is in the required state, reply with the single word DONE (no code block).
+  With several set/del lines the receipt also has one line per statement (`line 2: set invoices 120 row(s)`); `set:` on the first line is their total.
+  `, 0 changed` means those rows already had the values: the work is already done, do not send it again.
+Reply with exactly one message per turn, inside one fenced code block opened with ```shuttle (or a plain ```; no other language tag such as sql),
+and write nothing outside the block: no explanation before or after it. Prefer one conditional write over reading rows and writing them one by one.
+Finishing: when this message completes the task, write `done` as its last line. The task closes if every line before it succeeds (the receipt then ends with `done`);
+  if anything fails, nothing is applied, the task stays open, and you send a corrected message. Put `expect` lines before `done` to check your own work in the same message.
+  If the store is already in the required state, send a message that contains only `done`.

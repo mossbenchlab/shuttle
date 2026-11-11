@@ -1,6 +1,6 @@
 # Shuttle
 
-**Status: experimental prototype (v6 r10). Not a stable format or API.**
+**Status: experimental prototype (v7). Not a stable format or API.**
 
 Shuttle is an operation language for AI models that change structured data.
 Instead of rewriting a document (JSON, YAML, ...), the model sends a few lines of
@@ -12,11 +12,16 @@ The model never writes the data itself and never needs to see the whole store.
 tx a1 at 1
 set? orders where status!=:shipped : qty+=2, tags|=:late
 expect count orders where qty=4 = 1
+done
 ```
 
 ```
 ok v=2 set:1 expect:1 vid=f7c3ccf56bde
+done
 ```
+
+The last line `done` closes the task in the same message: if every line succeeds the
+receipt ends with `done`; if anything fails, nothing is applied and the task stays open.
 
 A failed message applies nothing and comes back with a hint:
 
@@ -33,7 +38,7 @@ That card is all a model is given.
 
 ```
 pip install -r requirements.txt
-python test_shuttle.py          # 182 checks
+python test_shuttle.py          # 270 checks
 ```
 
 ```python
@@ -45,6 +50,18 @@ print(s.execute("show orders"))
 ```
 
 ## What has been measured, and what has not
+
+Which version each measurement used:
+- Comparison experiment C-1 used **v6 r10** (git tag `v6-r10`).
+- The earlier exploratory runs used the version named in each section of
+  `docs/RESULTS-shuttle-0.md` (v0 through v6 r7; for example the Qwen3.5-4B passes on M4 and M6 are from r6).
+- **Known defect in v6 r10 (fixed in v7):** a `"` inside a comment on the line where a multi-line string
+  closes made the executor swallow the following statements (an `expect` there was skipped). The repository stores
+  161 Shuttle messages (97 C-1 replies including re-runs, 58 in the exploratory logs, 6 early edit
+  tasks); 38 of them are the bare word DONE. None of the 123 executed message bodies is split
+  differently by the fixed code, so the recorded results are unaffected.
+- **v7** (the `done` line, per-statement receipt lines, matched vs changed counts) has regression
+  tests but no solver measurements yet; `docs/RESULTS-shuttle-0.md` §20 says why it was added.
 
 All measurements here are exploratory. Read the limits before quoting a number.
 
@@ -110,7 +127,7 @@ machine result under `c1/run/`.
 | `shuttle.py` | executor (schema, store, operations, transactions, receipts) |
 | `weftnext.py` | value model and text syntax for scalars (vendored draft, see below) |
 | `CARD.md` | the language card given to models |
-| `test_shuttle.py` | 182 regression checks |
+| `test_shuttle.py` | 270 regression checks |
 | `c1/` | comparison experiment C-1: harness, design, freeze log, all records |
 | `run/`, `ops_*.py`, `bench_bulk.py` | exploratory harnesses and their records |
 | `wb1/` | fixtures used by the tests and by the Weft arm of C-1 |
@@ -128,6 +145,9 @@ the C-1 design refers to the Japanese file.
   executor depends on it; it is not a released format, and its draft spec is not
   part of this repository. The value syntax a model needs (`42`, `1.50m`, `"text"`,
   `:kw`, `#2026-11-05`, `true`, `nil`, `[a, b]`) is on the card.
+- The hashes below describe the tree at tag `v6-r10`. On `main`, `shuttle.py`, `CARD.md` and
+  `test_shuttle.py` have moved to v7; the card frozen for C-1 is kept as `c1/CARD-v6r10.md`,
+  and `c1/c1.py` reads that file, so the 120 C-1 task files still regenerate byte-identically.
 - Absolute paths of the working directory were replaced by paths relative to
   each file before publication. This changes the hash of four files; nothing
   else in them was changed. Hashes recorded in `c1/FREEZE-C1.md` refer to the

@@ -382,3 +382,62 @@ v6 r10 (P3): in r9 the guidance was also attached to a statement where a type er
 ## 19. Comparison experiment C-1 (pointer added for the published repository)
 
 After the exploration above, a comparison against JSON full rewrite, JSON Patch and Weft full rewrite was designed, frozen and run. Its design, freeze log, results and all records are under `c1/` (`c1/RESULTS-C1.md`). The primary judgment was inconclusive; see that file for what the record does and does not support.
+
+## 20. v7 — closing the task in the same message, and receipts that say what changed (2026-11-11)
+
+Written in English from the start; there is no Japanese original for this section.
+
+### 20.1 What prompted it
+
+After publication, M1–M6 (50,000 orders) were run once each with a local model, Qwen3.8-Flash-Next (Q8_0 quantisation, thinking off, server-default sampling, seed 1), on a private inference engine, with the v6 r10 executor and card. **The records of that run are not in this repository**, so the numbers here are reported, not reproducible from the published files.
+
+- 5 of 6 final states matched. In M5 the model wrote `set … order total desc limit 1 : …` as its first message without reading first, so the scripted concurrent write (placed "after the first read-only message") never happened; the final state equals the correct state without that write. Conflict handling was therefore not tested.
+- In M2, M3, M4 and M6 the store was already correct after the **first** message. The commands themselves were 32–50 tokens, but the 6 tasks used 4,566 output tokens and 37 replies: most replies and tokens went into not knowing how to finish (echoing `ok`, re-sending a command that had already succeeded, prose around `DONE`) and into misreading receipts.
+- Receipt problems seen: `set:27386` for a message with two `set` lines (15,053 lines + 12,333 orders) left the model unsure what the number counted (855 tokens of deliberation, then a retry); a repeated `|=` returned the same `set:12333`, so the model could not tell that nothing had changed; `expect count orders where id = 7006 = 1 and total = 550.62m` failed with only "unexpected 'and' after the end of the statement".
+
+In C-1, at 50 orders, Shuttle averaged 2.4 replies per cell against 2.0 for the other arms. Together with the run above, this was the motivation to try cutting round trips; neither record isolates reply count as the cause of the measured time.
+
+### 20.2 Changes (270 regression tests as of v7 r4)
+
+- **`done` as the last line of a message.** If every line before it succeeds, the receipt ends with `done` and `Store.done` is true: write, check (`expect`) and finish in one round trip. If anything fails — including a syntax error on a line before `done` — nothing is applied and the receipt ends with `(not done: fix the message and send it again)`. `done` anywhere but the last line is an error. A message containing only `done` is accepted. A replayed message (same tx id, same body) keeps `done` as the last line of its receipt, after the `; (replay)` note.
+- **Per-statement receipt lines.** When a message has two or more `set`/`del` statements, the receipt adds one line per statement: `line 1: set orders.lines 15053 row(s)`. The `set:` on the first line stays the total.
+- **Matched vs changed.** "Changed" uses the executor's value identity (canonical binary equality, the same as conditions and digests): `{n: 1}` → `{n: true}` and `1.5m` → `1.50m` are changes. When some matched rows already had the assigned values, the line says so: `line 2: set orders 12333 row(s), 0 changed (every row already had these values)`. This line is shown even for a single statement.
+- **A `set` that changes no value no longer makes a new version** (the version and `vid` stay; such a message does not take ownership of its tx id). `add`, `del` and `put` count as changes as before (`put` is not compared with the old value).
+- **Hint for an `expect` with a trailing `and`/`or`:** the comparison comes last and every condition goes inside `where`.
+- **Card:** nothing outside the code block; how to read the per-statement lines and `0 changed`; how to finish with `done`.
+
+### 20.3 Not measured yet
+
+No solver has been run with v7. Whether `done` brings the reply count to 1, and whether the new receipt lines stop the re-sending, is untested. The change in version behaviour for a no-op `set` means a later `tx … at <version>` sees the old version number after such a message.
+
+### 20.4 v7 r2 (after the external review of v7)
+
+1 P1 and 3 P2 items, all reproduced. 245 regression tests.
+
+- V7-01 (P1): "changed" was decided with Python `==` after comparing only the outer type, so a map or list whose contents changed between `1` and `true` (`{n: 1}` → `{n: true}`) was reported as `0 changed`. The stored value and digest did change, but the version and `vid` did not move and the tx id was not owned, so a writer pinned to the old version was still accepted and the id could be reused for another body. The decision now follows canonical equality (`W.same`); a shortcut is used only for values with nothing inside them and exactly the same type.
+- V7-02 (P2): the receipt of a replayed `done` message ended with `done  ; (replay)`, so a client that ends on "the last line is `done`" did not end. The replay note now comes before the `done` line.
+- V7-03 (P2): a parse failure on a line before `done` (for example `tx bad at nope`) returned no `(not done: …)` note. Every failure of a message that has a `done` line now ends with that note.
+- V7-04 (P2): the README said all earlier measurements used v6 r10. It now states which version each group of measurements used.
+
+### 20.5 v7 r3 (after the external review of v7 r2)
+
+No P1; 2 P2 items, both reproduced. 259 regression tests.
+
+- V7R2-01 (P2): the look-ahead that decides whether a message has a `done` statement worked line by line, so a `done` line inside a closed multi-line string counted as a request, and a parse failure later in the message got the `(not done: …)` note (a run-time failure did not, so the treatment depended on the stage). The look-ahead now uses the parser's own statement splitter, which knows multi-line strings and comments. A `done` after an unclosed quote is part of that string: the message fails on the quote and gets no note.
+- V7R2-02 (P2): `_unchanged` returned "changed" whenever the two Python types differed, so values accepted by `Store.load()` such as an `OrderedDict` or an `IntEnum` were reported as changed when overwritten by the canonically identical value: the digest stayed the same but the version moved and the tx id was owned. Only the shortcut for two values of exactly the same flat type remains; everything else, including differing Python types, is compared with `W.same`.
+
+### 20.6 v7 r4 (after the external review of v7 r3)
+
+1 P1 item, reproduced. 270 regression tests. This defect is not from v7: it is present in v6 r10 as published.
+
+- V7R3-01 (P1): the statement splitter stripped comments only on lines that began outside a string. On the line where a multi-line string closed, a `"` inside a trailing comment was read as opening a new string, so the following lines were swallowed into it: in
+
+  ```
+  put note = "a
+  b" ; "
+  expect count t = 0
+  done
+  ```
+
+  the `expect` and `done` were dropped and the `put` was committed although the expectation should have failed. The splitter now scans character by character, carrying the quote and escape state across lines, and stops scanning a line at a `;` outside a string. The `done` look-ahead uses the same splitter.
+- Effect on the records: this repository stores 161 Shuttle messages — 97 Shuttle replies of C-1 including the re-runs (38 of them the bare word DONE), 58 messages in the exploratory logs under `run/`, and the 6 early edit tasks (`run/e-*.r1.md`). For all 123 executed message bodies (everything except the DONE replies), the old and the fixed splitter give identical statement texts and starting line numbers, so no recorded receipt or result depends on the defect.

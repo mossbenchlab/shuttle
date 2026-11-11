@@ -395,5 +395,116 @@ check("R10 type error after a legal symbol gets no query hint", r.startswith("fa
 check("R10 `s=get n=2` still accepted", stK.execute("set t where id=1 : s=get n=2").startswith("ok") and stK.rows["t"][0]["s"] == W.S("get"))
 r = stK.execute("set t where id = get t where n=2 order n desc limit 1 : n=3")
 check("R10 real embedded query still gets the hint", r.startswith("fail") and "query cannot be used" in r, r)
+# ---- v7: `done` line, per-statement receipt lines, matched vs changed, expect hint
+def mk7():
+    st = SH.Store(SH.Schema("doc audit:map\ntable orders key id : id:int status:kw qty:int tags:list<kw> total:dec lines:lines\ntable orders.lines : sku:kw qty:int"))
+    st.execute('add orders : id=1, status=:unpaid, qty=2, tags=[], total=5.00m, lines=[{sku: :p03, qty: 1}, {sku: :p01, qty: 1}]\n'
+               'add orders : id=2, status=:shipped, qty=5, tags=[], total=7.00m, lines=[{sku: :p03, qty: 4}]\n'
+               'add orders : id=3, status=:unpaid, qty=1, tags=[], total=9.00m, lines=[{sku: :p03, qty: 2}]')
+    return st
+st7 = mk7()
+m7 = "set orders.lines where status=:unpaid and sku=:p03 : qty=0\nset orders where status=:unpaid and any lines where sku=:p03 : tags|=:c\ndone"
+r = st7.execute(m7)
+check("v7 done closes on success", r.startswith("ok v=2 set:4 ") and r.endswith("\ndone") and st7.done is True, r)
+check("v7 per-statement lines", "\n  line 1: set orders.lines 2 row(s)\n  line 2: set orders 2 row(s)\n" in r, r)
+r = st7.execute(m7)
+check("v7 re-send reports 0 changed and makes no new version", r.startswith("ok v=2 set:4 ") and r.count("0 changed (every row already had these values)") == 2 and st7.version == 2, r)
+r = st7.execute("set orders where id=1 : qty=2")
+check("v7 single statement, nothing changed: detail line shown, no new version", "line 1: set orders 1 row(s), 0 changed" in r and st7.version == 2, r)
+r = st7.execute("set orders where id=1 : qty=3")
+check("v7 single statement that changes: no detail line", r.count("\n") == 0 and r.startswith("ok v=3 set:1 "), r)
+r = st7.execute("set orders where true : status=:unpaid")
+check("v7 partly changed", "line 1: set orders 3 row(s), 1 changed (the others already had these values)" in r and st7.version == 4, r)
+r = st7.execute("expect count orders where id = 1 = 1 and qty = 3\ndone")
+check("v7 expect with trailing and: hint, not done", r.startswith("fail line 1") and "Put every condition inside `where`" in r and "(not done" in r and st7.done is False, r)
+r = st7.execute("expect count orders where id = 1 and qty = 3 = 1\ndone")
+check("v7 corrected expect + done", r.startswith("ok v=4 ") and r.endswith("\ndone") and st7.done, r)
+check("v7 done alone / DONE alone", st7.execute("done").endswith("\ndone") and st7.execute("DONE").endswith("\ndone") and st7.done and st7.version == 4)
+r = st7.execute("done\nshow orders")
+check("v7 done must be last", r.startswith("fail line 1: `done` must be the last line") and st7.done is False, r)
+r = st7.execute("tx z at 0\nset orders where id=1 : qty=9\ndone")
+check("v7 stale + done: not done, nothing applied", r.startswith("fail stale") and "(not done" in r and st7.done is False and st7.rows["orders"][0]["qty"] == 3, r)
+r = st7.execute("set orders where id=99 : qty=1\ndone")
+check("v7 failed write + done: not done", r.startswith("fail line 1") and "(not done" in r and st7.done is False, r)
+r1 = st7.execute("tx k1 at 4\nset orders where id=1 : qty=7\ndone"); r2 = st7.execute("tx k1 at 4\nset orders where id=1 : qty=7\ndone")
+check("v7 replay of a done message keeps done as the last line (V7-02)", r1.endswith("\ndone") and r2.endswith("  ; (replay)\ndone") and r2 == r1[:-5] + "  ; (replay)\ndone" and st7.done and st7.rows["orders"][0]["qty"] == 7, r2)
+check("v7 a message without done leaves done False", st7.execute("count orders").startswith("ok") and st7.done is False)
+r = st7.execute("del orders where id=2\ndel orders.lines where id=3 and sku=:p03")
+check("v7 del lines per statement", "line 1: del orders 1 row(s)" in r and "line 2: del orders.lines 1 row(s)" in r, r)
+stK7 = SH.Store(SH.Schema("table t key id : id:int s:sym?")); stK7.execute("add t : 1, nil")
+check("v7 a symbol value `done` is still a value", stK7.execute("set t where id=1 : s=done").startswith("ok") and stK7.rows["t"][0]["s"] == W.S("done"))
+c7 = open(_R + "/CARD.md", encoding="utf-8").read()
+check("v7 card documents done, changed, and one block only", "write `done` as its last line" in c7 and "0 changed" in c7 and "write nothing outside the block" in c7)
+# ---- v7 r2: V7-01 (changed must follow W.same), V7-03 (not done on an early parse failure)
+for typ, first, second in [("map", "{n: 1}", "{n: true}"), ("map", "{n: [1]}", "{n: [true]}"), ("list<map>", "[{n: 1}]", "[{n: true}]"),
+                           ("list<int>", "[1, 2]", "[1, 3]"), ("map", "{a: 1.5m}", "{a: 1.50m}"), ("dec", "1.5m", "1.50m"), ("dt", "#2026-01-02", "#2026-01-02T00:00:00Z")]:
+    sv = SH.Store(SH.Schema(f"table t key id : id:int x:{typ}")); sv.execute(f"add t : 1, {first}")
+    d0, vid0 = sv.digest(), sv.vid
+    r = sv.execute(f"tx edit at 1\nset t where id=1 : x={second}\ndone")
+    check(f"V7-01 {typ} {first} -> {second} is a change: new version, id owned", r.startswith("ok v=2 set:1 ") and "changed" not in r and sv.version == 2 and sv.vid != vid0
+          and sv.digest() != d0 and "edit" in sv.receipts, r)
+    check(f"V7-01 {typ}: a writer still at version 1 is now stale", sv.execute(f"tx other at 1\nset t where id=1 : x={first}").startswith("fail stale"))
+    check(f"V7-01 {typ}: the id cannot be reused for another body", "already used for a different message" in sv.execute(f"tx edit at 2\nset t where id=1 : x={first}"))
+    r = sv.execute(f"set t where id=1 : x={second}")
+    check(f"V7-01 {typ}: writing the identical value again is 0 changed, same version and digest", "0 changed" in r and sv.version == 2, r)
+for a_, b_, same_ in [(1, True, False), (1, 1, True), ("a", "a", True), (W.K("a"), W.K("a"), True), (W.K("a"), W.S("a"), False), (None, None, True), ({"n": 1}, {"n": True}, False),
+                      ([1], [True], False), ({"n": [1, {"k": W.K("x")}]}, {"n": [1, {"k": W.K("x")}]}, True), (0, False, False), ("1", 1, False)]:
+    check(f"V7-01 _unchanged({a_!r}, {b_!r}) agrees with W.same", SH._unchanged(a_, b_) == same_ == W.same(a_, b_))
+sv = SH.Store(SH.Schema("table t key id : id:int x:int")); sv.execute("add t : 1, 0")
+for bad in ["tx bad at nope\ndone", "tx 5\ndone", "sett t where id=1 : x=1\ndone", "tx a at 1 extra\nset t where id=1 : x=1\nDONE"]:
+    r = sv.execute(bad)
+    check(f"V7-03 early failure with done says not done: {bad.splitlines()[0]!r}", r.startswith("fail") and r.rstrip().endswith("(not done: fix the message and send it again)") and sv.done is False and sv.rows["t"][0]["x"] == 0, r)
+r = sv.execute("tx bad at nope")
+check("V7-03 the same failure without done has no not-done note", r.startswith("fail") and "not done" not in r, r)
+r = sv.execute('set t where id=1 : x=1 ; done')
+check("V7-03 `done` inside a comment is not a done line", r.startswith("ok") and not r.endswith("done") and sv.done is False, r)
+# ---- v7 r3: V7R2-01 (done inside a multi-line string), V7R2-02 (different Python types, same canonical value)
+sd = SH.Store(SH.Schema("doc note:str\ntable t key id : id:int x:int")); sd.execute("add t : 1, 0")
+r = sd.execute('put note = "hello\ndone\nworld"\ntx bad at nope')
+check("V7R2-01 done inside a closed multi-line string is not a request (parse failure)", r.startswith("fail line 4") and "not done" not in r, r)
+r = sd.execute('put note = "hello\ndone\nworld"\nset t where id=9 : x=1')
+check("V7R2-01 same string, run-time failure: no note either (same treatment in both stages)", r.startswith("fail line 4") and "not done" not in r, r)
+r = sd.execute('put note = "hello\ndone\nworld"')
+check("V7R2-01 the string is stored with its done line and the task is not closed", r.startswith("ok") and not r.endswith("done") and sd.done is False and sd.doc["note"] == "hello\ndone\nworld", r)
+r = sd.execute('put note = "a\ndone\nb"\ntx bad at nope\ndone')
+check("V7R2-01 a real done after such a string still gives the note", r.startswith("fail line 4") and r.endswith("(not done: fix the message and send it again)"), r)
+r = sd.execute('put note = "a\ndone\nb"\ndone')
+check("V7R2-01 a real done after such a string closes the task", r.startswith("ok") and r.endswith("\ndone") and sd.done is True, r)
+r = sd.execute('set t where id=1 : x="unclosed\ndone')
+check("V7R2-01 done after an unclosed quote is part of the string: failure, no note", r.startswith("fail") and "not done" not in r and sd.done is False, r)
+r = sd.execute('set t where id=1 : x=1 ; note\n; done\ntx bad at nope')
+check("V7R2-01 done in a comment line is not a request", r.startswith("fail") and "not done" not in r, r)
+from collections import OrderedDict
+import enum
+class _E(enum.IntEnum):
+    ONE = 1
+so = SH.Store(SH.Schema("table t key id : id:int x:map n:int")); so.load({"t": [{"id": 1, "x": OrderedDict(n=1), "n": _E.ONE}]})
+d0 = so.digest()
+r = so.execute("tx a at 0\nset t where id=1 : x={n: 1}, n=1\ndone")
+check("V7R2-02 OrderedDict / IntEnum loaded through the API: same canonical value is 0 changed", "0 changed" in r and so.digest() == d0 and so.version == 0 and "a" not in so.receipts and r.endswith("\ndone"), r)
+r = so.execute("tx a at 0\nset t where id=1 : x={n: true}")
+check("V7R2-02 and a real change from such a value is a change", r.startswith("ok v=1 set:1 ") and "changed" not in r and so.digest() != d0 and "a" in so.receipts, r)
+for a_, b_ in [(OrderedDict(n=1), {"n": 1}), (_E.ONE, 1), (_E.ONE, True), (OrderedDict(n=1), {"n": True}), (1, True), ((1, 2), [1, 2]) if False else ([1, 2], [1, 2])]:
+    check(f"V7R2-02 _unchanged({a_!r}, {b_!r}) agrees with W.same", SH._unchanged(a_, b_) == W.same(a_, b_))
+# ---- v7 r4: V7R3-01 a quote in a comment on the line that closes a multi-line string must not swallow the following statements
+def mk_r3():
+    st = SH.Store(SH.Schema("doc note:str\ntable t key id : id:int n:int")); st.load({"note": "old", "t": [{"id": 1, "n": 0}]}); return st
+sr = mk_r3()
+r = sr.execute('put note = "a\nb" ; "\nexpect count t = 0\ndone')
+check("V7R3-01 the expect after the comment runs and fails; nothing applied; not done", r.startswith("fail line 3: expectation failed") and r.endswith("(not done: fix the message and send it again)")
+      and sr.doc["note"] == "old" and sr.version == 0 and sr.done is False, r)
+r = sr.execute('put note = "a\nb" ; "\nset t where id=1 : n=5\ndone')
+check("V7R3-01 a set after the comment is executed", r.startswith("ok v=1 ") and r.endswith("\ndone") and sr.doc["note"] == "a\nb" and sr.rows["t"][0]["n"] == 5 and sr.done, r)
+check("V7R3-01 statement split: 3 statements with their first line numbers",
+      [(n, x.split("\n")[0][:12]) for n, x in SH._statements('put note = "a\nb" ; "\nexpect count t = 0\ndone')] == [(1, 'put note = "'), (3, "expect count"), (4, "done")])
+for msg, want in [('put note = "x" ; "\nset t where id=1 : n=6', [1, 2]), ('put note = "a\n\\" still" ; say "hi"\nset t where id=1 : n=7', [1, 3]),
+                  ('put note = "a ; not a comment\nb" ; c "\nset t where id=1 : n=8', [1, 3]), ('; "\nset t where id=1 : n=9', [1, 2]),
+                  ('put note = "a\nb"\n; "quoted" comment "\nset t where id=1 : n=10', [1, 3, 4]), ('put note = "a\\\\" ; "\nset t where id=1 : n=11', [1, 2])]:
+    got = [n for n, _ in SH._statements(msg)]
+    r = sr.execute(msg)
+    check(f"V7R3-01 split {msg[:28]!r} -> lines {want}; the last set is applied", got == want and r.startswith("ok") and "set:1" in r, f"{got} {r}")
+check("V7R3-01 values written by those messages", sr.rows["t"][0]["n"] == 11 and sr.doc["note"] == "a\\")
+r = sr.execute('put note = "a\nb ; still inside\nset t where id=1 : n=99')
+check("V7R3-01 an unclosed string still swallows to the end and fails", r.startswith("fail") and sr.rows["t"][0]["n"] == 11, r)
 print(f"{P} passed, {F} failed")
 sys.exit(1 if F else 0)
