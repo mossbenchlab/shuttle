@@ -1,0 +1,30 @@
+{
+ "cell": "S-T6-50-2",
+ "log": [
+  {
+   "reply": "```shuttle\ntx m1 at 0\nadd orders : id=900002, status=:unpaid, due=#2026-12-12, total=30.01m, qty=1, tags=[], note=nil\nadd orders.lines where id=900002 : :p01, 2, 8.24m\nadd orders.lines where id=900002 : :p02, 1, 21.77m\nexpect count orders where id=900002 = 1\n```\n",
+   "model_ms": 10087.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.004548117999995327,
+   "feedback": "ok v=1 add:3 expect:1 vid=4f76dff72bbd",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 6582.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 1.4829999983589914e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "tx m1 at 0\nadd orders : id=900002, status=:unpaid, due=#2026-12-12, total=30.01m, qty=1, tags=[], note=nil\nadd orders.lines where id=900002 : :p01, 2, 8.24m\nadd orders.lines where id=900002 : :p02, 1, 21.77m\nexpect count orders where id=900002 = 1"
+ ],
+ "end": "done",
+ "seconds": 16.673549600999994
+}

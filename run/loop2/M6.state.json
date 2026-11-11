@@ -1,0 +1,14 @@
+{
+ "log": [
+  {
+   "who": "solver",
+   "message": "add orders : id=99001, status=:unpaid, due=#2026-12-01, tags=[], total=25.50m\nadd orders.lines where id=99001 : :p01, 2, 20.00m\nadd orders.lines where id=99001 : :p02, 1, 5.50m",
+   "receipt": "fail line 1: missing orders.note (no default)\n  (nothing applied)"
+  },
+  {
+   "who": "solver",
+   "message": "add orders : id=99001, status=:unpaid, due=#2026-12-01, tags=[], note=nil, total=25.50m\nadd orders.lines where id=99001 : :p01, 2, 20.00m\nadd orders.lines where id=99001 : :p02, 1, 5.50m",
+   "receipt": "ok v=1 add:3 vid=d66354c79596"
+  }
+ ]
+}

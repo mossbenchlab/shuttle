@@ -1,0 +1,8 @@
+{
+ "task": "e-inventory",
+ "round": 1,
+ "tx": "set items where sku = :p44 : reorder=12\nset items where sku = :p02 : price=7.50m\ndel items where sku = :p28\n",
+ "receipt": "ok v=1 set:2 del:1 state=82062308c845",
+ "pass": true,
+ "tx_chars": 108
+}

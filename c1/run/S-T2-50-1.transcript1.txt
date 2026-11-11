@@ -1,0 +1,8 @@
+===== YOUR REPLY 1 =====
+```shuttle
+set orders where status=:unpaid and due<#2026-06-01 : tags|=:late
+set orders where status=:unpaid and due<#2026-06-01 : status=:hold
+```
+
+===== MACHINE RESULT 1 =====
+ok v=1 set:24 vid=daca09c9ff24

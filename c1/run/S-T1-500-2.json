@@ -1,0 +1,30 @@
+{
+ "cell": "S-T1-500-2",
+ "log": [
+  {
+   "reply": "```shuttle\nset? orders where id=1451 and status!=:shipped : qty+=2\nget orders where id=1451\n```\n",
+   "model_ms": 6396.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.0047966659999900685,
+   "feedback": "ok v=0 set:0 vid=000000000000\nget orders: 1 row(s)\n  {id: 1451, status: :shipped, due: #2026-03-08, total: 425.36m, qty: 9, tags: [], note: nil}",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 5386.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 1.0340000073938427e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "set? orders where id=1451 and status!=:shipped : qty+=2\nget orders where id=1451"
+ ],
+ "end": "done",
+ "seconds": 11.786797699999997
+}

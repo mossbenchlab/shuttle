@@ -1,0 +1,7 @@
+```json
+[
+  {"op": "test", "path": "/orders/16/id", "value": 1016},
+  {"op": "replace", "path": "/orders/16/status", "value": "review"},
+  {"op": "replace", "path": "/orders/16/note", "value": "top"}
+]
+```

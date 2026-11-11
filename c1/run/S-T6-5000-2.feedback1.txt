@@ -1,0 +1,6 @@
+MACHINE RESULT:
+ok v=1 add:3 expect:1 vid=1d019535fe9e
+show orders: 1 row(s)
+  {id: 900002, status: :unpaid, due: #2026-12-12, total: 34.60m, qty: 1, tags: [], note: nil}
+
+Reply with your next submission (one fenced code block) or DONE. Replies used: 1 of 6.

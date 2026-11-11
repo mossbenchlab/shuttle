@@ -1,0 +1,2 @@
+set orders where id=7006 : total=550.62m
+expect count orders where id=7006 and total=550.62m = 1

@@ -1,0 +1,29 @@
+===== YOUR REPLY 1 =====
+```shuttle
+set orders.lines where status=:unpaid and sku=:p03 : qty=0
+set orders where status=:unpaid and any lines where sku=:p03 : tags|=:p03-cancelled
+```
+
+===== MACHINE RESULT 1 =====
+ok v=1 set:26 vid=404ee6a9247c
+
+===== YOUR REPLY 2 =====
+```shuttle
+expect count orders.lines where status=:unpaid and sku=:p03 and qty!=0 = 0
+expect count orders where status=:unpaid and any lines where sku=:p03 and not tags has :p03-cancelled = 0
+show orders where status=:unpaid and any lines where sku=:p03 cols id,tags order id asc limit 50
+```
+
+===== MACHINE RESULT 2 =====
+ok v=1  expect:2 vid=404ee6a9247c
+show orders: 10 row(s)
+  {id: 1006, tags: [:p03-cancelled]}
+  {id: 1010, tags: [:a, :p03-cancelled]}
+  {id: 1014, tags: [:p03-cancelled]}
+  {id: 1016, tags: [:p03-cancelled]}
+  {id: 1017, tags: [:a, :p03-cancelled]}
+  {id: 1022, tags: [:a, :p03-cancelled]}
+  {id: 1031, tags: [:a, :p03-cancelled]}
+  {id: 1033, tags: [:p03-cancelled]}
+  {id: 1037, tags: [:p03-cancelled]}
+  {id: 1049, tags: [:p03-cancelled]}

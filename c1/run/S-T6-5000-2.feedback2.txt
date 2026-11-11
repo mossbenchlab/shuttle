@@ -1,0 +1,7 @@
+MACHINE RESULT:
+ok v=1  expect:1 vid=1d019535fe9e
+show orders.lines: 2 row(s)
+  {sku: :p01, qty: 2, amount: 10.10m}
+  {sku: :p02, qty: 1, amount: 24.50m}
+
+Reply with your next submission (one fenced code block) or DONE. Replies used: 2 of 6.

@@ -1,0 +1,5 @@
+```shuttle
+expect count orders.lines where status=:unpaid and sku=:p03 and qty!=0 = 0
+expect count orders where status=:unpaid and any lines where sku=:p03 and not tags has :p03-cancelled = 0
+show orders where status=:unpaid and any lines where sku=:p03 cols id,tags order id asc limit 50
+```

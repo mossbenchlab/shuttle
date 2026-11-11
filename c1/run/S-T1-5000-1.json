@@ -1,0 +1,30 @@
+{
+ "cell": "S-T1-5000-1",
+ "log": [
+  {
+   "reply": "```shuttle\ntx m1 at 0\nset? orders where id=2014 and status!=:shipped : qty+=2\n```\n",
+   "model_ms": 6174.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.03756157399999438,
+   "feedback": "ok v=1 set:1 vid=92ce8849a955",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 6501.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 1.954000026671565e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "tx m1 at 0\nset? orders where id=2014 and status!=:shipped : qty+=2"
+ ],
+ "end": "done",
+ "seconds": 12.712563528000022
+}

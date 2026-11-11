@@ -1,0 +1,6 @@
+MACHINE RESULT:
+ok v=1 add:3 vid=70786b50f70e
+show orders: 1 row(s)
+  {id: 900001, status: :unpaid, due: #2026-12-09, total: 39.87m, qty: 1}
+
+Reply with your next submission (one fenced code block) or DONE. Replies used: 1 of 6.

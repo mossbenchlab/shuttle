@@ -1,0 +1,13 @@
+===== YOUR REPLY 1 =====
+```shuttle
+tx 1 at 0
+add orders : id=900001, status=:unpaid, due=#2026-12-04, qty=1, total=80.18m, tags=[]
+add orders.lines where id=900001 : :p01, 2, 35.63m
+add orders.lines where id=900001 : :p02, 1, 44.55m
+expect count orders where id=900001 = 1
+```
+
+===== MACHINE RESULT 1 =====
+fail line 2: missing orders.note (no default)
+  hint: every column without a default must be in the add: write `note=""` in this line (a later line of the same message may update it, e.g. with an aggregate)
+  (nothing applied)

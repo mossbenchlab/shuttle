@@ -1,0 +1,1 @@
+count orders where status = :paid and tags has :a and total >= 500.00m

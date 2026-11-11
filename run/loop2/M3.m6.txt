@@ -1,0 +1,2 @@
+put audit.shipped_total = 4944994.12m
+expect sum total of orders where status=:shipped >= 4944994.12m

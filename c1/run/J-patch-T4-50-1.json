@@ -1,0 +1,30 @@
+{
+ "cell": "J-patch-T4-50-1",
+ "log": [
+  {
+   "reply": "```json\n[\n{\"op\": \"replace\", \"path\": \"/orders/6/lines/1/qty\", \"value\": 0},\n{\"op\": \"replace\", \"path\": \"/orders/6/lines/2/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/6/tags/-\", \"value\": \"p03-cancelled\"},\n{\"op\": \"replace\", \"path\": \"/orders/10/lines/0/qty\", \"value\": 0},\n{\"op\": \"replace\", \"path\": \"/orders/10/lines/3/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/10/tags/-\", \"value\": \"p03-cancelled\"},\n{\"op\": \"replace\", \"path\": \"/orders/14/lines/1/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/14/tags/-\", \"value\": \"p03-cancelled\"},\n{\"op\": \"replace\", \"path\": \"/orders/16/lines/1/qty\", \"value\": 0},\n{\"op\": \"replace\", \"path\": \"/orders/16/lines/2/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/16/tags/-\", \"value\": \"p03-cancelled\"},\n{\"op\": \"replace\", \"path\": \"/orders/17/lines/1/qty\", \"value\": 0},\n{\"op\": \"replace\", \"path\": \"/orders/17/lines/2/qty\", \"value\": 0},\n{\"op\": \"replace\", \"path\": \"/orders/17/lines/3/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/17/tags/-\", \"value\": \"p03-cancelled\"},\n{\"op\": \"replace\", \"path\": \"/orders/22/lines/0/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/22/tags/-\", \"value\": \"p03-cancelled\"},\n{\"op\": \"replace\", \"path\": \"/orders/31/lines/1/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/31/tags/-\", \"value\": \"p03-cancelled\"},\n{\"op\": \"replace\", \"path\": \"/orders/33/lines/0/qty\", \"value\": 0},\n{\"op\": \"replace\", \"path\": \"/orders/33/lines/1/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/33/tags/-\", \"value\": \"p03-cancelled\"},\n{\"op\": \"replace\", \"path\": \"/orders/37/lines/0/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/37/tags/-\", \"value\": \"p03-cancelled\"},\n{\"op\": \"replace\", \"path\": \"/orders/49/lines/0/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/49/tags/-\", \"value\": \"p03-cancelled\"}\n]\n```\n",
+   "model_ms": 16061.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.0017744419999417005,
+   "feedback": "applied: 26 operations",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 13505.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 2.0720000293295016e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "[\n{\"op\": \"replace\", \"path\": \"/orders/6/lines/1/qty\", \"value\": 0},\n{\"op\": \"replace\", \"path\": \"/orders/6/lines/2/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/6/tags/-\", \"value\": \"p03-cancelled\"},\n{\"op\": \"replace\", \"path\": \"/orders/10/lines/0/qty\", \"value\": 0},\n{\"op\": \"replace\", \"path\": \"/orders/10/lines/3/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/10/tags/-\", \"value\": \"p03-cancelled\"},\n{\"op\": \"replace\", \"path\": \"/orders/14/lines/1/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/14/tags/-\", \"value\": \"p03-cancelled\"},\n{\"op\": \"replace\", \"path\": \"/orders/16/lines/1/qty\", \"value\": 0},\n{\"op\": \"replace\", \"path\": \"/orders/16/lines/2/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/16/tags/-\", \"value\": \"p03-cancelled\"},\n{\"op\": \"replace\", \"path\": \"/orders/17/lines/1/qty\", \"value\": 0},\n{\"op\": \"replace\", \"path\": \"/orders/17/lines/2/qty\", \"value\": 0},\n{\"op\": \"replace\", \"path\": \"/orders/17/lines/3/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/17/tags/-\", \"value\": \"p03-cancelled\"},\n{\"op\": \"replace\", \"path\": \"/orders/22/lines/0/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/22/tags/-\", \"value\": \"p03-cancelled\"},\n{\"op\": \"replace\", \"path\": \"/orders/31/lines/1/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/31/tags/-\", \"value\": \"p03-cancelled\"},\n{\"op\": \"replace\", \"path\": \"/orders/33/lines/0/qty\", \"value\": 0},\n{\"op\": \"replace\", \"path\": \"/orders/33/lines/1/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/33/tags/-\", \"value\": \"p03-cancelled\"},\n{\"op\": \"replace\", \"path\": \"/orders/37/lines/0/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/37/tags/-\", \"value\": \"p03-cancelled\"},\n{\"op\": \"replace\", \"path\": \"/orders/49/lines/0/qty\", \"value\": 0},\n{\"op\": \"add\", \"path\": \"/orders/49/tags/-\", \"value\": \"p03-cancelled\"}\n]"
+ ],
+ "end": "done",
+ "seconds": 29.567776513999974
+}

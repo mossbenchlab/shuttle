@@ -1,0 +1,41 @@
+{
+ "cell": "S-T2-500-1",
+ "log": [
+  {
+   "reply": "```shuttle\nset orders where status=:unpaid and due < #2026-03-01 : status=:hold, tags|=:late\n```\n",
+   "model_ms": 9584.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.007870676000038657,
+   "feedback": "ok v=1 set:53 vid=b2043398789e",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "```shuttle\ncount orders where status=:unpaid and due < #2026-03-01\ncount orders where status=:hold and tags has :late\ncount orders where status=:hold\n```\n",
+   "model_ms": 10213.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.0050602659998730815,
+   "feedback": "ok v=1  vid=b2043398789e\ncount orders = 0\ncount orders = 53\ncount orders = 53",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 6869.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 3.195999852323439e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "set orders where status=:unpaid and due < #2026-03-01 : status=:hold, tags|=:late",
+  "count orders where status=:unpaid and due < #2026-03-01\ncount orders where status=:hold and tags has :late\ncount orders where status=:hold"
+ ],
+ "end": "done",
+ "seconds": 26.67893413799976
+}

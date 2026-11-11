@@ -1,0 +1,74 @@
+{
+ "L1.h": {
+  "messages": 2,
+  "solver": 128,
+  "receipt": 55,
+  "fails": 0
+ },
+ "L2.h": {
+  "messages": 1,
+  "solver": 45,
+  "receipt": 44,
+  "fails": 0
+ },
+ "L3.h": {
+  "messages": 1,
+  "solver": 31,
+  "receipt": 41,
+  "fails": 0
+ },
+ "L4.h": {
+  "messages": 1,
+  "solver": 53,
+  "receipt": 29,
+  "fails": 0
+ },
+ "L5.h": {
+  "messages": 3,
+  "solver": 127,
+  "receipt": 146,
+  "fails": 1
+ },
+ "L6.h2": {
+  "messages": 1,
+  "solver": 104,
+  "receipt": 18,
+  "fails": 0
+ },
+ "M1.h": {
+  "messages": 3,
+  "solver": 154,
+  "receipt": 175,
+  "fails": 0
+ },
+ "M2.h": {
+  "messages": 1,
+  "solver": 28,
+  "receipt": 69,
+  "fails": 0
+ },
+ "M3.h": {
+  "messages": 1,
+  "solver": 40,
+  "receipt": 46,
+  "fails": 0
+ },
+ "M4.h": {
+  "messages": 1,
+  "solver": 116,
+  "receipt": 32,
+  "fails": 0
+ },
+ "M5.h": {
+  "messages": 5,
+  "solver": 307,
+  "receipt": 247,
+  "fails": 2
+ },
+ "M6.h": {
+  "messages": 1,
+  "solver": 119,
+  "receipt": 60,
+  "fails": 0
+ }
+}

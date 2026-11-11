@@ -1,0 +1,41 @@
+{
+ "cell": "S-T2-50-2",
+ "log": [
+  {
+   "reply": "```shuttle\nset orders where status=:unpaid and due<#2026-05-01 : tags|=:late\nset orders where status=:unpaid and due<#2026-05-01 : status=:hold\nexpect count orders where status=:unpaid and due<#2026-05-01 = 0\n```\n",
+   "model_ms": 8184.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.0032215819999237283,
+   "feedback": "ok v=1 set:18 expect:1 vid=2498d69fe275",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "```shuttle\nexpect count orders where status=:unpaid and due<#2026-05-01 = 0\nexpect count orders where status=:hold and not tags has :late = 0\nexpect count orders where tags has :late and not status=:hold = 0\nexpect count orders where status=:hold and due>=#2026-05-01 = 0\n```\n",
+   "model_ms": 13116.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.001017084999944018,
+   "feedback": "ok v=1  expect:4 vid=2498d69fe275",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 7329.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 1.687999997557199e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "set orders where status=:unpaid and due<#2026-05-01 : tags|=:late\nset orders where status=:unpaid and due<#2026-05-01 : status=:hold\nexpect count orders where status=:unpaid and due<#2026-05-01 = 0",
+  "expect count orders where status=:unpaid and due<#2026-05-01 = 0\nexpect count orders where status=:hold and not tags has :late = 0\nexpect count orders where tags has :late and not status=:hold = 0\nexpect count orders where status=:hold and due>=#2026-05-01 = 0"
+ ],
+ "end": "done",
+ "seconds": 28.633240354999863
+}

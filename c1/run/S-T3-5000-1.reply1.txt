@@ -1,0 +1,8 @@
+```shuttle
+count orders where status=:paid
+count orders where status=:unpaid
+count orders where status=:shipped
+sum total of orders where status=:shipped
+count orders where status!=:shipped
+show orders cols id,status,tags order id asc limit 5
+```

@@ -1,0 +1,10 @@
+{
+ "messages": [
+  "set orders where id = 3777 and status != :shipped : qty += 2\nshow orders where id = 3777 cols id,status,qty",
+  "get orders where id = 3777"
+ ],
+ "receipts": [
+  "fail line 1: set matched no rows in orders\n  hint: orders has 5000 rows; check the condition's column names and value types\n  (nothing applied)",
+  "ok v=0  vid=000000000000\nget orders: 1 row(s)\n  due: #2026-09-28 id: 3777 note: nil qty: 7 status: :shipped tags: [:a] total: 625.43m"
+ ]
+}

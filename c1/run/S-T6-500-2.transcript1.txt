@@ -1,0 +1,11 @@
+===== YOUR REPLY 1 =====
+```shuttle
+tx a900002 at 0
+add orders : id=900002, status=:unpaid, due=#2026-12-01, total=64.27m, qty=1, tags=[], note=nil
+add orders.lines where id=900002 : :p01, 2, 48.15m
+add orders.lines where id=900002 : :p02, 1, 16.12m
+expect count orders where id=900002 = 1
+```
+
+===== MACHINE RESULT 1 =====
+ok v=1 add:3 expect:1 vid=dcadde80187d

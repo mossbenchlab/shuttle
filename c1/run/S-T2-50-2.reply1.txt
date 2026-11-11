@@ -1,0 +1,5 @@
+```shuttle
+set orders where status=:unpaid and due<#2026-05-01 : tags|=:late
+set orders where status=:unpaid and due<#2026-05-01 : status=:hold
+expect count orders where status=:unpaid and due<#2026-05-01 = 0
+```

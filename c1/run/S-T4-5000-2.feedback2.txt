@@ -1,0 +1,6 @@
+MACHINE RESULT:
+ok v=1  expect:2 vid=f59fa5bae257
+count orders = 1260
+count orders.lines = 1527
+
+Reply with your next submission (one fenced code block) or DONE. Replies used: 2 of 6.

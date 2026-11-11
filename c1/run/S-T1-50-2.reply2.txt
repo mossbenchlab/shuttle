@@ -1,0 +1,6 @@
+```shuttle
+tx t1011-qty at 0
+set? orders where id=1011 and status!=:shipped : qty+=2
+expect count orders where id=1011 = 1
+show orders where id=1011 cols id,status,qty
+```

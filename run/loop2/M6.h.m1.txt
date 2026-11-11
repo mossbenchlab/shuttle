@@ -1,0 +1,7 @@
+tx add-99001 at 0
+add orders : id=99001, status=:unpaid, due=#2026-12-01, total=25.50m, tags=[], note=nil
+add orders.lines where id=99001 : :p01, 2, 20.00m
+add orders.lines where id=99001 : :p02, 1, 5.50m
+expect count orders where id=99001 = 1
+expect count orders.lines where id=99001 = 2
+get orders where id=99001

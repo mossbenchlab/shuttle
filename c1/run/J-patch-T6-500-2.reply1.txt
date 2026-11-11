@@ -1,0 +1,5 @@
+```json
+[
+  {"op": "add", "path": "/orders/-", "value": {"id": 900002, "status": "unpaid", "due": "2026-12-01", "total": "64.27", "qty": 1, "tags": [], "note": null, "lines": [{"sku": "p01", "qty": 2, "amount": "48.15"}, {"sku": "p02", "qty": 1, "amount": "16.12"}]}}
+]
+```

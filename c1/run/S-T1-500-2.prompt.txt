@@ -1,0 +1,59 @@
+PROTOCOL: Do not use any tools. Each reply is EITHER exactly one fenced code block containing your submission and nothing else, OR the single word DONE. You have at most 6 replies. After each submission you receive the machine result: accepted, or the error (a failed submission changes nothing). You are never told whether the state is correct. Reply DONE when the state is as the task requires.
+
+You change a data store by sending messages to an executor. A message is a few lines of operations. You never write the data itself; you never see the whole store.
+The store has a schema (tables with typed columns; `key` columns identify a row; `doc` fields are the non-table part).
+
+Reading (allowed in any message; results come back in the receipt):
+  count <table> [where <cond>]
+  show <table> [where <cond>] [cols a,b] [order <col> [asc|desc]] [limit n]      default limit 20
+  get <table> where <cond>                                                    exactly one row
+  sum <col> of <table> [where <cond>]
+
+Writing (everything in one message applies together or nothing does):
+  set <table> where <cond> : <col>=<value>, <col>=<value>      update EVERY matching row (one or thousands; `where true` = all rows)
+  set <table> where <cond> : <col>+=<value>                     relative: numbers add (-= subtracts), lists append (-= removes); you need not know the current value
+  set <table> where <cond> : <col>|=<value>                     lists: add only if not already present (safe to run twice; use this for tags)
+  add <table> : <value>, <value>, ...                            append a row (values in column order, child tables excluded)
+  add <table> : <col>=<value>, ...                               append a row by column names (columns with a default may be omitted)
+  add <table> after where <cond> : ...                           insert the new row right after the one matching row
+  add <table>.<child> where <parent cond> : <value>, ...         append a row to a child table of one parent row
+  del <table> where <cond>                                       delete the matching rows
+  set <table> where <cond> order <col> desc limit 1 : <col>=<v>, <col>=<v>   update only the top row in that order (e.g. the largest total) — no need to read its id;
+                                                                 put ALL assignments for that row in this one statement (a second statement selects again)
+  del <table> where <cond> order <col> asc limit n               delete only the first n rows in that order
+  set? ... / del? ...                                            same, but matching no row is allowed (receipt shows set:0) — for guards like `and status!=:shipped`
+  put <docfield> = <value>        put <docfield>.<key> = <value>       put <docfield>[<index>].<key> = <value>
+  add <docfield> : <value>                                       append to a list field of the doc
+  expect count <table> where <cond> = <n>                        check after all operations; also `expect sum <col> of <table> [where ...] >= v`
+  tx <id> at <version>                                           optional first line: the message applies only if the store is still at that version.
+                                                                 The id names ONE message: re-send the same message with the same id to get its receipt again; a new message needs a new id
+                                                                 (a message that failed applied nothing, so its id is free to reuse for the corrected message)
+
+Conditions: <col> = v | != | < | <= | > | >= ; <col> in [v, v] ; <col> has v (list column) ; missing <col> (nil) ; combine with and / or / not / ( ).
+In a child table, conditions may also use the parent's columns (e.g. `where id=7006 and sku=:p03`).
+On a parent table, `any <child> where <cond>` / `none <child> where <cond>` select by the child rows (e.g. `set invoices where state=:open and any items where sku=:x9 : tags+=:flag`).
+Aggregates can be used wherever a value is written; the executor computes them when the statement runs and echoes the value in the receipt
+(`sum` needs an int or dec column, skips nil, and gives 0 or 0m when nothing matches):
+  put stats.open = count tickets where state=:open        set invoices where id=42 : total = sum amount of invoices.items where id=42
+Values: integers 42, decimals 1.50m (the m is required; digits are kept exactly), strings "text", keywords :paid,
+dates #2026-11-05 or #2026-11-05T18:05:00Z, true/false, nil, lists [:a, :b], maps {k: v, k2: v2} (space after the colon).
+
+Receipts: `ok v=<version> set:<rows> add:<rows> ... vid=<id>` followed by query results, or `fail line N: <why>` (nothing applied).
+Reply with exactly one message per turn, inside one fenced code block opened with ```shuttle (or a plain ```; no other language tag such as sql). Prefer one conditional write over reading rows and writing them one by one.
+When the store is in the required state, reply with the single word DONE (no code block).
+
+SCHEMA:
+doc audit:map
+table orders key id : id:int status:kw due:dt total:dec qty:int tags:list<kw> note:str? lines:lines
+table orders.lines : sku:kw qty:int amount:dec
+
+CURRENT STATE (glimpse; version 0; 500 orders, 1256 lines):
+show orders: 500 row(s), showing 2
+  {id: 1000, status: :unpaid, due: #2026-02-27, total: 946.20m, qty: 2, tags: [], note: nil}
+  {id: 1001, status: :paid, due: #2026-01-25, total: 193.50m, qty: 4, tags: [], note: nil}
+show orders.lines: 1 row(s)
+  {sku: :p03, qty: 2, amount: 169.46m}
+doc: {audit: {paid: 0, shipped_total: 0.00m, unpaid: 0}}
+
+TASK:
+Increase the qty of order 1451 by 2 — unless that order's status is shipped, in which case change nothing.

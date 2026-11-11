@@ -1,0 +1,11 @@
+MACHINE RESULT:
+ok v=1 set:2723 vid=30b50fab5113
+count orders.lines = 986
+show orders: 1235 row(s), showing 5
+  {id: 1002, tags: [:p03-cancelled]}
+  {id: 1004, tags: [:p03-cancelled]}
+  {id: 1005, tags: [:p03-cancelled]}
+  {id: 1009, tags: [:a, :p03-cancelled]}
+  {id: 1024, tags: [:p03-cancelled]}
+
+Reply with your next submission (one fenced code block) or DONE. Replies used: 2 of 6.

@@ -1,0 +1,27 @@
+===== YOUR REPLY 1 =====
+```shuttle
+count orders where status = :paid
+count orders where status != :paid
+show orders where status != :paid order total desc limit 3 cols id,status,total,tags,note
+sum total of orders where status != :paid
+```
+
+===== MACHINE RESULT 1 =====
+ok v=0  vid=000000000000
+count orders = 979
+count orders = 4021
+show orders: 4021 row(s), showing 3
+  {id: 2254, status: :unpaid, total: 9999.99m, tags: [:a], note: nil}
+  {id: 4374, status: :shipped, total: 999.69m, tags: [], note: nil}
+  {id: 4754, status: :unpaid, total: 999.26m, tags: [:a], note: nil}
+sum total of orders = 2015393.56m
+
+===== YOUR REPLY 2 =====
+```shuttle
+tx t1 at 0
+set orders where status = :unpaid order total desc limit 1 : status = :review, note = "top"
+expect count orders where id = 2254 and status = :review = 1
+```
+
+===== MACHINE RESULT 2 =====
+ok v=1 set:1 expect:1 vid=ba2ee9a5269e

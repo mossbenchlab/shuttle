@@ -1,0 +1,41 @@
+{
+ "cell": "S-T4-500-2",
+ "log": [
+  {
+   "reply": "```shuttle\ntx m1 at 0\nset orders.lines where status=:unpaid and sku=:p03 : qty=0\nset? orders where status=:unpaid and any lines where sku=:p03 : tags|=:p03-cancelled\ncount orders where status=:unpaid and any lines where sku=:p03 and tags has :p03-cancelled\n```\n",
+   "model_ms": 12301.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.005956086999958643,
+   "feedback": "ok v=1 set:295 vid=3a7798cd3e3a\ncount orders = 136",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "```shuttle\ncount orders where status=:unpaid and any lines where sku=:p03\ncount orders where status=:unpaid and any lines where sku=:p03 and qty!=0\ncount orders where tags has :p03-cancelled\ncount orders where status=:unpaid and any lines where sku=:p03 and tags has :p03-cancelled\ncount orders where status=:unpaid and tags has :p03-cancelled\n```\n",
+   "model_ms": 11969.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.006025911000051565,
+   "feedback": "ok v=1  vid=3a7798cd3e3a\ncount orders = 136\ncount orders = 0\ncount orders = 136\ncount orders = 136\ncount orders = 136",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 10108.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 2.1339997147151735e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "tx m1 at 0\nset orders.lines where status=:unpaid and sku=:p03 : qty=0\nset? orders where status=:unpaid and any lines where sku=:p03 : tags|=:p03-cancelled\ncount orders where status=:unpaid and any lines where sku=:p03 and tags has :p03-cancelled",
+  "count orders where status=:unpaid and any lines where sku=:p03\ncount orders where status=:unpaid and any lines where sku=:p03 and qty!=0\ncount orders where tags has :p03-cancelled\ncount orders where status=:unpaid and any lines where sku=:p03 and tags has :p03-cancelled\ncount orders where status=:unpaid and tags has :p03-cancelled"
+ ],
+ "end": "done",
+ "seconds": 34.389984131999725
+}

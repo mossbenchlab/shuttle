@@ -1,0 +1,69 @@
+PROTOCOL: Do not use any tools. Each reply is EITHER exactly one fenced code block containing your submission and nothing else, OR the single word DONE. You have at most 6 replies. After each submission you receive the machine result: accepted, or the error (a failed submission changes nothing). You are never told whether the state is correct. Reply DONE when the state is as the task requires.
+
+FORMAT: JSON. The state is one JSON object {"audit": {...}, "orders": [...]}.
+Representation: decimals are strings with the digits ("12.50"); dates are strings "YYYY-MM-DD"; keywords are plain strings ("unpaid"); a missing note is null.
+SUBMISSION: the COMPLETE new state as JSON, in a ```json block. It replaces the whole state, so every order must be present, in the same order.
+
+SCHEMA (the same data in every format):
+  audit: {unpaid: integer, paid: integer, shipped_total: decimal}
+  orders: list of rows, unique by id; row order matters (new rows go at the end):
+    id: integer, status: keyword, due: date, total: decimal, qty: integer,
+    tags: list of keywords (order and duplicates matter), note: string or null,
+    lines: list of {sku: keyword, qty: integer, amount: decimal}
+
+CURRENT STATE:
+{"audit": {"unpaid": 0, "paid": 0, "shipped_total": "0.00"}, "orders": [
+{"id": 1000, "status": "paid", "due": "2026-11-11", "total": "227.42", "qty": 2, "tags": [], "note": null, "lines": [{"sku": "p02", "qty": 3, "amount": "291.18"}, {"sku": "p05", "qty": 3, "amount": "177.54"}, {"sku": "p05", "qty": 5, "amount": "119.30"}]},
+{"id": 1001, "status": "unpaid", "due": "2026-04-23", "total": "436.38", "qty": 5, "tags": ["a"], "note": null, "lines": [{"sku": "p05", "qty": 4, "amount": "88.84"}, {"sku": "p05", "qty": 3, "amount": "299.16"}, {"sku": "p04", "qty": 5, "amount": "115.25"}]},
+{"id": 1002, "status": "shipped", "due": "2026-04-25", "total": "274.13", "qty": 7, "tags": [], "note": null, "lines": [{"sku": "p03", "qty": 4, "amount": "23.24"}, {"sku": "p03", "qty": 4, "amount": "199.32"}, {"sku": "p04", "qty": 3, "amount": "150.69"}]},
+{"id": 1003, "status": "shipped", "due": "2026-08-12", "total": "831.15", "qty": 7, "tags": [], "note": null, "lines": [{"sku": "p02", "qty": 4, "amount": "300.36"}, {"sku": "p01", "qty": 3, "amount": "280.86"}]},
+{"id": 1004, "status": "paid", "due": "2026-12-13", "total": "69.24", "qty": 4, "tags": [], "note": null, "lines": [{"sku": "p02", "qty": 1, "amount": "53.84"}]},
+{"id": 1005, "status": "unpaid", "due": "2026-08-15", "total": "699.11", "qty": 7, "tags": ["a"], "note": null, "lines": [{"sku": "p05", "qty": 1, "amount": "66.36"}, {"sku": "p05", "qty": 4, "amount": "177.64"}, {"sku": "p04", "qty": 3, "amount": "229.68"}]},
+{"id": 1006, "status": "unpaid", "due": "2026-06-22", "total": "880.89", "qty": 8, "tags": [], "note": null, "lines": [{"sku": "p05", "qty": 2, "amount": "32.86"}, {"sku": "p03", "qty": 5, "amount": "181.10"}, {"sku": "p03", "qty": 1, "amount": "74.63"}]},
+{"id": 1007, "status": "unpaid", "due": "2026-03-18", "total": "268.04", "qty": 1, "tags": [], "note": null, "lines": [{"sku": "p02", "qty": 2, "amount": "139.00"}, {"sku": "p04", "qty": 3, "amount": "124.32"}]},
+{"id": 1008, "status": "shipped", "due": "2026-09-18", "total": "739.78", "qty": 6, "tags": [], "note": null, "lines": [{"sku": "p04", "qty": 1, "amount": "4.68"}, {"sku": "p02", "qty": 3, "amount": "164.73"}, {"sku": "p01", "qty": 4, "amount": "89.40"}]},
+{"id": 1009, "status": "unpaid", "due": "2026-10-05", "total": "667.84", "qty": 6, "tags": ["a"], "note": null, "lines": [{"sku": "p01", "qty": 5, "amount": "436.20"}, {"sku": "p04", "qty": 1, "amount": "89.81"}]},
+{"id": 1010, "status": "unpaid", "due": "2026-12-14", "total": "3.57", "qty": 1, "tags": ["a"], "note": null, "lines": [{"sku": "p03", "qty": 1, "amount": "40.52"}, {"sku": "p04", "qty": 3, "amount": "27.45"}, {"sku": "p05", "qty": 3, "amount": "36.15"}, {"sku": "p03", "qty": 2, "amount": "190.74"}]},
+{"id": 1011, "status": "unpaid", "due": "2026-12-24", "total": "782.71", "qty": 1, "tags": [], "note": null, "lines": [{"sku": "p04", "qty": 2, "amount": "127.18"}, {"sku": "p01", "qty": 5, "amount": "261.60"}, {"sku": "p05", "qty": 3, "amount": "279.00"}]},
+{"id": 1012, "status": "unpaid", "due": "2026-10-11", "total": "105.64", "qty": 3, "tags": ["a"], "note": null, "lines": [{"sku": "p02", "qty": 3, "amount": "93.93"}, {"sku": "p01", "qty": 3, "amount": "237.75"}, {"sku": "p02", "qty": 3, "amount": "27.12"}]},
+{"id": 1013, "status": "paid", "due": "2026-06-14", "total": "604.28", "qty": 4, "tags": [], "note": null, "lines": [{"sku": "p03", "qty": 1, "amount": "60.18"}]},
+{"id": 1014, "status": "unpaid", "due": "2026-04-03", "total": "904.17", "qty": 5, "tags": [], "note": null, "lines": [{"sku": "p02", "qty": 1, "amount": "37.58"}, {"sku": "p03", "qty": 2, "amount": "122.18"}]},
+{"id": 1015, "status": "paid", "due": "2026-09-16", "total": "897.72", "qty": 9, "tags": [], "note": null, "lines": [{"sku": "p03", "qty": 2, "amount": "28.86"}, {"sku": "p02", "qty": 1, "amount": "37.46"}, {"sku": "p03", "qty": 2, "amount": "46.84"}]},
+{"id": 1016, "status": "unpaid", "due": "2026-03-22", "total": "9999.99", "qty": 8, "tags": [], "note": null, "lines": [{"sku": "p01", "qty": 2, "amount": "88.78"}, {"sku": "p03", "qty": 3, "amount": "53.91"}, {"sku": "p03", "qty": 1, "amount": "47.03"}, {"sku": "p01", "qty": 5, "amount": "324.00"}]},
+{"id": 1017, "status": "unpaid", "due": "2026-07-18", "total": "577.80", "qty": 5, "tags": ["a"], "note": null, "lines": [{"sku": "p01", "qty": 3, "amount": "282.36"}, {"sku": "p03", "qty": 5, "amount": "155.95"}, {"sku": "p03", "qty": 4, "amount": "273.52"}, {"sku": "p03", "qty": 1, "amount": "28.33"}]},
+{"id": 1018, "status": "paid", "due": "2026-08-02", "total": "395.61", "qty": 6, "tags": [], "note": null, "lines": [{"sku": "p03", "qty": 5, "amount": "164.55"}]},
+{"id": 1019, "status": "unpaid", "due": "2026-07-20", "total": "569.37", "qty": 1, "tags": ["a"], "note": null, "lines": [{"sku": "p05", "qty": 1, "amount": "97.86"}, {"sku": "p05", "qty": 2, "amount": "62.88"}, {"sku": "p05", "qty": 2, "amount": "23.88"}, {"sku": "p05", "qty": 2, "amount": "180.82"}]},
+{"id": 1020, "status": "unpaid", "due": "2026-06-11", "total": "977.36", "qty": 7, "tags": [], "note": null, "lines": [{"sku": "p01", "qty": 5, "amount": "416.95"}, {"sku": "p01", "qty": 3, "amount": "109.71"}, {"sku": "p02", "qty": 3, "amount": "113.04"}]},
+{"id": 1021, "status": "paid", "due": "2026-01-07", "total": "180.74", "qty": 8, "tags": [], "note": null, "lines": [{"sku": "p02", "qty": 3, "amount": "234.90"}, {"sku": "p02", "qty": 5, "amount": "347.75"}]},
+{"id": 1022, "status": "unpaid", "due": "2026-04-17", "total": "388.23", "qty": 8, "tags": ["a"], "note": null, "lines": [{"sku": "p03", "qty": 4, "amount": "368.40"}]},
+{"id": 1023, "status": "shipped", "due": "2026-03-22", "total": "965.79", "qty": 4, "tags": [], "note": null, "lines": [{"sku": "p01", "qty": 3, "amount": "158.13"}, {"sku": "p03", "qty": 3, "amount": "255.57"}, {"sku": "p01", "qty": 4, "amount": "288.24"}]},
+{"id": 1024, "status": "shipped", "due": "2026-10-07", "total": "269.99", "qty": 8, "tags": [], "note": null, "lines": [{"sku": "p04", "qty": 3, "amount": "107.73"}, {"sku": "p05", "qty": 2, "amount": "130.88"}, {"sku": "p05", "qty": 5, "amount": "29.90"}]},
+{"id": 1025, "status": "paid", "due": "2026-08-20", "total": "105.31", "qty": 4, "tags": [], "note": null, "lines": [{"sku": "p04", "qty": 3, "amount": "19.98"}, {"sku": "p01", "qty": 1, "amount": "17.66"}, {"sku": "p05", "qty": 3, "amount": "16.23"}]},
+{"id": 1026, "status": "paid", "due": "2026-12-01", "total": "711.60", "qty": 6, "tags": [], "note": null, "lines": [{"sku": "p05", "qty": 1, "amount": "70.70"}]},
+{"id": 1027, "status": "unpaid", "due": "2026-06-01", "total": "499.80", "qty": 6, "tags": [], "note": null, "lines": [{"sku": "p05", "qty": 4, "amount": "213.84"}]},
+{"id": 1028, "status": "unpaid", "due": "2026-10-23", "total": "403.45", "qty": 1, "tags": [], "note": null, "lines": [{"sku": "p04", "qty": 1, "amount": "56.62"}, {"sku": "p05", "qty": 3, "amount": "149.25"}, {"sku": "p02", "qty": 5, "amount": "364.55"}, {"sku": "p02", "qty": 3, "amount": "159.06"}]},
+{"id": 1029, "status": "paid", "due": "2026-11-26", "total": "655.38", "qty": 7, "tags": [], "note": null, "lines": [{"sku": "p02", "qty": 5, "amount": "17.70"}, {"sku": "p03", "qty": 5, "amount": "112.45"}, {"sku": "p05", "qty": 4, "amount": "247.16"}]},
+{"id": 1030, "status": "unpaid", "due": "2026-11-19", "total": "921.89", "qty": 4, "tags": ["a"], "note": null, "lines": [{"sku": "p05", "qty": 4, "amount": "278.12"}]},
+{"id": 1031, "status": "unpaid", "due": "2026-09-25", "total": "45.54", "qty": 7, "tags": ["a"], "note": null, "lines": [{"sku": "p02", "qty": 2, "amount": "185.62"}, {"sku": "p03", "qty": 1, "amount": "48.83"}, {"sku": "p02", "qty": 3, "amount": "68.16"}]},
+{"id": 1032, "status": "shipped", "due": "2026-10-01", "total": "541.62", "qty": 7, "tags": [], "note": null, "lines": [{"sku": "p03", "qty": 3, "amount": "128.25"}, {"sku": "p03", "qty": 2, "amount": "196.38"}]},
+{"id": 1033, "status": "unpaid", "due": "2026-06-04", "total": "575.22", "qty": 4, "tags": [], "note": null, "lines": [{"sku": "p03", "qty": 4, "amount": "368.76"}, {"sku": "p03", "qty": 3, "amount": "292.32"}]},
+{"id": 1034, "status": "paid", "due": "2026-06-18", "total": "159.29", "qty": 7, "tags": [], "note": null, "lines": [{"sku": "p05", "qty": 5, "amount": "298.40"}]},
+{"id": 1035, "status": "shipped", "due": "2026-10-18", "total": "327.84", "qty": 4, "tags": ["a"], "note": null, "lines": [{"sku": "p04", "qty": 4, "amount": "202.56"}]},
+{"id": 1036, "status": "paid", "due": "2026-02-07", "total": "341.82", "qty": 6, "tags": [], "note": null, "lines": [{"sku": "p04", "qty": 1, "amount": "91.89"}, {"sku": "p01", "qty": 4, "amount": "20.32"}, {"sku": "p01", "qty": 1, "amount": "33.64"}]},
+{"id": 1037, "status": "unpaid", "due": "2026-08-22", "total": "911.11", "qty": 4, "tags": [], "note": null, "lines": [{"sku": "p03", "qty": 2, "amount": "190.66"}, {"sku": "p04", "qty": 3, "amount": "64.38"}]},
+{"id": 1038, "status": "paid", "due": "2026-11-16", "total": "940.39", "qty": 3, "tags": ["a"], "note": null, "lines": [{"sku": "p04", "qty": 5, "amount": "191.20"}, {"sku": "p02", "qty": 3, "amount": "171.30"}, {"sku": "p05", "qty": 3, "amount": "296.85"}, {"sku": "p05", "qty": 3, "amount": "161.52"}]},
+{"id": 1039, "status": "shipped", "due": "2026-02-18", "total": "462.45", "qty": 6, "tags": [], "note": null, "lines": [{"sku": "p04", "qty": 4, "amount": "210.20"}, {"sku": "p03", "qty": 4, "amount": "39.40"}, {"sku": "p03", "qty": 5, "amount": "498.45"}, {"sku": "p01", "qty": 5, "amount": "373.25"}]},
+{"id": 1040, "status": "shipped", "due": "2026-05-28", "total": "156.26", "qty": 1, "tags": [], "note": null, "lines": [{"sku": "p04", "qty": 1, "amount": "36.77"}, {"sku": "p01", "qty": 5, "amount": "178.50"}, {"sku": "p01", "qty": 3, "amount": "78.15"}, {"sku": "p02", "qty": 2, "amount": "168.98"}]},
+{"id": 1041, "status": "unpaid", "due": "2026-04-08", "total": "677.66", "qty": 3, "tags": [], "note": null, "lines": [{"sku": "p02", "qty": 5, "amount": "165.60"}, {"sku": "p04", "qty": 3, "amount": "123.42"}]},
+{"id": 1042, "status": "unpaid", "due": "2026-03-14", "total": "922.22", "qty": 6, "tags": ["a"], "note": null, "lines": [{"sku": "p02", "qty": 1, "amount": "93.71"}, {"sku": "p01", "qty": 1, "amount": "48.07"}, {"sku": "p05", "qty": 5, "amount": "122.55"}]},
+{"id": 1043, "status": "unpaid", "due": "2026-04-22", "total": "964.96", "qty": 3, "tags": [], "note": null, "lines": [{"sku": "p05", "qty": 1, "amount": "6.80"}, {"sku": "p04", "qty": 4, "amount": "175.08"}]},
+{"id": 1044, "status": "unpaid", "due": "2026-09-17", "total": "984.57", "qty": 2, "tags": ["a"], "note": null, "lines": [{"sku": "p05", "qty": 1, "amount": "88.97"}, {"sku": "p04", "qty": 1, "amount": "21.20"}, {"sku": "p02", "qty": 4, "amount": "386.84"}]},
+{"id": 1045, "status": "unpaid", "due": "2026-05-13", "total": "553.20", "qty": 5, "tags": [], "note": null, "lines": [{"sku": "p04", "qty": 5, "amount": "211.80"}]},
+{"id": 1046, "status": "paid", "due": "2026-01-18", "total": "273.03", "qty": 9, "tags": [], "note": null, "lines": [{"sku": "p04", "qty": 4, "amount": "269.52"}, {"sku": "p04", "qty": 4, "amount": "389.80"}, {"sku": "p03", "qty": 3, "amount": "277.56"}]},
+{"id": 1047, "status": "unpaid", "due": "2026-03-07", "total": "308.59", "qty": 7, "tags": [], "note": null, "lines": [{"sku": "p05", "qty": 3, "amount": "296.19"}, {"sku": "p04", "qty": 2, "amount": "142.64"}, {"sku": "p05", "qty": 5, "amount": "40.70"}]},
+{"id": 1048, "status": "unpaid", "due": "2026-03-19", "total": "446.51", "qty": 9, "tags": ["a"], "note": null, "lines": [{"sku": "p04", "qty": 1, "amount": "98.51"}, {"sku": "p01", "qty": 5, "amount": "458.25"}]},
+{"id": 1049, "status": "unpaid", "due": "2026-01-22", "total": "570.57", "qty": 7, "tags": [], "note": null, "lines": [{"sku": "p03", "qty": 1, "amount": "58.31"}, {"sku": "p01", "qty": 1, "amount": "13.98"}]}
+]}
+
+TASK:
+In every unpaid order, each line with sku p03 must get qty 0. Each unpaid order that has at least one such line must also get the tag p03-cancelled appended to its tags. Change nothing else.

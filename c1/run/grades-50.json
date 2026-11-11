@@ -1,0 +1,824 @@
+{
+ "J-full-T2-50-2": {
+  "cell": "J-full-T2-50-2",
+  "arm": "J-full",
+  "task": "T2",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 35.392372365000014,
+  "model_s": 35.391,
+  "machine_s": 0.0013723650000088128,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "W-full-T3-50-2": {
+  "cell": "W-full-T3-50-2",
+  "arm": "W-full",
+  "task": "T3",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 26.247457344000033,
+  "model_s": 26.23,
+  "machine_s": 0.017457344000035846,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "S-T6-50-2": {
+  "cell": "S-T6-50-2",
+  "arm": "S",
+  "task": "T6",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 3,
+  "seconds": 25.839526471999978,
+  "model_s": 25.836,
+  "machine_s": 0.003526471999975911,
+  "kinds": [
+   "accepted",
+   "rejected",
+   "done"
+  ]
+ },
+ "S-T1-50-2": {
+  "cell": "S-T1-50-2",
+  "arm": "S",
+  "task": "T1",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 3,
+  "seconds": 24.725166368999975,
+  "model_s": 24.724,
+  "machine_s": 0.0011663689999750204,
+  "kinds": [
+   "accepted",
+   "rejected",
+   "done"
+  ]
+ },
+ "W-full-T2-50-2": {
+  "cell": "W-full-T2-50-2",
+  "arm": "W-full",
+  "task": "T2",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 39.98994153600002,
+  "model_s": 39.972,
+  "machine_s": 0.01794153600002346,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "W-full-T6-50-2": {
+  "cell": "W-full-T6-50-2",
+  "arm": "W-full",
+  "task": "T6",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 33.301381622000086,
+  "model_s": 33.282,
+  "machine_s": 0.019381622000082643,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-patch-T4-50-2": {
+  "cell": "J-patch-T4-50-2",
+  "arm": "J-patch",
+  "task": "T4",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 31.300693001999946,
+  "model_s": 31.298,
+  "machine_s": 0.0026930019999440447,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "W-full-T5-50-2": {
+  "cell": "W-full-T5-50-2",
+  "arm": "W-full",
+  "task": "T5",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 26.568467158000047,
+  "model_s": 26.551,
+  "machine_s": 0.017467158000044947,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "S-T4-50-2": {
+  "cell": "S-T4-50-2",
+  "arm": "S",
+  "task": "T4",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 3,
+  "seconds": 30.625005792999968,
+  "model_s": 30.623,
+  "machine_s": 0.0020057929999666158,
+  "kinds": [
+   "accepted",
+   "accepted",
+   "done"
+  ]
+ },
+ "J-full-T1-50-1": {
+  "cell": "J-full-T1-50-1",
+  "arm": "J-full",
+  "task": "T1",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 33.78397423900005,
+  "model_s": 33.782,
+  "machine_s": 0.001974239000048783,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-patch-T2-50-2": {
+  "cell": "J-patch-T2-50-2",
+  "arm": "J-patch",
+  "task": "T2",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 23.381754516000004,
+  "model_s": 23.38,
+  "machine_s": 0.0017545160000054238,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "W-full-T2-50-1": {
+  "cell": "W-full-T2-50-1",
+  "arm": "W-full",
+  "task": "T2",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 40.518888606,
+  "model_s": 40.504,
+  "machine_s": 0.014888605999999527,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "S-T2-50-2": {
+  "cell": "S-T2-50-2",
+  "arm": "S",
+  "task": "T2",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 3,
+  "seconds": 28.633240354999863,
+  "model_s": 28.629,
+  "machine_s": 0.004240354999865303,
+  "kinds": [
+   "accepted",
+   "accepted",
+   "done"
+  ]
+ },
+ "J-patch-T6-50-1": {
+  "cell": "J-patch-T6-50-1",
+  "arm": "J-patch",
+  "task": "T6",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 13.766939963999917,
+  "model_s": 13.765,
+  "machine_s": 0.001939963999916472,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-patch-T1-50-1": {
+  "cell": "J-patch-T1-50-1",
+  "arm": "J-patch",
+  "task": "T1",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 11.17459607799992,
+  "model_s": 11.173,
+  "machine_s": 0.0015960779999204533,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "W-full-T4-50-2": {
+  "cell": "W-full-T4-50-2",
+  "arm": "W-full",
+  "task": "T4",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 43.76956104999995,
+  "model_s": 43.753,
+  "machine_s": 0.016561049999950228,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-patch-T1-50-2": {
+  "cell": "J-patch-T1-50-2",
+  "arm": "J-patch",
+  "task": "T1",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 12.124526659999967,
+  "model_s": 12.123,
+  "machine_s": 0.0015266599999677055,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "S-T3-50-2": {
+  "cell": "S-T3-50-2",
+  "arm": "S",
+  "task": "T3",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 20.163985593999985,
+  "model_s": 20.163,
+  "machine_s": 0.0009855939999852126,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-full-T3-50-1": {
+  "cell": "J-full-T3-50-1",
+  "arm": "J-full",
+  "task": "T3",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 33.23635948999991,
+  "model_s": 33.235,
+  "machine_s": 0.0013594899999134213,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-full-T1-50-2": {
+  "cell": "J-full-T1-50-2",
+  "arm": "J-full",
+  "task": "T1",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 29.229371107999942,
+  "model_s": 29.228,
+  "machine_s": 0.001371107999943888,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-full-T4-50-2": {
+  "cell": "J-full-T4-50-2",
+  "arm": "J-full",
+  "task": "T4",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 42.020557719999935,
+  "model_s": 42.019,
+  "machine_s": 0.001557719999937035,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "W-full-T3-50-1": {
+  "cell": "W-full-T3-50-1",
+  "arm": "W-full",
+  "task": "T3",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 30.42694639999994,
+  "model_s": 30.41,
+  "machine_s": 0.016946399999937967,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-patch-T3-50-2": {
+  "cell": "J-patch-T3-50-2",
+  "arm": "J-patch",
+  "task": "T3",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 17.730432875999966,
+  "model_s": 17.729,
+  "machine_s": 0.0014328759999671092,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-full-T5-50-1": {
+  "cell": "J-full-T5-50-1",
+  "arm": "J-full",
+  "task": "T5",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 33.30134141400008,
+  "model_s": 33.3,
+  "machine_s": 0.0013414140000804764,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-full-T2-50-1": {
+  "cell": "J-full-T2-50-1",
+  "arm": "J-full",
+  "task": "T2",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 34.891324666000074,
+  "model_s": 34.89,
+  "machine_s": 0.0013246660000731936,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "S-T4-50-1": {
+  "cell": "S-T4-50-1",
+  "arm": "S",
+  "task": "T4",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 3,
+  "seconds": 34.11246114699996,
+  "model_s": 34.11,
+  "machine_s": 0.0024611469999626934,
+  "kinds": [
+   "accepted",
+   "accepted",
+   "done"
+  ]
+ },
+ "W-full-T1-50-1": {
+  "cell": "W-full-T1-50-1",
+  "arm": "W-full",
+  "task": "T1",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 26.54513208199994,
+  "model_s": 26.526,
+  "machine_s": 0.019132081999941875,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "S-T5-50-2": {
+  "cell": "S-T5-50-2",
+  "arm": "S",
+  "task": "T5",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 12.517704440000049,
+  "model_s": 12.517,
+  "machine_s": 0.0007044400000495443,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-patch-T5-50-2": {
+  "cell": "J-patch-T5-50-2",
+  "arm": "J-patch",
+  "task": "T5",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 13.628413936999937,
+  "model_s": 13.627,
+  "machine_s": 0.0014139369999384144,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-patch-T3-50-1": {
+  "cell": "J-patch-T3-50-1",
+  "arm": "J-patch",
+  "task": "T3",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 17.33604201299994,
+  "model_s": 17.334,
+  "machine_s": 0.00204201299993656,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "S-T2-50-1": {
+  "cell": "S-T2-50-1",
+  "arm": "S",
+  "task": "T2",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 3,
+  "seconds": 27.081939537999943,
+  "model_s": 27.078,
+  "machine_s": 0.003939537999940512,
+  "kinds": [
+   "accepted",
+   "accepted",
+   "done"
+  ]
+ },
+ "W-full-T4-50-1": {
+  "cell": "W-full-T4-50-1",
+  "arm": "W-full",
+  "task": "T4",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 44.57756511500002,
+  "model_s": 44.56,
+  "machine_s": 0.01756511500002489,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-full-T6-50-2": {
+  "cell": "J-full-T6-50-2",
+  "arm": "J-full",
+  "task": "T6",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 30.82732984800007,
+  "model_s": 30.826,
+  "machine_s": 0.001329848000068523,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-full-T4-50-1": {
+  "cell": "J-full-T4-50-1",
+  "arm": "J-full",
+  "task": "T4",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 44.04038332100005,
+  "model_s": 44.039,
+  "machine_s": 0.0013833210000484542,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-full-T6-50-1": {
+  "cell": "J-full-T6-50-1",
+  "arm": "J-full",
+  "task": "T6",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 35.173424473999916,
+  "model_s": 35.172,
+  "machine_s": 0.0014244739999185185,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "W-full-T1-50-2": {
+  "cell": "W-full-T1-50-2",
+  "arm": "W-full",
+  "task": "T1",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 21.818654788999947,
+  "model_s": 21.801,
+  "machine_s": 0.017654788999948323,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "S-T6-50-1": {
+  "cell": "S-T6-50-1",
+  "arm": "S",
+  "task": "T6",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 16.67254382699993,
+  "model_s": 16.669,
+  "machine_s": 0.0035438269999303884,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "S-T1-50-1": {
+  "cell": "S-T1-50-1",
+  "arm": "S",
+  "task": "T1",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 11.235723102000051,
+  "model_s": 11.235,
+  "machine_s": 0.0007231020000517674,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-patch-T4-50-1": {
+  "cell": "J-patch-T4-50-1",
+  "arm": "J-patch",
+  "task": "T4",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 29.567776513999974,
+  "model_s": 29.566,
+  "machine_s": 0.00177651399997103,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "W-full-T5-50-1": {
+  "cell": "W-full-T5-50-1",
+  "arm": "W-full",
+  "task": "T5",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 25.595539018999993,
+  "model_s": 25.579,
+  "machine_s": 0.01653901899999255,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-full-T3-50-2": {
+  "cell": "J-full-T3-50-2",
+  "arm": "J-full",
+  "task": "T3",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 33.14152712800002,
+  "model_s": 33.14,
+  "machine_s": 0.0015271280000206389,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-full-T5-50-2": {
+  "cell": "J-full-T5-50-2",
+  "arm": "J-full",
+  "task": "T5",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 33.376337433,
+  "model_s": 33.375,
+  "machine_s": 0.0013374330000033297,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-patch-T6-50-2": {
+  "cell": "J-patch-T6-50-2",
+  "arm": "J-patch",
+  "task": "T6",
+  "n": 50,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 13.676766059999908,
+  "model_s": 13.675,
+  "machine_s": 0.0017660599999089754,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-patch-T2-50-1": {
+  "cell": "J-patch-T2-50-1",
+  "arm": "J-patch",
+  "task": "T2",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 21.692619437999923,
+  "model_s": 21.691,
+  "machine_s": 0.0016194379999205921,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "S-T3-50-1": {
+  "cell": "S-T3-50-1",
+  "arm": "S",
+  "task": "T3",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 14.507991531000068,
+  "model_s": 14.507,
+  "machine_s": 0.00099153100006788,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "J-patch-T5-50-1": {
+  "cell": "J-patch-T5-50-1",
+  "arm": "J-patch",
+  "task": "T5",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 12.043860707000105,
+  "model_s": 12.042,
+  "machine_s": 0.0018607070001053216,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "S-T5-50-1": {
+  "cell": "S-T5-50-1",
+  "arm": "S",
+  "task": "T5",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 10.243715920000062,
+  "model_s": 10.243,
+  "machine_s": 0.0007159200000614874,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ },
+ "W-full-T6-50-1": {
+  "cell": "W-full-T6-50-1",
+  "arm": "W-full",
+  "task": "T6",
+  "n": 50,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 33.66664985299997,
+  "model_s": 33.649,
+  "machine_s": 0.017649852999966242,
+  "kinds": [
+   "accepted",
+   "done"
+  ]
+ }
+}

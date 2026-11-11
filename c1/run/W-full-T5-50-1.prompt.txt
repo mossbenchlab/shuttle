@@ -1,0 +1,118 @@
+PROTOCOL: Do not use any tools. Each reply is EITHER exactly one fenced code block containing your submission and nothing else, OR the single word DONE. You have at most 6 replies. After each submission you receive the machine result: accepted, or the error (a failed submission changes nothing). You are never told whether the state is correct. Reply DONE when the state is as the task requires.
+
+# Format: Weft next (block style with tables)
+
+1. Document. A document is one value, usually a map written in block style:
+- `key: value` on its own line. Keys at the same level start in the same column.
+- A nested map or list goes on the following lines, indented 2 spaces more than its key (`key:` with nothing after the colon).
+- A list item is a line `- value`. A list of maps can be written `- key: value` with the map's other keys on the following lines, aligned with the first key.
+- Indentation uses spaces only (no tabs). Indentation decides what belongs to what.
+
+2. Scalars.
+- integer: `42`, `-7`
+- string: `"text"`. Always quote strings: an unquoted word is not a string. Escapes: `\"` `\\` `\n` `\t` `\u{XXXX}`.
+- boolean: `true`, `false`. null: `null` (or `nil`).
+- decimal (exact; trailing zeros are kept, so 12.50m and 12.5m are different values): `12.50m`
+- UTC date-time: `#2026-11-01T09:00:00Z`
+- keyword (a symbolic name such as a status or a code): `:paid`
+
+3. Lists and maps written inline (on one line, inside a block or as a whole value).
+- list: `[a, b, c]`
+- map: `{key: value, other: value}`. Keys must be unique.
+- Block style and inline style can be mixed; inline values can nest.
+
+4. Multi-line text. `key: |` followed by the lines of text, each indented 2 spaces more than the key; the text ends with a line break. Use `key: |-` for text without the final line break. An ordinary string with `\n` is also fine.
+
+5. Comments. `;` or `# ` (hash and space) starts a comment to the end of the line.
+
+6. Tables (optional). A list of maps that all have the same keys may be written as a table:
+- `key: table(col1, col2, col3)` and then one row per line, indented 2 spaces more than the key. A row lists the values in column order, separated by spaces (commas are also allowed). Each row becomes a map with the column names as keys.
+- A column whose values are lists of maps with the same keys is declared as `col: table(a, b)` in the header, and in a row it is written `[[a1 b1] [a2 b2]]` (one bracket per inner map, `[]` for none).
+- A table with no rows is an empty list. `table(` is used only for this.
+
+7. Example.
+```
+active: true
+id: 7
+items: table(price, qty, sku)
+  3.00m 2 :p1
+  0.75m 5 :p2
+  19.99m 1 :p3
+manager: nil
+name: "Ada \"Lin\""
+note: |
+  first line
+  second line
+price: 12.50m
+since: #2026-11-01T09:00:00Z
+status: :paid
+tags: [:vip, :east]
+```
+- date without time: `#2026-03-01`
+
+SUBMISSION: the COMPLETE new state in this format, in a ```weft block. It replaces the whole state, so every order must be present, in the same order. Keep the types: keywords `:unpaid`, decimals `12.50m`, dates `#2026-03-01`, a missing note `nil`.
+
+SCHEMA (the same data in every format):
+  audit: {unpaid: integer, paid: integer, shipped_total: decimal}
+  orders: list of rows, unique by id; row order matters (new rows go at the end):
+    id: integer, status: keyword, due: date, total: decimal, qty: integer,
+    tags: list of keywords (order and duplicates matter), note: string or null,
+    lines: list of {sku: keyword, qty: integer, amount: decimal}
+
+CURRENT STATE:
+audit: {paid: 0, shipped_total: 0.00m, unpaid: 0}
+orders: table(due, id, lines: table(amount, qty, sku), note, qty, status, tags, total)
+  #2026-11-11 1000 [[291.18m 3 :p02] [177.54m 3 :p05] [119.30m 5 :p05]] nil 2 :paid [] 227.42m
+  #2026-04-23 1001 [[88.84m 4 :p05] [299.16m 3 :p05] [115.25m 5 :p04]] nil 5 :unpaid [:a] 436.38m
+  #2026-04-25 1002 [[23.24m 4 :p03] [199.32m 4 :p03] [150.69m 3 :p04]] nil 7 :shipped [] 274.13m
+  #2026-08-12 1003 [[300.36m 4 :p02] [280.86m 3 :p01]] nil 7 :shipped [] 831.15m
+  #2026-12-13 1004 [[53.84m 1 :p02]] nil 4 :paid [] 69.24m
+  #2026-08-15 1005 [[66.36m 1 :p05] [177.64m 4 :p05] [229.68m 3 :p04]] nil 7 :unpaid [:a] 699.11m
+  #2026-06-22 1006 [[32.86m 2 :p05] [181.10m 5 :p03] [74.63m 1 :p03]] nil 8 :unpaid [] 880.89m
+  #2026-03-18 1007 [[139.00m 2 :p02] [124.32m 3 :p04]] nil 1 :unpaid [] 268.04m
+  #2026-09-18 1008 [[4.68m 1 :p04] [164.73m 3 :p02] [89.40m 4 :p01]] nil 6 :shipped [] 739.78m
+  #2026-10-05 1009 [[436.20m 5 :p01] [89.81m 1 :p04]] nil 6 :unpaid [:a] 667.84m
+  #2026-12-14 1010 [[40.52m 1 :p03] [27.45m 3 :p04] [36.15m 3 :p05] [190.74m 2 :p03]] nil 1 :unpaid [:a] 3.57m
+  #2026-12-24 1011 [[127.18m 2 :p04] [261.60m 5 :p01] [279.00m 3 :p05]] nil 1 :unpaid [] 782.71m
+  #2026-10-11 1012 [[93.93m 3 :p02] [237.75m 3 :p01] [27.12m 3 :p02]] nil 3 :unpaid [:a] 105.64m
+  #2026-06-14 1013 [[60.18m 1 :p03]] nil 4 :paid [] 604.28m
+  #2026-04-03 1014 [[37.58m 1 :p02] [122.18m 2 :p03]] nil 5 :unpaid [] 904.17m
+  #2026-09-16 1015 [[28.86m 2 :p03] [37.46m 1 :p02] [46.84m 2 :p03]] nil 9 :paid [] 897.72m
+  #2026-03-22 1016 [[88.78m 2 :p01] [53.91m 3 :p03] [47.03m 1 :p03] [324.00m 5 :p01]] nil 8 :unpaid [] 9999.99m
+  #2026-07-18 1017 [[282.36m 3 :p01] [155.95m 5 :p03] [273.52m 4 :p03] [28.33m 1 :p03]] nil 5 :unpaid [:a] 577.80m
+  #2026-08-02 1018 [[164.55m 5 :p03]] nil 6 :paid [] 395.61m
+  #2026-07-20 1019 [[97.86m 1 :p05] [62.88m 2 :p05] [23.88m 2 :p05] [180.82m 2 :p05]] nil 1 :unpaid [:a] 569.37m
+  #2026-06-11 1020 [[416.95m 5 :p01] [109.71m 3 :p01] [113.04m 3 :p02]] nil 7 :unpaid [] 977.36m
+  #2026-01-07 1021 [[234.90m 3 :p02] [347.75m 5 :p02]] nil 8 :paid [] 180.74m
+  #2026-04-17 1022 [[368.40m 4 :p03]] nil 8 :unpaid [:a] 388.23m
+  #2026-03-22 1023 [[158.13m 3 :p01] [255.57m 3 :p03] [288.24m 4 :p01]] nil 4 :shipped [] 965.79m
+  #2026-10-07 1024 [[107.73m 3 :p04] [130.88m 2 :p05] [29.90m 5 :p05]] nil 8 :shipped [] 269.99m
+  #2026-08-20 1025 [[19.98m 3 :p04] [17.66m 1 :p01] [16.23m 3 :p05]] nil 4 :paid [] 105.31m
+  #2026-12-01 1026 [[70.70m 1 :p05]] nil 6 :paid [] 711.60m
+  #2026-06-01 1027 [[213.84m 4 :p05]] nil 6 :unpaid [] 499.80m
+  #2026-10-23 1028 [[56.62m 1 :p04] [149.25m 3 :p05] [364.55m 5 :p02] [159.06m 3 :p02]] nil 1 :unpaid [] 403.45m
+  #2026-11-26 1029 [[17.70m 5 :p02] [112.45m 5 :p03] [247.16m 4 :p05]] nil 7 :paid [] 655.38m
+  #2026-11-19 1030 [[278.12m 4 :p05]] nil 4 :unpaid [:a] 921.89m
+  #2026-09-25 1031 [[185.62m 2 :p02] [48.83m 1 :p03] [68.16m 3 :p02]] nil 7 :unpaid [:a] 45.54m
+  #2026-10-01 1032 [[128.25m 3 :p03] [196.38m 2 :p03]] nil 7 :shipped [] 541.62m
+  #2026-06-04 1033 [[368.76m 4 :p03] [292.32m 3 :p03]] nil 4 :unpaid [] 575.22m
+  #2026-06-18 1034 [[298.40m 5 :p05]] nil 7 :paid [] 159.29m
+  #2026-10-18 1035 [[202.56m 4 :p04]] nil 4 :shipped [:a] 327.84m
+  #2026-02-07 1036 [[91.89m 1 :p04] [20.32m 4 :p01] [33.64m 1 :p01]] nil 6 :paid [] 341.82m
+  #2026-08-22 1037 [[190.66m 2 :p03] [64.38m 3 :p04]] nil 4 :unpaid [] 911.11m
+  #2026-11-16 1038 [[191.20m 5 :p04] [171.30m 3 :p02] [296.85m 3 :p05] [161.52m 3 :p05]] nil 3 :paid [:a] 940.39m
+  #2026-02-18 1039 [[210.20m 4 :p04] [39.40m 4 :p03] [498.45m 5 :p03] [373.25m 5 :p01]] nil 6 :shipped [] 462.45m
+  #2026-05-28 1040 [[36.77m 1 :p04] [178.50m 5 :p01] [78.15m 3 :p01] [168.98m 2 :p02]] nil 1 :shipped [] 156.26m
+  #2026-04-08 1041 [[165.60m 5 :p02] [123.42m 3 :p04]] nil 3 :unpaid [] 677.66m
+  #2026-03-14 1042 [[93.71m 1 :p02] [48.07m 1 :p01] [122.55m 5 :p05]] nil 6 :unpaid [:a] 922.22m
+  #2026-04-22 1043 [[6.80m 1 :p05] [175.08m 4 :p04]] nil 3 :unpaid [] 964.96m
+  #2026-09-17 1044 [[88.97m 1 :p05] [21.20m 1 :p04] [386.84m 4 :p02]] nil 2 :unpaid [:a] 984.57m
+  #2026-05-13 1045 [[211.80m 5 :p04]] nil 5 :unpaid [] 553.20m
+  #2026-01-18 1046 [[269.52m 4 :p04] [389.80m 4 :p04] [277.56m 3 :p03]] nil 9 :paid [] 273.03m
+  #2026-03-07 1047 [[296.19m 3 :p05] [142.64m 2 :p04] [40.70m 5 :p05]] nil 7 :unpaid [] 308.59m
+  #2026-03-19 1048 [[98.51m 1 :p04] [458.25m 5 :p01]] nil 9 :unpaid [:a] 446.51m
+  #2026-01-22 1049 [[58.31m 1 :p03] [13.98m 1 :p01]] nil 7 :unpaid [] 570.57m
+
+
+TASK:
+The unpaid order with the largest total: set its status to review and its note to "top". Change no other order.

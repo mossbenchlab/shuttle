@@ -1,0 +1,2 @@
+count orders.lines where status=:unpaid and sku=:p03
+show orders.lines where status=:unpaid and sku=:p03 cols id,sku,qty limit 5

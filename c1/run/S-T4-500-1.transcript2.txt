@@ -1,0 +1,23 @@
+===== YOUR REPLY 1 =====
+```shuttle
+set orders.lines where status=:unpaid and sku=:p03 : qty=0
+set orders where status=:unpaid and any lines where sku=:p03 : tags|=:p03-cancelled
+```
+
+===== MACHINE RESULT 1 =====
+ok v=1 set:298 vid=404ee6a9247c
+
+===== YOUR REPLY 2 =====
+```shuttle
+count orders where status=:unpaid and any lines where sku=:p03
+count orders where tags has :p03-cancelled
+count orders where status=:unpaid and any lines where sku=:p03 and not (tags has :p03-cancelled)
+count orders.lines where status=:unpaid and sku=:p03 and qty!=0
+```
+
+===== MACHINE RESULT 2 =====
+ok v=1  vid=404ee6a9247c
+count orders = 132
+count orders = 132
+count orders = 0
+count orders.lines = 0

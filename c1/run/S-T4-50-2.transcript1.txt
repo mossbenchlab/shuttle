@@ -1,0 +1,10 @@
+===== YOUR REPLY 1 =====
+```shuttle
+tx m1 at 0
+set orders.lines where status=:unpaid and sku=:p03 : qty=0
+set orders where status=:unpaid and any lines where sku=:p03 : tags|=:p03-cancelled
+expect count orders.lines where status=:unpaid and sku=:p03 and qty != 0 = 0
+```
+
+===== MACHINE RESULT 1 =====
+ok v=1 set:38 expect:1 vid=33fa0c63c1c5

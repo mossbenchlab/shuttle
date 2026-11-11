@@ -1,0 +1,3 @@
+put audit.count = count orders where status=:paid and tags has :a and total>=500.00m
+put audit.checked = #2026-11-08
+count orders where status=:paid and tags has :a and total>=500.00m

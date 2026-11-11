@@ -1,0 +1,9 @@
+{
+ "log": [
+  {
+   "who": "solver",
+   "message": "set orders where id=7006 : total = sum amount of orders.lines where id=7006\nget orders where id=7006",
+   "receipt": "ok v=1 set:1 vid=b141290b44ca\ncomputed sum amount of orders.lines = 550.62m\nget orders: 1 row(s)\n  due: #2026-08-07 id: 7006 note: nil status: :unpaid tags: [] total: 550.62m"
+  }
+ ]
+}

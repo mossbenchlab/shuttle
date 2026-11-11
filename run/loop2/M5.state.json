@@ -1,0 +1,29 @@
+{
+ "log": [
+  {
+   "who": "solver",
+   "message": "show orders where status=:unpaid cols id,total order total desc limit 1",
+   "receipt": "ok v=0  vid=000000000000\nshow orders: 30051 row(s), showing 1\n  {id: 31000, total: 999.99m}"
+  },
+  {
+   "who": "external",
+   "message": "set orders where id=31000 : status=:paid",
+   "receipt": "ok v=1 set:1 vid=670808b7a7a7"
+  },
+  {
+   "who": "solver",
+   "message": "tx r1 at 0\nset orders where id=31000 and status=:unpaid : status=:review, note=\"top\"\nexpect count orders where status=:review = 1",
+   "receipt": "fail stale: you assumed version 0, current is 1"
+  },
+  {
+   "who": "solver",
+   "message": "show orders where status=:unpaid cols id,total order total desc limit 1",
+   "receipt": "ok v=1  vid=670808b7a7a7\nshow orders: 30050 row(s), showing 1\n  {id: 31001, total: 999.98m}"
+  },
+  {
+   "who": "solver",
+   "message": "tx r2 at 1\nset orders where id=31001 and status=:unpaid : status=:review, note=\"top\"\nexpect count orders where status=:review and note=\"top\" = 1",
+   "receipt": "ok v=2 set:1 expect:1 vid=f6f5d9adb58b"
+  }
+ ]
+}

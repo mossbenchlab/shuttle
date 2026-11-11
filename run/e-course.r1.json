@@ -1,0 +1,8 @@
+{
+ "task": "e-course",
+ "round": 1,
+ "tx": "set students where id = 606 : late=3\nset students where id = 609 : score=88.50m\ndel students where id = 612\n",
+ "receipt": "ok v=1 set:2 del:1 state=0c60f5546a58",
+ "pass": true,
+ "tx_chars": 108
+}

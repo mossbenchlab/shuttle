@@ -1,0 +1,15 @@
+MACHINE RESULT:
+ok v=1  expect:2 vid=404ee6a9247c
+show orders: 10 row(s)
+  {id: 1006, tags: [:p03-cancelled]}
+  {id: 1010, tags: [:a, :p03-cancelled]}
+  {id: 1014, tags: [:p03-cancelled]}
+  {id: 1016, tags: [:p03-cancelled]}
+  {id: 1017, tags: [:a, :p03-cancelled]}
+  {id: 1022, tags: [:a, :p03-cancelled]}
+  {id: 1031, tags: [:a, :p03-cancelled]}
+  {id: 1033, tags: [:p03-cancelled]}
+  {id: 1037, tags: [:p03-cancelled]}
+  {id: 1049, tags: [:p03-cancelled]}
+
+Reply with your next submission (one fenced code block) or DONE. Replies used: 2 of 6.

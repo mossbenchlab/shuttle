@@ -1,0 +1,8 @@
+```shuttle
+count orders where status=:unpaid
+count orders where status=:paid
+count orders where status=:pending
+count orders where due < #2026-06-01
+count orders where status=:unpaid and due < #2026-06-01
+show orders where due < #2026-06-01 cols id,status,due,tags,total order id asc limit 10
+```

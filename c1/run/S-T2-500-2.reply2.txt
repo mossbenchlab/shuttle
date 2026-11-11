@@ -1,0 +1,5 @@
+```shuttle
+count orders where status=:unpaid and due<#2026-06-01
+count orders where status=:hold and tags has :late
+expect count orders where status=:unpaid and due<#2026-06-01 = 0
+```

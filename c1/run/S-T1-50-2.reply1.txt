@@ -1,0 +1,4 @@
+```shuttle
+set? orders where id=1011 and status!=:shipped : qty+=2
+show orders where id=1011 cols id,status,qty
+```

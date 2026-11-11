@@ -1,0 +1,7 @@
+```shuttle
+tx 2 at 1
+set orders where id=900001 : note=nil
+expect count orders where id=900001 and missing note = 1
+expect count orders where id=900001 and total = 80.18m = 1
+expect count orders.lines where id=900001 = 2
+```

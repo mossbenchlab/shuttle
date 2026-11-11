@@ -1,0 +1,41 @@
+{
+ "cell": "S-T4-500-1",
+ "log": [
+  {
+   "reply": "```shuttle\nset orders.lines where status=:unpaid and sku=:p03 : qty=0\nset orders where status=:unpaid and any lines where sku=:p03 : tags|=:p03-cancelled\n```\n",
+   "model_ms": 8679.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.005848188000072696,
+   "feedback": "ok v=1 set:298 vid=404ee6a9247c",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "```shuttle\ncount orders where status=:unpaid and any lines where sku=:p03\ncount orders where tags has :p03-cancelled\ncount orders where status=:unpaid and any lines where sku=:p03 and not (tags has :p03-cancelled)\ncount orders.lines where status=:unpaid and sku=:p03 and qty!=0\n```\n",
+   "model_ms": 11825.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.005757738000056634,
+   "feedback": "ok v=1  vid=404ee6a9247c\ncount orders = 132\ncount orders = 132\ncount orders = 0\ncount orders.lines = 0",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 8569.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 1.6760000107751694e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "set orders.lines where status=:unpaid and sku=:p03 : qty=0\nset orders where status=:unpaid and any lines where sku=:p03 : tags|=:p03-cancelled",
+  "count orders where status=:unpaid and any lines where sku=:p03\ncount orders where tags has :p03-cancelled\ncount orders where status=:unpaid and any lines where sku=:p03 and not (tags has :p03-cancelled)\ncount orders.lines where status=:unpaid and sku=:p03 and qty!=0"
+ ],
+ "end": "done",
+ "seconds": 29.08460760200014
+}

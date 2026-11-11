@@ -1,0 +1,11 @@
+MACHINE RESULT:
+ok v=0  vid=000000000000
+count orders = 979
+count orders = 4021
+show orders: 4021 row(s), showing 3
+  {id: 2254, status: :unpaid, total: 9999.99m, tags: [:a], note: nil}
+  {id: 4374, status: :shipped, total: 999.69m, tags: [], note: nil}
+  {id: 4754, status: :unpaid, total: 999.26m, tags: [:a], note: nil}
+sum total of orders = 2015393.56m
+
+Reply with your next submission (one fenced code block) or DONE. Replies used: 1 of 6.

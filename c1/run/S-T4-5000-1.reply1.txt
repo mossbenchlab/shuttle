@@ -1,0 +1,7 @@
+```shuttle
+count orders where status = :unpaid
+count orders where status = :paid
+count orders where status != :shipped
+show orders where status != :shipped cols id,status,tags order id limit 5
+show orders.lines where sku = :p03 limit 5
+```

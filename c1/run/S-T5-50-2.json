@@ -1,0 +1,30 @@
+{
+ "cell": "S-T5-50-2",
+ "log": [
+  {
+   "reply": "```shuttle\ntx t1 at 0\nset orders where status=:unpaid order total desc limit 1 : status=:review, note=\"top\"\n```\n",
+   "model_ms": 6553.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.0007033460000229752,
+   "feedback": "ok v=1 set:1 vid=f16cf257bb19",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE",
+   "model_ms": 5964.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 1.0940000265691197e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "tx t1 at 0\nset orders where status=:unpaid order total desc limit 1 : status=:review, note=\"top\""
+ ],
+ "end": "done",
+ "seconds": 12.517704440000049
+}

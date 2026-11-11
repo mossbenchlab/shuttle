@@ -1,0 +1,15 @@
+{
+ "messages": [
+  "tx fix-orders-a-q1 at 0\nset? orders where status=:shipped and tags has :a : tags-=:a\nset? orders where due>=#2026-03-01T00:00:00Z and due<#2026-04-01T00:00:00Z and missing note : note=\"Q1\"\nexpect count orders where status=:shipped and tags has :a = 0\nexpect count orders where due>=#2026-03-01T00:00:00Z and due<#2026-04-01T00:00:00Z and missing note = 0\ncount orders where status=:shipped\ncount orders where due>=#2026-03-01T00:00:00Z and due<#2026-04-01T00:00:00Z"
+ ],
+ "receipts": [
+  "ok v=1 set:713 expect:2 vid=068b8eb56f98\ncount orders = 966\ncount orders = 462"
+ ],
+ "notes": [
+  {
+   "executor_at_run": "v6 r2: date-only vs date-time ordering used has_time as a tiebreak, so `due>=#2026-03-01T00:00:00Z` excluded March 1 (9 rows) and `due<#2026-04-01T00:00:00Z` included April 1 (15 rows); final digest 6e23c7d27160 != expected 22c9f47373cc",
+   "fixed_in": "v6 r3: ordering a date against a date-time is refused with a hint; this stored message now fails on replay",
+   "original_receipt": "ok v=1 set:713 expect:2 vid=068b8eb56f98\ncount orders = 966\ncount orders = 462"
+  }
+ ]
+}

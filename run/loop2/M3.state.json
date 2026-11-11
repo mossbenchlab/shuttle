@@ -1,0 +1,34 @@
+{
+ "log": [
+  {
+   "who": "solver",
+   "message": "count orders where status=:unpaid\ncount orders where status=:paid\nshow orders where status=:shipped cols total limit 1",
+   "receipt": "ok v=0  vid=000000000000\ncount orders = 30051\ncount orders = 9989\nshow orders: 9960 row(s), showing 1\n  {total: 409.04m}"
+  },
+  {
+   "who": "solver",
+   "message": "put audit.unpaid = 30051\nput audit.paid = 9989",
+   "receipt": "ok v=1 put:2 vid=96bad8232775"
+  },
+  {
+   "who": "solver",
+   "message": "expect sum total of orders where status=:shipped >= 2000000m",
+   "receipt": "ok v=1  expect:1 vid=96bad8232775"
+  },
+  {
+   "who": "solver",
+   "message": "expect sum total of orders where status=:shipped >= 3000000m",
+   "receipt": "ok v=1  expect:1 vid=96bad8232775"
+  },
+  {
+   "who": "solver",
+   "message": "expect sum total of orders where status=:shipped >= 3500000m\nexpect sum total of orders where status=:shipped >= 4000000m\nexpect sum total of orders where status=:shipped >= 4500000m\nexpect sum total of orders where status=:shipped >= 5000000m\nexpect sum total of orders where status=:shipped >= 5500000m\nexpect sum total of orders where status=:shipped >= 6000000m\nexpect sum total of orders where status=:shipped >= 6500000m\nexpect sum total of orders where status=:shipped >= 7000000m\nexpect sum total of orders where status=:shipped >= 7500000m\nexpect sum total of orders where status=:shipped >= 8000000m\nexpect sum total of orders where status=:shipped >= 8500000m\nexpect sum total of orders where status=:shipped >= 9000000m\nexpect sum total of orders where status=:shipped >= 9500000m\nexpect sum total of orders where status=:shipped >= 10000000m\nexpect sum total of orders where status=:shipped >= 11000000m\nexpect sum total of orders where status=:shipped >= 12000000m\nexpect sum total of orders where status=:shipped >= 15000000m\nexpect sum total of orders where status=:shipped >= 20000000m",
+   "receipt": "fail line 4: expectation failed: got 4944994.12m, wanted >= 5000000m\n  (nothing applied)"
+  },
+  {
+   "who": "solver",
+   "message": "put audit.shipped_total = 4944994.12m\nexpect sum total of orders where status=:shipped >= 4944994.12m",
+   "receipt": "ok v=2 put:1 expect:1 vid=bef59ba14e8c"
+  }
+ ]
+}

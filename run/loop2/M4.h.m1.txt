@@ -1,0 +1,5 @@
+count orders where status=:unpaid and any lines where sku=:p03
+set orders.lines where status=:unpaid and sku=:p03 : qty=0
+set orders where status=:unpaid and any lines where sku=:p03 and not tags has :p03-cancelled : tags+=:p03-cancelled
+expect count orders where status=:unpaid and any lines where sku=:p03 and not tags has :p03-cancelled = 0
+count orders.lines where status=:unpaid and sku=:p03 and qty!=0

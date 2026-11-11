@@ -1,0 +1,41 @@
+{
+ "log": [
+  {
+   "who": "solver",
+   "message": "tx mark-top-review at 0\nshow orders where status=:unpaid cols id,status,total,note order total desc limit 1\ncount orders where status=:unpaid",
+   "receipt": "ok v=0  vid=000000000000\nshow orders: 30051 row(s), showing 1\n  {id: 31000, note: nil, status: :unpaid, total: 999.99m}\ncount orders = 30051"
+  },
+  {
+   "who": "external",
+   "message": "set orders where id=31000 : status=:paid",
+   "receipt": "ok v=1 set:1 vid=670808b7a7a7"
+  },
+  {
+   "who": "solver",
+   "message": "tx mark-top-review at 0\nset orders where id=31000 and status=:unpaid and total=999.99m : status=:review, note=\"top\"\nexpect count orders where id=31000 and status=:review and note=\"top\" = 1\nexpect count orders where status=:unpaid and total>=999.99m = 0",
+   "receipt": "fail: tx id 'mark-top-review' was already used for a different message; a tx id names one message (reuse it only to re-send the same message). Pick a new id.\n  (nothing applied)"
+  },
+  {
+   "who": "solver",
+   "message": "tx mark-top-review-2 at 0\nset orders where id=31000 and status=:unpaid and total=999.99m : status=:review, note=\"top\"\nexpect count orders where id=31000 and status=:review and note=\"top\" = 1\nexpect count orders where status=:unpaid and total>=999.99m = 0",
+   "receipt": "fail stale: you assumed version 0, current is 1"
+  },
+  {
+   "who": "solver",
+   "message": "tx read-top-v1 at 1\nshow orders where status=:unpaid cols id,status,total,note order total desc limit 3\ncount orders where status=:unpaid and total>=999.99m",
+   "receipt": "ok v=1  vid=670808b7a7a7\nshow orders: 30050 row(s), showing 3\n  {id: 31001, note: nil, status: :unpaid, total: 999.98m}\n  {id: 9640, note: nil, status: :unpaid, total: 999.97m}\n  {id: 45722, note: nil, status: :unpaid, total: 999.94m}\ncount orders = 0"
+  },
+  {
+   "who": "solver",
+   "message": "tx mark-top-review-v1 at 1\nset orders where id=31001 and status=:unpaid and total=999.98m : status=:review, note=\"top\"\nexpect count orders where id=31001 and status=:review and note=\"top\" = 1\nexpect count orders where status=:unpaid and total>=999.98m = 0",
+   "receipt": "ok v=2 set:1 expect:2 vid=8f70c28b9c10"
+  }
+ ],
+ "notes": [
+  {
+   "executor_bug": "tx id reused by the solver for a different message was treated as a replay (old receipt returned, write silently skipped). Fixed in v6 r3: same id + different body -> fail. Message re-executed.",
+   "message": "tx mark-top-review at 0\nset orders where id=31000 and status=:unpaid and total=999.99m : status=:review, note=\"top\"\nexpect count orders where id=31000 and status=:review and note=\"top\" = 1\nexpect count orders where status=:unpaid and total>=999.99m = 0",
+   "receipt_at_run": "ok v=0  vid=000000000000\nshow orders: 30051 row(s), showing 1\n  {id: 31000, note: nil, status: :unpaid, total: 999.99m}\ncount orders = 30051  ; (replay)"
+  }
+ ]
+}

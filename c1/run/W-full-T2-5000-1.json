@@ -1,0 +1,38 @@
+{
+ "cell": "W-full-T2-5000-1",
+ "log": [
+  {
+   "reply": "(no reply file was written)",
+   "model_ms": 20605.0,
+   "finish_reason": null,
+   "kind": "format_error",
+   "machine_s": 5.8389999821883976e-06,
+   "feedback": "FORMAT: reply with exactly one fenced code block and nothing else, or the single word DONE. Nothing was submitted.",
+   "tool_uses": 4,
+   "reply_file_written": false
+  },
+  {
+   "reply": "(no reply file was written)",
+   "model_ms": 20939.0,
+   "finish_reason": null,
+   "kind": "format_error",
+   "machine_s": 7.365000101344776e-06,
+   "feedback": "FORMAT: reply with exactly one fenced code block and nothing else, or the single word DONE. Nothing was submitted.",
+   "tool_uses": 5,
+   "reply_file_written": false
+  },
+  {
+   "reply": "(no reply file was written)",
+   "model_ms": 26780.0,
+   "finish_reason": null,
+   "kind": "format_error",
+   "machine_s": 5.029000021750107e-06,
+   "feedback": "FORMAT: reply with exactly one fenced code block and nothing else, or the single word DONE. Nothing was submitted.",
+   "tool_uses": 4,
+   "reply_file_written": false
+  }
+ ],
+ "accepted": [],
+ "end": null,
+ "seconds": 68.3240182330001
+}

@@ -1,0 +1,8 @@
+{
+ "task": "e-readings",
+ "round": 1,
+ "tx": "set readings where station=:east and at=#2026-11-05T02:15:00Z : humidity=55.0m\nset readings where station=:north and at=#2026-11-05T03:30:00Z : temp=-3.5m\nadd readings : :east, #2026-11-05T06:00:00Z, 4.0m, 71.5m, false, \"door open\"\n",
+ "receipt": "ok v=1 set:2 add:1 state=0b7abbfd03ca",
+ "pass": true,
+ "tx_chars": 232
+}

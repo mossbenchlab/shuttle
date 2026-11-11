@@ -1,0 +1,8 @@
+MACHINE RESULT:
+ok v=0  vid=000000000000
+show orders: 0 row(s)
+count orders = 0
+count orders = 0
+count orders = 0
+
+Reply with your next submission (one fenced code block) or DONE. Replies used: 2 of 6.

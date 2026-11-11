@@ -1,0 +1,14 @@
+{
+ "log": [
+  {
+   "who": "solver",
+   "message": "show orders.lines where id=7006",
+   "receipt": "ok v=0  vid=000000000000\nshow orders.lines: 2 row(s)\n  {amount: 202.74m, qty: 3, sku: :p02}\n  {amount: 347.88m, qty: 4, sku: :p01}"
+  },
+  {
+   "who": "solver",
+   "message": "set orders where id=7006 : total=550.62m\nexpect count orders where id=7006 and total=550.62m = 1",
+   "receipt": "ok v=1 set:1 expect:1 vid=adee8cb284eb"
+  }
+ ]
+}

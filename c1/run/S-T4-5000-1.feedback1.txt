@@ -1,0 +1,19 @@
+MACHINE RESULT:
+ok v=0  vid=000000000000
+count orders = 3032
+count orders = 979
+count orders = 4011
+show orders: 4011 row(s), showing 5
+  {id: 1002, status: :unpaid, tags: []}
+  {id: 1003, status: :unpaid, tags: []}
+  {id: 1004, status: :unpaid, tags: []}
+  {id: 1005, status: :unpaid, tags: []}
+  {id: 1006, status: :unpaid, tags: []}
+show orders.lines: 2474 row(s), showing 5
+  {sku: :p03, qty: 2, amount: 80.66m}
+  {sku: :p03, qty: 5, amount: 125.15m}
+  {sku: :p03, qty: 4, amount: 131.64m}
+  {sku: :p03, qty: 2, amount: 178.62m}
+  {sku: :p03, qty: 2, amount: 80.96m}
+
+Reply with your next submission (one fenced code block) or DONE. Replies used: 1 of 6.

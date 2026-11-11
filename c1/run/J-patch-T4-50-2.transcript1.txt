@@ -1,0 +1,46 @@
+===== YOUR REPLY 1 =====
+```json
+[
+{"op": "replace", "path": "/orders/1/lines/0/qty", "value": 0},
+{"op": "replace", "path": "/orders/1/lines/2/qty", "value": 0},
+{"op": "replace", "path": "/orders/1/lines/3/qty", "value": 0},
+{"op": "add", "path": "/orders/1/tags/-", "value": "p03-cancelled"},
+{"op": "replace", "path": "/orders/2/lines/3/qty", "value": 0},
+{"op": "add", "path": "/orders/2/tags/-", "value": "p03-cancelled"},
+{"op": "replace", "path": "/orders/3/lines/2/qty", "value": 0},
+{"op": "add", "path": "/orders/3/tags/-", "value": "p03-cancelled"},
+{"op": "replace", "path": "/orders/8/lines/2/qty", "value": 0},
+{"op": "add", "path": "/orders/8/tags/-", "value": "p03-cancelled"},
+{"op": "replace", "path": "/orders/9/lines/0/qty", "value": 0},
+{"op": "replace", "path": "/orders/9/lines/2/qty", "value": 0},
+{"op": "add", "path": "/orders/9/tags/-", "value": "p03-cancelled"},
+{"op": "replace", "path": "/orders/21/lines/1/qty", "value": 0},
+{"op": "add", "path": "/orders/21/tags/-", "value": "p03-cancelled"},
+{"op": "replace", "path": "/orders/22/lines/0/qty", "value": 0},
+{"op": "replace", "path": "/orders/22/lines/2/qty", "value": 0},
+{"op": "add", "path": "/orders/22/tags/-", "value": "p03-cancelled"},
+{"op": "replace", "path": "/orders/23/lines/1/qty", "value": 0},
+{"op": "add", "path": "/orders/23/tags/-", "value": "p03-cancelled"},
+{"op": "replace", "path": "/orders/26/lines/2/qty", "value": 0},
+{"op": "replace", "path": "/orders/26/lines/3/qty", "value": 0},
+{"op": "add", "path": "/orders/26/tags/-", "value": "p03-cancelled"},
+{"op": "replace", "path": "/orders/33/lines/1/qty", "value": 0},
+{"op": "add", "path": "/orders/33/tags/-", "value": "p03-cancelled"},
+{"op": "replace", "path": "/orders/34/lines/1/qty", "value": 0},
+{"op": "replace", "path": "/orders/34/lines/2/qty", "value": 0},
+{"op": "add", "path": "/orders/34/tags/-", "value": "p03-cancelled"},
+{"op": "replace", "path": "/orders/37/lines/0/qty", "value": 0},
+{"op": "replace", "path": "/orders/37/lines/2/qty", "value": 0},
+{"op": "replace", "path": "/orders/37/lines/3/qty", "value": 0},
+{"op": "add", "path": "/orders/37/tags/-", "value": "p03-cancelled"},
+{"op": "replace", "path": "/orders/38/lines/1/qty", "value": 0},
+{"op": "add", "path": "/orders/38/tags/-", "value": "p03-cancelled"},
+{"op": "replace", "path": "/orders/46/lines/2/qty", "value": 0},
+{"op": "add", "path": "/orders/46/tags/-", "value": "p03-cancelled"},
+{"op": "replace", "path": "/orders/49/lines/0/qty", "value": 0},
+{"op": "add", "path": "/orders/49/tags/-", "value": "p03-cancelled"}
+]
+```
+
+===== MACHINE RESULT 1 =====
+applied: 38 operations

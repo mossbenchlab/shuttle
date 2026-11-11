@@ -1,0 +1,8 @@
+{
+ "messages": [
+  "set? orders where id=3777 and status!=:shipped : qty+=2\nshow orders where id=3777 cols id,status,qty"
+ ],
+ "receipts": [
+  "ok v=0 set:0 vid=000000000000\nshow orders: 1 row(s)\n  {id: 3777, qty: 7, status: :shipped}"
+ ]
+}

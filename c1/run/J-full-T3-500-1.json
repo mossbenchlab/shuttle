@@ -1,0 +1,48 @@
+{
+ "cell": "J-full-T3-500-1",
+ "log": [
+  {
+   "reply": "(no reply file was written)",
+   "model_ms": 188423.0,
+   "finish_reason": null,
+   "kind": "format_error",
+   "machine_s": 6.173999963721144e-06,
+   "feedback": "FORMAT: reply with exactly one fenced code block and nothing else, or the single word DONE. Nothing was submitted.",
+   "tool_uses": 5,
+   "reply_file_written": false
+  },
+  {
+   "reply": "(no reply file was written)",
+   "model_ms": 188599.0,
+   "finish_reason": null,
+   "kind": "format_error",
+   "machine_s": 5.295999926602235e-06,
+   "feedback": "FORMAT: reply with exactly one fenced code block and nothing else, or the single word DONE. Nothing was submitted.",
+   "tool_uses": 4,
+   "reply_file_written": false
+  },
+  {
+   "reply": "(no reply file was written)",
+   "model_ms": 190886.0,
+   "finish_reason": null,
+   "kind": "format_error",
+   "machine_s": 5.359999931897619e-06,
+   "feedback": "FORMAT: reply with exactly one fenced code block and nothing else, or the single word DONE. Nothing was submitted.",
+   "tool_uses": 4,
+   "reply_file_written": false
+  },
+  {
+   "reply": "(no reply file was written)",
+   "model_ms": 186213.0,
+   "finish_reason": null,
+   "kind": "late_discarded",
+   "machine_s": 0.0,
+   "feedback": null,
+   "tool_uses": 4,
+   "reply_file_written": false
+  }
+ ],
+ "accepted": [],
+ "end": "time_limit",
+ "seconds": 600.0
+}

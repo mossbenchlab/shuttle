@@ -1,0 +1,6 @@
+MACHINE RESULT:
+fail line 2: missing orders.note (no default)
+  hint: every column without a default must be in the add: write `note=""` in this line (a later line of the same message may update it, e.g. with an aggregate)
+  (nothing applied)
+
+Reply with your next submission (one fenced code block) or DONE. Replies used: 1 of 6.

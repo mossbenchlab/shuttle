@@ -1,0 +1,1570 @@
+{
+ "J-full-T1-500-1": {
+  "cell": "J-full-T1-500-1",
+  "arm": "J-full",
+  "task": "T1",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 1,
+  "seconds": 10.13600198299999,
+  "model_s": 10.136,
+  "machine_s": 1.9829999899911854e-06,
+  "kinds": [
+   "done"
+  ],
+  "tools": [
+   4
+  ]
+ },
+ "J-full-T1-500-2": {
+  "cell": "J-full-T1-500-2",
+  "arm": "J-full",
+  "task": "T1",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 1,
+  "seconds": 11.06500215,
+  "model_s": 11.065,
+  "machine_s": 2.1500000002561137e-06,
+  "kinds": [
+   "done"
+  ],
+  "tools": [
+   4
+  ]
+ },
+ "J-full-T2-500-1": {
+  "cell": "J-full-T2-500-1",
+  "arm": "J-full",
+  "task": "T2",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 498.95173111199995,
+  "model_s": 498.939,
+  "machine_s": 0.012731111999983113,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   11,
+   14
+  ]
+ },
+ "J-full-T2-500-2": {
+  "cell": "J-full-T2-500-2",
+  "arm": "J-full",
+  "task": "T2",
+  "n": 500,
+  "rep": 2,
+  "complete": false,
+  "end": "time_limit",
+  "replies": 3,
+  "seconds": 600.0,
+  "model_s": 796.789,
+  "machine_s": 9.724000051392068e-06,
+  "kinds": [
+   "format_error",
+   "format_error",
+   "late_discarded"
+  ],
+  "tools": [
+   3,
+   4,
+   24
+  ]
+ },
+ "J-full-T3-500-1": {
+  "cell": "J-full-T3-500-1",
+  "arm": "J-full",
+  "task": "T3",
+  "n": 500,
+  "rep": 1,
+  "complete": false,
+  "end": "time_limit",
+  "replies": 4,
+  "seconds": 600.0,
+  "model_s": 754.121,
+  "machine_s": 1.6829999822220998e-05,
+  "kinds": [
+   "format_error",
+   "format_error",
+   "format_error",
+   "late_discarded"
+  ],
+  "tools": [
+   5,
+   4,
+   4,
+   4
+  ]
+ },
+ "J-full-T3-500-2": {
+  "cell": "J-full-T3-500-2",
+  "arm": "J-full",
+  "task": "T3",
+  "n": 500,
+  "rep": 2,
+  "complete": false,
+  "end": "time_limit",
+  "replies": 3,
+  "seconds": 600.0,
+  "model_s": 780.385,
+  "machine_s": 1.5736000023025554e-05,
+  "kinds": [
+   "format_error",
+   "format_error",
+   "late_discarded"
+  ],
+  "tools": [
+   3,
+   4,
+   18
+  ]
+ },
+ "J-full-T4-500-1": {
+  "cell": "J-full-T4-500-1",
+  "arm": "J-full",
+  "task": "T4",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 393.878864609,
+  "model_s": 393.867,
+  "machine_s": 0.011864608999985649,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   8,
+   14
+  ]
+ },
+ "J-full-T4-500-2": {
+  "cell": "J-full-T4-500-2",
+  "arm": "J-full",
+  "task": "T4",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 498.27548003699997,
+  "model_s": 498.258,
+  "machine_s": 0.017480036999927506,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   13,
+   13
+  ]
+ },
+ "J-full-T5-500-1": {
+  "cell": "J-full-T5-500-1",
+  "arm": "J-full",
+  "task": "T5",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 402.0359413320003,
+  "model_s": 402.023,
+  "machine_s": 0.012941332000250938,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   11,
+   11
+  ]
+ },
+ "J-full-T5-500-2": {
+  "cell": "J-full-T5-500-2",
+  "arm": "J-full",
+  "task": "T5",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 432.17636735,
+  "model_s": 432.164,
+  "machine_s": 0.012367350000033639,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   12,
+   11
+  ]
+ },
+ "J-full-T6-500-1": {
+  "cell": "J-full-T6-500-1",
+  "arm": "J-full",
+  "task": "T6",
+  "n": 500,
+  "rep": 1,
+  "complete": false,
+  "end": "time_limit",
+  "replies": 4,
+  "seconds": 600.0,
+  "model_s": 753.251,
+  "machine_s": 1.5718999785363508e-05,
+  "kinds": [
+   "format_error",
+   "format_error",
+   "format_error",
+   "late_discarded"
+  ],
+  "tools": [
+   3,
+   4,
+   4,
+   4
+  ]
+ },
+ "J-full-T6-500-2": {
+  "cell": "J-full-T6-500-2",
+  "arm": "J-full",
+  "task": "T6",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 403.45053372900014,
+  "model_s": 403.439,
+  "machine_s": 0.01153372900012073,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   13,
+   14
+  ]
+ },
+ "J-patch-T1-500-1": {
+  "cell": "J-patch-T1-500-1",
+  "arm": "J-patch",
+  "task": "T1",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 1,
+  "seconds": 11.150002577000032,
+  "model_s": 11.15,
+  "machine_s": 2.5770000320335384e-06,
+  "kinds": [
+   "done"
+  ],
+  "tools": [
+   4
+  ]
+ },
+ "J-patch-T1-500-2": {
+  "cell": "J-patch-T1-500-2",
+  "arm": "J-patch",
+  "task": "T1",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 1,
+  "seconds": 12.981002532000053,
+  "model_s": 12.981,
+  "machine_s": 2.5320000531792175e-06,
+  "kinds": [
+   "done"
+  ],
+  "tools": [
+   4
+  ]
+ },
+ "J-patch-T2-500-1": {
+  "cell": "J-patch-T2-500-1",
+  "arm": "J-patch",
+  "task": "T2",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 116.98938116399998,
+  "model_s": 116.972,
+  "machine_s": 0.01738116399997125,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   6,
+   5
+  ]
+ },
+ "J-patch-T2-500-2": {
+  "cell": "J-patch-T2-500-2",
+  "arm": "J-patch",
+  "task": "T2",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 130.65610938499998,
+  "model_s": 130.64,
+  "machine_s": 0.016109384999992926,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   4,
+   8
+  ]
+ },
+ "J-patch-T3-500-1": {
+  "cell": "J-patch-T3-500-1",
+  "arm": "J-patch",
+  "task": "T3",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 98.75955686799998,
+  "model_s": 98.744,
+  "machine_s": 0.01555686799997602,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   6,
+   5
+  ]
+ },
+ "J-patch-T3-500-2": {
+  "cell": "J-patch-T3-500-2",
+  "arm": "J-patch",
+  "task": "T3",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 117.28767894199996,
+  "model_s": 117.274,
+  "machine_s": 0.013678941999955896,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   4,
+   5
+  ]
+ },
+ "J-patch-T4-500-1": {
+  "cell": "J-patch-T4-500-1",
+  "arm": "J-patch",
+  "task": "T4",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 226.87367506599995,
+  "model_s": 226.857,
+  "machine_s": 0.016675065999947947,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   4,
+   7
+  ]
+ },
+ "J-patch-T4-500-2": {
+  "cell": "J-patch-T4-500-2",
+  "arm": "J-patch",
+  "task": "T4",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 205.21644351499998,
+  "model_s": 205.199,
+  "machine_s": 0.0174435149999681,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   4,
+   5
+  ]
+ },
+ "J-patch-T5-500-1": {
+  "cell": "J-patch-T5-500-1",
+  "arm": "J-patch",
+  "task": "T5",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 32.19545884599988,
+  "model_s": 32.175,
+  "machine_s": 0.020458845999883124,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   4,
+   8
+  ]
+ },
+ "J-patch-T5-500-2": {
+  "cell": "J-patch-T5-500-2",
+  "arm": "J-patch",
+  "task": "T5",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 30.526136833000088,
+  "model_s": 30.513,
+  "machine_s": 0.01313683300008961,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   4,
+   5
+  ]
+ },
+ "J-patch-T6-500-1": {
+  "cell": "J-patch-T6-500-1",
+  "arm": "J-patch",
+  "task": "T6",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 23.69515723000002,
+  "model_s": 23.681,
+  "machine_s": 0.014157230000023446,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   4,
+   5
+  ]
+ },
+ "J-patch-T6-500-2": {
+  "cell": "J-patch-T6-500-2",
+  "arm": "J-patch",
+  "task": "T6",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 30.860277651000157,
+  "model_s": 30.846,
+  "machine_s": 0.014277651000156766,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   4,
+   7
+  ]
+ },
+ "W-full-T1-500-1": {
+  "cell": "W-full-T1-500-1",
+  "arm": "W-full",
+  "task": "T1",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 1,
+  "seconds": 9.00200206499999,
+  "model_s": 9.002,
+  "machine_s": 2.0649999896704685e-06,
+  "kinds": [
+   "done"
+  ],
+  "tools": [
+   3
+  ]
+ },
+ "W-full-T1-500-2": {
+  "cell": "W-full-T1-500-2",
+  "arm": "W-full",
+  "task": "T1",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 1,
+  "seconds": 7.0500021679999945,
+  "model_s": 7.05,
+  "machine_s": 2.167999994640013e-06,
+  "kinds": [
+   "done"
+  ],
+  "tools": [
+   3
+  ]
+ },
+ "W-full-T2-500-1": {
+  "cell": "W-full-T2-500-1",
+  "arm": "W-full",
+  "task": "T2",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 283.5768561049999,
+  "model_s": 283.399,
+  "machine_s": 0.17785610499986593,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   5,
+   5
+  ]
+ },
+ "W-full-T2-500-2": {
+  "cell": "W-full-T2-500-2",
+  "arm": "W-full",
+  "task": "T2",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 3,
+  "seconds": 368.97274053900014,
+  "model_s": 368.845,
+  "machine_s": 0.12774053900011495,
+  "kinds": [
+   "format_error",
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   4,
+   5
+  ]
+ },
+ "W-full-T3-500-1": {
+  "cell": "W-full-T3-500-1",
+  "arm": "W-full",
+  "task": "T3",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 163.2529605389999,
+  "model_s": 163.12,
+  "machine_s": 0.13296053899989602,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   3,
+   5
+  ]
+ },
+ "W-full-T3-500-2": {
+  "cell": "W-full-T3-500-2",
+  "arm": "W-full",
+  "task": "T3",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 175.9095428389999,
+  "model_s": 175.751,
+  "machine_s": 0.1585428389998924,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   3,
+   5
+  ]
+ },
+ "W-full-T4-500-1": {
+  "cell": "W-full-T4-500-1",
+  "arm": "W-full",
+  "task": "T4",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 243.79728655799988,
+  "model_s": 243.639,
+  "machine_s": 0.15828655799987246,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   3,
+   5
+  ]
+ },
+ "W-full-T4-500-2": {
+  "cell": "W-full-T4-500-2",
+  "arm": "W-full",
+  "task": "T4",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 551.9994147719999,
+  "model_s": 551.862,
+  "machine_s": 0.1374147719999428,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   12,
+   5
+  ]
+ },
+ "W-full-T5-500-1": {
+  "cell": "W-full-T5-500-1",
+  "arm": "W-full",
+  "task": "T5",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 121.03382577200014,
+  "model_s": 120.9,
+  "machine_s": 0.13382577200013657,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   3,
+   5
+  ]
+ },
+ "W-full-T5-500-2": {
+  "cell": "W-full-T5-500-2",
+  "arm": "W-full",
+  "task": "T5",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 113.3228839619999,
+  "model_s": 113.184,
+  "machine_s": 0.13888396199990893,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   3,
+   5
+  ]
+ },
+ "W-full-T6-500-1": {
+  "cell": "W-full-T6-500-1",
+  "arm": "W-full",
+  "task": "T6",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 122.85624732299999,
+  "model_s": 122.709,
+  "machine_s": 0.14724732299998777,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   3,
+   5
+  ]
+ },
+ "W-full-T6-500-2": {
+  "cell": "W-full-T6-500-2",
+  "arm": "W-full",
+  "task": "T6",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 114.81553936199994,
+  "model_s": 114.684,
+  "machine_s": 0.13153936199994298,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   3,
+   5
+  ]
+ },
+ "S-T1-500-1": {
+  "cell": "S-T1-500-1",
+  "arm": "S",
+  "task": "T1",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 3,
+  "seconds": 19.461008163999967,
+  "model_s": 19.452,
+  "machine_s": 0.00900816399996529,
+  "kinds": [
+   "accepted",
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3,
+   3
+  ]
+ },
+ "S-T1-500-2": {
+  "cell": "S-T1-500-2",
+  "arm": "S",
+  "task": "T1",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 11.786797699999997,
+  "model_s": 11.782,
+  "machine_s": 0.004797699999997462,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3
+  ]
+ },
+ "S-T2-500-1": {
+  "cell": "S-T2-500-1",
+  "arm": "S",
+  "task": "T2",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 3,
+  "seconds": 26.67893413799976,
+  "model_s": 26.666,
+  "machine_s": 0.012934137999764062,
+  "kinds": [
+   "accepted",
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3,
+   3
+  ]
+ },
+ "S-T2-500-2": {
+  "cell": "S-T2-500-2",
+  "arm": "S",
+  "task": "T2",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 3,
+  "seconds": 22.003021147000226,
+  "model_s": 21.99,
+  "machine_s": 0.01302114700022905,
+  "kinds": [
+   "accepted",
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3,
+   3
+  ]
+ },
+ "S-T3-500-1": {
+  "cell": "S-T3-500-1",
+  "arm": "S",
+  "task": "T3",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 22.711505912999993,
+  "model_s": 22.706,
+  "machine_s": 0.0055059129999932566,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3
+  ]
+ },
+ "S-T3-500-2": {
+  "cell": "S-T3-500-2",
+  "arm": "S",
+  "task": "T3",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 14.8009949,
+  "model_s": 14.796,
+  "machine_s": 0.004994899999999802,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3
+  ]
+ },
+ "S-T4-500-1": {
+  "cell": "S-T4-500-1",
+  "arm": "S",
+  "task": "T4",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 3,
+  "seconds": 29.08460760200014,
+  "model_s": 29.073,
+  "machine_s": 0.011607602000140105,
+  "kinds": [
+   "accepted",
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3,
+   3
+  ]
+ },
+ "S-T4-500-2": {
+  "cell": "S-T4-500-2",
+  "arm": "S",
+  "task": "T4",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 3,
+  "seconds": 34.389984131999725,
+  "model_s": 34.378,
+  "machine_s": 0.011984131999724923,
+  "kinds": [
+   "accepted",
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3,
+   3
+  ]
+ },
+ "S-T5-500-1": {
+  "cell": "S-T5-500-1",
+  "arm": "S",
+  "task": "T5",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 10.296360828000022,
+  "model_s": 10.291,
+  "machine_s": 0.005360828000021911,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3
+  ]
+ },
+ "S-T5-500-2": {
+  "cell": "S-T5-500-2",
+  "arm": "S",
+  "task": "T5",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 11.407614027000117,
+  "model_s": 11.403,
+  "machine_s": 0.004614027000116039,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3
+  ]
+ },
+ "S-T6-500-1": {
+  "cell": "S-T6-500-1",
+  "arm": "S",
+  "task": "T6",
+  "n": 500,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 4,
+  "seconds": 33.68826196899954,
+  "model_s": 33.673,
+  "machine_s": 0.015261968999539022,
+  "kinds": [
+   "rejected",
+   "accepted",
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3,
+   3,
+   3
+  ]
+ },
+ "S-T6-500-2": {
+  "cell": "S-T6-500-2",
+  "arm": "S",
+  "task": "T6",
+  "n": 500,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 13.885120404000006,
+  "model_s": 13.878,
+  "machine_s": 0.007120404000005465,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3
+  ]
+ },
+ "W-full-T1-5000-1": {
+  "cell": "W-full-T1-5000-1",
+  "arm": "W-full",
+  "task": "T1",
+  "n": 5000,
+  "rep": 1,
+  "complete": false,
+  "end": null,
+  "replies": 3,
+  "seconds": 70.35101811399988,
+  "model_s": 70.351,
+  "machine_s": 1.811399988582707e-05,
+  "kinds": [
+   "format_error",
+   "format_error",
+   "format_error"
+  ],
+  "tools": [
+   4,
+   5,
+   7
+  ]
+ },
+ "W-full-T1-5000-2": {
+  "cell": "W-full-T1-5000-2",
+  "arm": "W-full",
+  "task": "T1",
+  "n": 5000,
+  "rep": 2,
+  "complete": false,
+  "end": null,
+  "replies": 3,
+  "seconds": 69.78401898799996,
+  "model_s": 69.784,
+  "machine_s": 1.8987999965247582e-05,
+  "kinds": [
+   "format_error",
+   "format_error",
+   "format_error"
+  ],
+  "tools": [
+   4,
+   7,
+   5
+  ]
+ },
+ "W-full-T2-5000-1": {
+  "cell": "W-full-T2-5000-1",
+  "arm": "W-full",
+  "task": "T2",
+  "n": 5000,
+  "rep": 1,
+  "complete": false,
+  "end": null,
+  "replies": 3,
+  "seconds": 68.3240182330001,
+  "model_s": 68.324,
+  "machine_s": 1.823300010528328e-05,
+  "kinds": [
+   "format_error",
+   "format_error",
+   "format_error"
+  ],
+  "tools": [
+   4,
+   5,
+   4
+  ]
+ },
+ "W-full-T2-5000-2": {
+  "cell": "W-full-T2-5000-2",
+  "arm": "W-full",
+  "task": "T2",
+  "n": 5000,
+  "rep": 2,
+  "complete": false,
+  "end": null,
+  "replies": 3,
+  "seconds": 60.250020649000135,
+  "model_s": 60.25,
+  "machine_s": 2.064900013465376e-05,
+  "kinds": [
+   "format_error",
+   "format_error",
+   "format_error"
+  ],
+  "tools": [
+   4,
+   4,
+   4
+  ]
+ },
+ "W-full-T3-5000-1": {
+  "cell": "W-full-T3-5000-1",
+  "arm": "W-full",
+  "task": "T3",
+  "n": 5000,
+  "rep": 1,
+  "complete": false,
+  "end": null,
+  "replies": 3,
+  "seconds": 58.91502535099998,
+  "model_s": 58.915,
+  "machine_s": 2.535099997658108e-05,
+  "kinds": [
+   "format_error",
+   "format_error",
+   "format_error"
+  ],
+  "tools": [
+   5,
+   8,
+   5
+  ]
+ },
+ "W-full-T3-5000-2": {
+  "cell": "W-full-T3-5000-2",
+  "arm": "W-full",
+  "task": "T3",
+  "n": 5000,
+  "rep": 2,
+  "complete": false,
+  "end": null,
+  "replies": 3,
+  "seconds": 61.65701943400002,
+  "model_s": 61.657,
+  "machine_s": 1.943400002346607e-05,
+  "kinds": [
+   "format_error",
+   "format_error",
+   "format_error"
+  ],
+  "tools": [
+   3,
+   4,
+   6
+  ]
+ },
+ "W-full-T4-5000-1": {
+  "cell": "W-full-T4-5000-1",
+  "arm": "W-full",
+  "task": "T4",
+  "n": 5000,
+  "rep": 1,
+  "complete": false,
+  "end": null,
+  "replies": 3,
+  "seconds": 77.38201864800004,
+  "model_s": 77.382,
+  "machine_s": 1.864800003659184e-05,
+  "kinds": [
+   "format_error",
+   "format_error",
+   "format_error"
+  ],
+  "tools": [
+   5,
+   6,
+   7
+  ]
+ },
+ "W-full-T4-5000-2": {
+  "cell": "W-full-T4-5000-2",
+  "arm": "W-full",
+  "task": "T4",
+  "n": 5000,
+  "rep": 2,
+  "complete": false,
+  "end": null,
+  "replies": 3,
+  "seconds": 69.753019253,
+  "model_s": 69.753,
+  "machine_s": 1.925300000493735e-05,
+  "kinds": [
+   "format_error",
+   "format_error",
+   "format_error"
+  ],
+  "tools": [
+   5,
+   6,
+   4
+  ]
+ },
+ "W-full-T5-5000-1": {
+  "cell": "W-full-T5-5000-1",
+  "arm": "W-full",
+  "task": "T5",
+  "n": 5000,
+  "rep": 1,
+  "complete": false,
+  "end": null,
+  "replies": 3,
+  "seconds": 173.36201821900002,
+  "model_s": 173.362,
+  "machine_s": 1.8219000025965215e-05,
+  "kinds": [
+   "format_error",
+   "format_error",
+   "format_error"
+  ],
+  "tools": [
+   6,
+   21,
+   7
+  ]
+ },
+ "W-full-T5-5000-2": {
+  "cell": "W-full-T5-5000-2",
+  "arm": "W-full",
+  "task": "T5",
+  "n": 5000,
+  "rep": 2,
+  "complete": false,
+  "end": null,
+  "replies": 3,
+  "seconds": 199.841021102,
+  "model_s": 199.841,
+  "machine_s": 2.1102000005157606e-05,
+  "kinds": [
+   "format_error",
+   "format_error",
+   "format_error"
+  ],
+  "tools": [
+   19,
+   27,
+   5
+  ]
+ },
+ "W-full-T6-5000-1": {
+  "cell": "W-full-T6-5000-1",
+  "arm": "W-full",
+  "task": "T6",
+  "n": 5000,
+  "rep": 1,
+  "complete": false,
+  "end": null,
+  "replies": 3,
+  "seconds": 72.45002229699988,
+  "model_s": 72.45,
+  "machine_s": 2.229699987310596e-05,
+  "kinds": [
+   "format_error",
+   "format_error",
+   "format_error"
+  ],
+  "tools": [
+   5,
+   6,
+   7
+  ]
+ },
+ "W-full-T6-5000-2": {
+  "cell": "W-full-T6-5000-2",
+  "arm": "W-full",
+  "task": "T6",
+  "n": 5000,
+  "rep": 2,
+  "complete": false,
+  "end": null,
+  "replies": 3,
+  "seconds": 70.232022349,
+  "model_s": 70.232,
+  "machine_s": 2.2349000005306152e-05,
+  "kinds": [
+   "format_error",
+   "format_error",
+   "format_error"
+  ],
+  "tools": [
+   5,
+   4,
+   5
+  ]
+ },
+ "S-T1-5000-1": {
+  "cell": "S-T1-5000-1",
+  "arm": "S",
+  "task": "T1",
+  "n": 5000,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 12.712563528000022,
+  "model_s": 12.675,
+  "machine_s": 0.03756352800002105,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3
+  ]
+ },
+ "S-T1-5000-2": {
+  "cell": "S-T1-5000-2",
+  "arm": "S",
+  "task": "T1",
+  "n": 5000,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 11.140513894999998,
+  "model_s": 11.101,
+  "machine_s": 0.03951389499999891,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3
+  ]
+ },
+ "S-T2-5000-1": {
+  "cell": "S-T2-5000-1",
+  "arm": "S",
+  "task": "T2",
+  "n": 5000,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 3,
+  "seconds": 26.305115780999998,
+  "model_s": 26.176,
+  "machine_s": 0.12911578099999765,
+  "kinds": [
+   "accepted",
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3,
+   3
+  ]
+ },
+ "S-T2-5000-2": {
+  "cell": "S-T2-5000-2",
+  "arm": "S",
+  "task": "T2",
+  "n": 5000,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 12.55576030799999,
+  "model_s": 12.504,
+  "machine_s": 0.051760307999988875,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3
+  ]
+ },
+ "S-T3-5000-1": {
+  "cell": "S-T3-5000-1",
+  "arm": "S",
+  "task": "T3",
+  "n": 5000,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 4,
+  "seconds": 39.68102196099997,
+  "model_s": 39.535,
+  "machine_s": 0.146021960999974,
+  "kinds": [
+   "accepted",
+   "accepted",
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3,
+   3,
+   3
+  ]
+ },
+ "S-T3-5000-2": {
+  "cell": "S-T3-5000-2",
+  "arm": "S",
+  "task": "T3",
+  "n": 5000,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 16.177990107000014,
+  "model_s": 16.134,
+  "machine_s": 0.04399010700001327,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3
+  ]
+ },
+ "S-T4-5000-1": {
+  "cell": "S-T4-5000-1",
+  "arm": "S",
+  "task": "T4",
+  "n": 5000,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 4,
+  "seconds": 53.34441491700008,
+  "model_s": 53.18,
+  "machine_s": 0.1644149170000775,
+  "kinds": [
+   "accepted",
+   "accepted",
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3,
+   3,
+   3
+  ]
+ },
+ "S-T4-5000-2": {
+  "cell": "S-T4-5000-2",
+  "arm": "S",
+  "task": "T4",
+  "n": 5000,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 3,
+  "seconds": 36.99895723500002,
+  "model_s": 36.899,
+  "machine_s": 0.09995723500002196,
+  "kinds": [
+   "accepted",
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3,
+   3
+  ]
+ },
+ "S-T5-5000-1": {
+  "cell": "S-T5-5000-1",
+  "arm": "S",
+  "task": "T5",
+  "n": 5000,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 3,
+  "seconds": 23.303030292000038,
+  "model_s": 23.213,
+  "machine_s": 0.09003029200004065,
+  "kinds": [
+   "accepted",
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3,
+   3
+  ]
+ },
+ "S-T5-5000-2": {
+  "cell": "S-T5-5000-2",
+  "arm": "S",
+  "task": "T5",
+  "n": 5000,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 11.623149192999993,
+  "model_s": 11.559,
+  "machine_s": 0.06414919299999156,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3
+  ]
+ },
+ "S-T6-5000-1": {
+  "cell": "S-T6-5000-1",
+  "arm": "S",
+  "task": "T6",
+  "n": 5000,
+  "rep": 1,
+  "complete": true,
+  "end": "done",
+  "replies": 2,
+  "seconds": 15.532856066000011,
+  "model_s": 15.484,
+  "machine_s": 0.04885606600001324,
+  "kinds": [
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3
+  ]
+ },
+ "S-T6-5000-2": {
+  "cell": "S-T6-5000-2",
+  "arm": "S",
+  "task": "T6",
+  "n": 5000,
+  "rep": 2,
+  "complete": true,
+  "end": "done",
+  "replies": 3,
+  "seconds": 32.15109351900006,
+  "model_s": 32.071,
+  "machine_s": 0.08009351900005868,
+  "kinds": [
+   "accepted",
+   "accepted",
+   "done"
+  ],
+  "tools": [
+   2,
+   3,
+   3
+  ]
+ }
+}

@@ -1,0 +1,51 @@
+{
+ "cell": "S-T6-500-1",
+ "log": [
+  {
+   "reply": "```shuttle\ntx 1 at 0\nadd orders : id=900001, status=:unpaid, due=#2026-12-04, qty=1, total=80.18m, tags=[]\nadd orders.lines where id=900001 : :p01, 2, 35.63m\nadd orders.lines where id=900001 : :p02, 1, 44.55m\nexpect count orders where id=900001 = 1\n```\n",
+   "model_ms": 8457.0,
+   "finish_reason": null,
+   "kind": "rejected",
+   "machine_s": 0.0027981509999790433,
+   "feedback": "fail line 2: missing orders.note (no default)\n  hint: every column without a default must be in the add: write `note=\"\"` in this line (a later line of the same message may update it, e.g. with an aggregate)\n  (nothing applied)",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "```shuttle\ntx 1 at 0\nadd orders : id=900001, status=:unpaid, due=#2026-12-04, qty=1, total=80.18m, tags=[], note=\"\"\nadd orders.lines where id=900001 : :p01, 2, 35.63m\nadd orders.lines where id=900001 : :p02, 1, 44.55m\nexpect count orders where id=900001 = 1\n```\n",
+   "model_ms": 6648.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.007717012999819417,
+   "feedback": "ok v=1 add:3 expect:1 vid=bcd08853c900",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "```shuttle\ntx 2 at 1\nset orders where id=900001 : note=nil\nexpect count orders where id=900001 and missing note = 1\nexpect count orders where id=900001 and total = 80.18m = 1\nexpect count orders.lines where id=900001 = 2\n```\n",
+   "model_ms": 9860.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.004745490000004793,
+   "feedback": "ok v=2 set:1 expect:3 vid=bc4b5e0f4c4b",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 8708.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 1.3149997357686516e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "tx 1 at 0\nadd orders : id=900001, status=:unpaid, due=#2026-12-04, qty=1, total=80.18m, tags=[], note=\"\"\nadd orders.lines where id=900001 : :p01, 2, 35.63m\nadd orders.lines where id=900001 : :p02, 1, 44.55m\nexpect count orders where id=900001 = 1",
+  "tx 2 at 1\nset orders where id=900001 : note=nil\nexpect count orders where id=900001 and missing note = 1\nexpect count orders where id=900001 and total = 80.18m = 1\nexpect count orders.lines where id=900001 = 2"
+ ],
+ "end": "done",
+ "seconds": 33.68826196899954
+}

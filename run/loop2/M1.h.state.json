@@ -1,0 +1,24 @@
+{
+ "log": [
+  {
+   "who": "solver",
+   "message": "count orders where status=:unpaid and due<#2026-02-01",
+   "receipt": "ok v=0  vid=000000000000\ncount orders = 2589"
+  },
+  {
+   "who": "solver",
+   "message": "count orders where status=:unpaid\ncount orders where due<#2026-02-01\ncount orders where status=:unpaid and due<#2026-02-01\nshow orders where status=:unpaid and due<#2026-02-01 cols id,status,due,total order due asc limit 3",
+   "receipt": "ok v=0  vid=000000000000\ncount orders = 30051\ncount orders = 4248\ncount orders = 2589\nshow orders: 2589 row(s), showing 3\n  due: #2026-01-01 id: 1061 status: :unpaid total: 552.32m\n  {due: #2026-01-01, id: 1111, status: :unpaid, total: 34.76m}\n  due: #2026-01-01 id: 1893 status: :unpaid total: 469.21m"
+  },
+  {
+   "who": "solver",
+   "message": "tx 0\nset orders where status=:unpaid and due<#2026-02-01 : status=:hold\nput audit.policy = \"strict\"\nexpect count orders where status=:unpaid and due<#2026-02-01 = 0\nexpect count orders where status=:hold and due<#2026-02-01 = 2589",
+   "receipt": "ok v=1 set:2589 put:1 expect:2 vid=e1a1bf55eab3"
+  }
+ ],
+ "notes": [
+  {
+   "note": "message 3 began with `tx 0` (numeric id, no `at`): accepted by v6 r2 as an id named 0 with no version pin; v6 r3 refuses this with a hint, so a replay of this log now fails at message 3. The run itself completed correctly under v6 r2 (digest matched)."
+  }
+ ]
+}

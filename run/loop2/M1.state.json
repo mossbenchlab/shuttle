@@ -1,0 +1,14 @@
+{
+ "log": [
+  {
+   "who": "solver",
+   "message": "count orders where status=:unpaid and due < #2026-02-01",
+   "receipt": "ok v=0  vid=000000000000\ncount orders = 2589"
+  },
+  {
+   "who": "solver",
+   "message": "set orders where status=:unpaid and due < #2026-02-01 : status=:hold\nput audit.policy = \"strict\"\nexpect count orders where status=:unpaid and due < #2026-02-01 = 0",
+   "receipt": "ok v=1 set:2589 put:1 expect:1 vid=de668dffca43"
+  }
+ ]
+}

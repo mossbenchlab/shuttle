@@ -1,0 +1,11 @@
+===== YOUR REPLY 1 =====
+```json
+[
+  {"op": "replace", "path": "/audit/unpaid", "value": 30},
+  {"op": "replace", "path": "/audit/paid", "value": 14},
+  {"op": "replace", "path": "/audit/shipped_total", "value": "2826.06"}
+]
+```
+
+===== MACHINE RESULT 1 =====
+applied: 3 operations

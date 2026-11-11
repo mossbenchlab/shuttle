@@ -1,0 +1,8 @@
+{
+ "messages": [
+  "tx solver1 at 0\nset? orders where status=:shipped and tags has :a : tags-=:a\nset? orders where due >= #2026-03-01 and due < #2026-04-01 and missing note : note=\"Q1\"\nexpect count orders where status=:shipped and tags has :a = 0\nexpect count orders where due >= #2026-03-01 and due < #2026-04-01 and missing note = 0"
+ ],
+ "receipts": [
+  "ok v=1 set:706 expect:2 vid=42bd38dd8735"
+ ]
+}

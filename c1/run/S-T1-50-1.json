@@ -1,0 +1,30 @@
+{
+ "cell": "S-T1-50-1",
+ "log": [
+  {
+   "reply": "```shuttle\nset? orders where id=1000 and status!=:shipped : qty+=2\n```\n",
+   "model_ms": 5808.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.0007218880000436911,
+   "feedback": "ok v=1 set:1 vid=63be508c51c2",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 5427.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 1.2140000080762547e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "set? orders where id=1000 and status!=:shipped : qty+=2"
+ ],
+ "end": "done",
+ "seconds": 11.235723102000051
+}

@@ -1,0 +1,3 @@
+count orders where status=:unpaid
+count orders where status=:paid
+show orders where status=:shipped cols total limit 1

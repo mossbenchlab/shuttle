@@ -1,0 +1,41 @@
+{
+ "cell": "S-T4-5000-2",
+ "log": [
+  {
+   "reply": "```shuttle\ntx m1 at 0\nset orders.lines where status=:unpaid and sku=:p03 : qty=0\nset orders where status=:unpaid and any lines where sku=:p03 : tags|=:p03-cancelled\n```\n",
+   "model_ms": 12605.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.05239194499999922,
+   "feedback": "ok v=1 set:2787 vid=f59fa5bae257",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "```shuttle\nexpect count orders.lines where status=:unpaid and sku=:p03 and qty!=0 = 0\nexpect count orders where status=:unpaid and any lines where sku=:p03 and not tags has :p03-cancelled = 0\ncount orders where status=:unpaid and any lines where sku=:p03\ncount orders.lines where status=:unpaid and sku=:p03\n```\n",
+   "model_ms": 15535.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.04756292500002246,
+   "feedback": "ok v=1  expect:2 vid=f59fa5bae257\ncount orders = 1260\ncount orders.lines = 1527",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 8759.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 2.365000000281725e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "tx m1 at 0\nset orders.lines where status=:unpaid and sku=:p03 : qty=0\nset orders where status=:unpaid and any lines where sku=:p03 : tags|=:p03-cancelled",
+  "expect count orders.lines where status=:unpaid and sku=:p03 and qty!=0 = 0\nexpect count orders where status=:unpaid and any lines where sku=:p03 and not tags has :p03-cancelled = 0\ncount orders where status=:unpaid and any lines where sku=:p03\ncount orders.lines where status=:unpaid and sku=:p03"
+ ],
+ "end": "done",
+ "seconds": 36.99895723500002
+}

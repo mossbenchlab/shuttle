@@ -1,0 +1,3 @@
+count orders where status=:hold and due<#2026-06-01 and not tags has :late
+count orders where status=:hold and due<#2026-06-01 and tags has :late
+count orders where status=:unpaid and due<#2026-06-01

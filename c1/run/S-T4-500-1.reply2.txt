@@ -1,0 +1,6 @@
+```shuttle
+count orders where status=:unpaid and any lines where sku=:p03
+count orders where tags has :p03-cancelled
+count orders where status=:unpaid and any lines where sku=:p03 and not (tags has :p03-cancelled)
+count orders.lines where status=:unpaid and sku=:p03 and qty!=0
+```

@@ -1,0 +1,2 @@
+set orders.lines where id=1003 and status=:unpaid and sku=:p03 : qty=0, tags+=[:p03-cancelled]
+show orders where id=1003 cols id,status,tags,lines

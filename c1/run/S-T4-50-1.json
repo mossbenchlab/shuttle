@@ -1,0 +1,41 @@
+{
+ "cell": "S-T4-50-1",
+ "log": [
+  {
+   "reply": "```shuttle\nset orders.lines where status=:unpaid and sku=:p03 : qty=0\nset orders where status=:unpaid and any lines where sku=:p03 : tags|=:p03-cancelled\n```\n",
+   "model_ms": 12115.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.0008908600000268052,
+   "feedback": "ok v=1 set:26 vid=404ee6a9247c",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "```shuttle\nexpect count orders.lines where status=:unpaid and sku=:p03 and qty!=0 = 0\nexpect count orders where status=:unpaid and any lines where sku=:p03 and not tags has :p03-cancelled = 0\nshow orders where status=:unpaid and any lines where sku=:p03 cols id,tags order id asc limit 50\n```\n",
+   "model_ms": 13951.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.001568261999977949,
+   "feedback": "ok v=1  expect:2 vid=404ee6a9247c\nshow orders: 10 row(s)\n  {id: 1006, tags: [:p03-cancelled]}\n  {id: 1010, tags: [:a, :p03-cancelled]}\n  {id: 1014, tags: [:p03-cancelled]}\n  {id: 1016, tags: [:p03-cancelled]}\n  {id: 1017, tags: [:a, :p03-cancelled]}\n  {id: 1022, tags: [:a, :p03-cancelled]}\n  {id: 1031, tags: [:a, :p03-cancelled]}\n  {id: 1033, tags: [:p03-cancelled]}\n  {id: 1037, tags: [:p03-cancelled]}\n  {id: 1049, tags: [:p03-cancelled]}",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE",
+   "model_ms": 8044.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 2.0249999579391442e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "set orders.lines where status=:unpaid and sku=:p03 : qty=0\nset orders where status=:unpaid and any lines where sku=:p03 : tags|=:p03-cancelled",
+  "expect count orders.lines where status=:unpaid and sku=:p03 and qty!=0 = 0\nexpect count orders where status=:unpaid and any lines where sku=:p03 and not tags has :p03-cancelled = 0\nshow orders where status=:unpaid and any lines where sku=:p03 cols id,tags order id asc limit 50"
+ ],
+ "end": "done",
+ "seconds": 34.11246114699996
+}

@@ -1,0 +1,25 @@
+===== YOUR REPLY 1 =====
+```shuttle
+tx ord900002 at 0
+add orders : id=900002, status=:unpaid, due=#2026-12-12, total=30.01m, qty=1, tags=[], note=nil
+add orders.lines where id=900002 : :p01, 2, 8.24m
+add orders.lines where id=900002 : :p02, 1, 21.77m
+expect count orders where id=900002 = 1
+```
+
+===== MACHINE RESULT 1 =====
+ok v=1 add:3 expect:1 vid=e9f4e6f25cc6
+
+===== YOUR REPLY 2 =====
+```shuttle
+tx t1 at 0
+add orders : id=900002, status=:unpaid, due=#2026-12-12, total=30.01m, qty=1, tags=[], note=nil
+add orders.lines where id=900002 : :p01, 2, 8.24m
+add orders.lines where id=900002 : :p02, 1, 21.77m
+expect count orders where id=900002 = 1
+expect sum amount of orders.lines where id=900002 = 30.01m
+```
+
+===== MACHINE RESULT 2 =====
+fail stale: you assumed version 0, current is 1
+  hint: another writer changed the store. Read again before writing (the rows you chose may differ now), and guard the write with the condition you relied on (e.g. `and status=:unpaid`)

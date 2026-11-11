@@ -1,0 +1,41 @@
+{
+ "cell": "S-T2-5000-1",
+ "log": [
+  {
+   "reply": "```shuttle\ncount orders where status=:unpaid\ncount orders where status=:paid\ncount orders where status=:pending\ncount orders where due < #2026-06-01\ncount orders where status=:unpaid and due < #2026-06-01\nshow orders where due < #2026-06-01 cols id,status,due,tags,total order id asc limit 10\n```\n",
+   "model_ms": 8251.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.06810755899999954,
+   "feedback": "ok v=0  vid=000000000000\ncount orders = 3032\ncount orders = 979\ncount orders = 0\ncount orders = 1996\ncount orders = 1236\nshow orders: 1996 row(s), showing 10\n  {id: 1000, status: :shipped, due: #2026-01-07, tags: [:a], total: 774.95m}\n  {id: 1002, status: :unpaid, due: #2026-05-06, tags: [], total: 621.18m}\n  {id: 1003, status: :unpaid, due: #2026-02-04, tags: [], total: 652.03m}\n  {id: 1004, status: :unpaid, due: #2026-05-04, tags: [], total: 740.52m}\n  {id: 1008, status: :unpaid, due: #2026-04-12, tags: [], total: 138.58m}\n  {id: 1010, status: :shipped, due: #2026-04-21, tags: [:a], total: 478.72m}\n  {id: 1011, status: :paid, due: #2026-01-27, tags: [:a], total: 171.26m}\n  {id: 1014, status: :paid, due: #2026-05-13, tags: [], total: 303.33m}\n  {id: 1020, status: :unpaid, due: #2026-05-08, tags: [:a], total: 649.96m}\n  {id: 1021, status: :unpaid, due: #2026-02-21, tags: [], total: 246.59m}",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "```shuttle\ntx hold-late-1 at 0\nset orders where status=:unpaid and due < #2026-06-01 : status=:hold, tags|=:late\nexpect count orders where status=:unpaid and due < #2026-06-01 = 0\nexpect count orders where status=:hold and due < #2026-06-01 = 1236\n```\n",
+   "model_ms": 11751.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.06100614299998597,
+   "feedback": "ok v=1 set:1236 expect:2 vid=8894500bdd03",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 6174.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 2.0790000121451158e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "count orders where status=:unpaid\ncount orders where status=:paid\ncount orders where status=:pending\ncount orders where due < #2026-06-01\ncount orders where status=:unpaid and due < #2026-06-01\nshow orders where due < #2026-06-01 cols id,status,due,tags,total order id asc limit 10",
+  "tx hold-late-1 at 0\nset orders where status=:unpaid and due < #2026-06-01 : status=:hold, tags|=:late\nexpect count orders where status=:unpaid and due < #2026-06-01 = 0\nexpect count orders where status=:hold and due < #2026-06-01 = 1236"
+ ],
+ "end": "done",
+ "seconds": 26.305115780999998
+}

@@ -1,0 +1,32 @@
+{
+ "L1": {
+  "digest": "33f61533942d",
+  "version": 1,
+  "last_receipt": "ok v=1 set:1287 expect:1 vid=5ea5c0e9c6c6"
+ },
+ "L2": {
+  "digest": "a5aef7bbdf70",
+  "version": 1,
+  "last_receipt": "ok v=1 set:1 vid=1be8c45b2902"
+ },
+ "L3": {
+  "digest": "88bb43238381",
+  "version": 0,
+  "last_receipt": "ok v=0  vid=000000000000\nget orders: 1 row(s)\n  due: #2026-09-28 id: 3777 note: nil qty: 7 status: :shipped tags: [:a] total: 625.43m"
+ },
+ "L4": {
+  "digest": "7401f563a245",
+  "version": 1,
+  "last_receipt": "ok v=1 put:2 vid=b92ed8199772"
+ },
+ "L5": {
+  "digest": "a9ca299aa478",
+  "version": 1,
+  "last_receipt": "ok v=1 set:1 vid=daaf5aaafd0c"
+ },
+ "L6": {
+  "digest": "22c9f47373cc",
+  "version": 1,
+  "last_receipt": "ok v=1 set:706 vid=16cb52f8837f"
+ }
+}

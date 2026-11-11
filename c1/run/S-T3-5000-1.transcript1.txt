@@ -1,0 +1,23 @@
+===== YOUR REPLY 1 =====
+```shuttle
+count orders where status=:paid
+count orders where status=:unpaid
+count orders where status=:shipped
+sum total of orders where status=:shipped
+count orders where status!=:shipped
+show orders cols id,status,tags order id asc limit 5
+```
+
+===== MACHINE RESULT 1 =====
+ok v=0  vid=000000000000
+count orders = 979
+count orders = 3032
+count orders = 989
+sum total of orders = 490863.07m
+count orders = 4011
+show orders: 5000 row(s), showing 5
+  {id: 1000, status: :shipped, tags: [:a]}
+  {id: 1001, status: :shipped, tags: [:a]}
+  {id: 1002, status: :unpaid, tags: []}
+  {id: 1003, status: :unpaid, tags: []}
+  {id: 1004, status: :unpaid, tags: []}

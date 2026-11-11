@@ -1,0 +1,52 @@
+{
+ "cell": "S-T4-5000-1",
+ "log": [
+  {
+   "reply": "```shuttle\ncount orders where status = :unpaid\ncount orders where status = :paid\ncount orders where status != :shipped\nshow orders where status != :shipped cols id,status,tags order id limit 5\nshow orders.lines where sku = :p03 limit 5\n```\n",
+   "model_ms": 14435.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.05308619199999942,
+   "feedback": "ok v=0  vid=000000000000\ncount orders = 3032\ncount orders = 979\ncount orders = 4011\nshow orders: 4011 row(s), showing 5\n  {id: 1002, status: :unpaid, tags: []}\n  {id: 1003, status: :unpaid, tags: []}\n  {id: 1004, status: :unpaid, tags: []}\n  {id: 1005, status: :unpaid, tags: []}\n  {id: 1006, status: :unpaid, tags: []}\nshow orders.lines: 2474 row(s), showing 5\n  {sku: :p03, qty: 2, amount: 80.66m}\n  {sku: :p03, qty: 5, amount: 125.15m}\n  {sku: :p03, qty: 4, amount: 131.64m}\n  {sku: :p03, qty: 2, amount: 178.62m}\n  {sku: :p03, qty: 2, amount: 80.96m}",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "```shuttle\ntx w1 at 0\nset orders.lines where status = :unpaid and sku = :p03 : qty = 0\nset orders where status = :unpaid and any lines where sku = :p03 : tags |= :p03-cancelled\ncount orders.lines where sku = :p03 and qty != 0\nshow orders where status = :unpaid and any lines where sku = :p03 cols id,tags limit 5\n```\n",
+   "model_ms": 13069.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.049814023000010366,
+   "feedback": "ok v=1 set:2723 vid=30b50fab5113\ncount orders.lines = 986\nshow orders: 1235 row(s), showing 5\n  {id: 1002, tags: [:p03-cancelled]}\n  {id: 1004, tags: [:p03-cancelled]}\n  {id: 1005, tags: [:p03-cancelled]}\n  {id: 1009, tags: [:a, :p03-cancelled]}\n  {id: 1024, tags: [:p03-cancelled]}",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "```shuttle\nexpect count orders.lines where status = :unpaid and sku = :p03 and qty != 0 = 0\nexpect count orders where status = :unpaid and any lines where sku = :p03 and not (tags has :p03-cancelled) = 0\ncount orders where status = :unpaid and any lines where sku = :p03\ncount orders.lines where status = :unpaid and sku = :p03\ncount orders where status != :unpaid and tags has :p03-cancelled\ncount orders.lines where status != :unpaid and sku = :p03 and qty != 0\n```\n",
+   "model_ms": 17160.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.06151257999999871,
+   "feedback": "ok v=1  expect:2 vid=30b50fab5113\ncount orders = 1235\ncount orders.lines = 1488\ncount orders = 0\ncount orders.lines = 986",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 8516.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 2.122000068993657e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "count orders where status = :unpaid\ncount orders where status = :paid\ncount orders where status != :shipped\nshow orders where status != :shipped cols id,status,tags order id limit 5\nshow orders.lines where sku = :p03 limit 5",
+  "tx w1 at 0\nset orders.lines where status = :unpaid and sku = :p03 : qty = 0\nset orders where status = :unpaid and any lines where sku = :p03 : tags |= :p03-cancelled\ncount orders.lines where sku = :p03 and qty != 0\nshow orders where status = :unpaid and any lines where sku = :p03 cols id,tags limit 5",
+  "expect count orders.lines where status = :unpaid and sku = :p03 and qty != 0 = 0\nexpect count orders where status = :unpaid and any lines where sku = :p03 and not (tags has :p03-cancelled) = 0\ncount orders where status = :unpaid and any lines where sku = :p03\ncount orders.lines where status = :unpaid and sku = :p03\ncount orders where status != :unpaid and tags has :p03-cancelled\ncount orders.lines where status != :unpaid and sku = :p03 and qty != 0"
+ ],
+ "end": "done",
+ "seconds": 53.34441491700008
+}

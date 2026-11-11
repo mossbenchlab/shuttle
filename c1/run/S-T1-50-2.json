@@ -1,0 +1,40 @@
+{
+ "cell": "S-T1-50-2",
+ "log": [
+  {
+   "reply": "```shuttle\nset? orders where id=1011 and status!=:shipped : qty+=2\nshow orders where id=1011 cols id,status,qty\n```\n",
+   "model_ms": 5631.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.001071796000019276,
+   "feedback": "ok v=1 set:1 vid=f0c0cbb2724e\nshow orders: 1 row(s)\n  {id: 1011, status: :unpaid, qty: 5}",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "```shuttle\ntx t1011-qty at 0\nset? orders where id=1011 and status!=:shipped : qty+=2\nexpect count orders where id=1011 = 1\nshow orders where id=1011 cols id,status,qty\n```\n",
+   "model_ms": 11474.0,
+   "finish_reason": null,
+   "kind": "rejected",
+   "machine_s": 9.318799999391558e-05,
+   "feedback": "fail stale: you assumed version 0, current is 1\n  hint: another writer changed the store. Read again before writing (the rows you chose may differ now), and guard the write with the condition you relied on (e.g. `and status=:unpaid`)",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 7619.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 1.3849999618287256e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "set? orders where id=1011 and status!=:shipped : qty+=2\nshow orders where id=1011 cols id,status,qty"
+ ],
+ "end": "done",
+ "seconds": 24.725166368999975
+}

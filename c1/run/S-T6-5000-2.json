@@ -1,0 +1,41 @@
+{
+ "cell": "S-T6-5000-2",
+ "log": [
+  {
+   "reply": "```shuttle\ntx add-900002-1 at 0\nadd orders : id=900002, status=:unpaid, due=#2026-12-12, qty=1, tags=[], note=nil, total=34.60m\nadd orders.lines where id=900002 : :p01, 2, 10.10m\nadd orders.lines where id=900002 : :p02, 1, 24.50m\nexpect count orders where id=900002 = 1\nshow orders where id=900002 cols id,status,due,total,qty,tags,note\n```\n",
+   "model_ms": 13828.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.04158967000000757,
+   "feedback": "ok v=1 add:3 expect:1 vid=1d019535fe9e\nshow orders: 1 row(s)\n  {id: 900002, status: :unpaid, due: #2026-12-12, total: 34.60m, qty: 1, tags: [], note: nil}",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "```shuttle\nshow orders.lines where id=900002 cols sku,qty,amount\nexpect count orders where id=900002 = 1\n```\n",
+   "model_ms": 9369.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.03850190800000064,
+   "feedback": "ok v=1  expect:1 vid=1d019535fe9e\nshow orders.lines: 2 row(s)\n  {sku: :p01, qty: 2, amount: 10.10m}\n  {sku: :p02, qty: 1, amount: 24.50m}",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 8874.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 1.941000050464936e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "tx add-900002-1 at 0\nadd orders : id=900002, status=:unpaid, due=#2026-12-12, qty=1, tags=[], note=nil, total=34.60m\nadd orders.lines where id=900002 : :p01, 2, 10.10m\nadd orders.lines where id=900002 : :p02, 1, 24.50m\nexpect count orders where id=900002 = 1\nshow orders where id=900002 cols id,status,due,total,qty,tags,note",
+  "show orders.lines where id=900002 cols sku,qty,amount\nexpect count orders where id=900002 = 1"
+ ],
+ "end": "done",
+ "seconds": 32.15109351900006
+}

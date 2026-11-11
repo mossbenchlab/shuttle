@@ -1,0 +1,52 @@
+{
+ "cell": "S-T3-5000-1",
+ "log": [
+  {
+   "reply": "```shuttle\ncount orders where status=:paid\ncount orders where status=:unpaid\ncount orders where status=:shipped\nsum total of orders where status=:shipped\ncount orders where status!=:shipped\nshow orders cols id,status,tags order id asc limit 5\n```\n",
+   "model_ms": 7718.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.05291990400002078,
+   "feedback": "ok v=0  vid=000000000000\ncount orders = 979\ncount orders = 3032\ncount orders = 989\nsum total of orders = 490863.07m\ncount orders = 4011\nshow orders: 5000 row(s), showing 5\n  {id: 1000, status: :shipped, tags: [:a]}\n  {id: 1001, status: :shipped, tags: [:a]}\n  {id: 1002, status: :unpaid, tags: []}\n  {id: 1003, status: :unpaid, tags: []}\n  {id: 1004, status: :unpaid, tags: []}",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "```shuttle\nshow orders where status!=:paid and status!=:unpaid and status!=:shipped cols id,status,tags,note limit 20\ncount orders where status!=:paid and status!=:unpaid and status!=:shipped\ncount orders where status=:paid and tags has :unpaid\ncount orders where status=:unpaid and tags has :paid\n```\n",
+   "model_ms": 10248.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.05185517299997855,
+   "feedback": "ok v=0  vid=000000000000\nshow orders: 0 row(s)\ncount orders = 0\ncount orders = 0\ncount orders = 0",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "```shuttle\ntx w3 at 0\nput audit.paid = count orders where status=:paid\nput audit.unpaid = count orders where status=:unpaid\nput audit.shipped_total = sum total of orders where status=:shipped\nexpect count orders where status=:paid = 979\nexpect count orders where status=:unpaid = 3032\nexpect count orders where status=:shipped = 989\n```\n",
+   "model_ms": 15462.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.041244645999995555,
+   "feedback": "ok v=1 put:3 expect:3 vid=3fc7fc24eadd\ncomputed count orders = 979\ncomputed count orders = 3032\ncomputed sum total of orders = 490863.07m",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 6107.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 2.237999979115557e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "count orders where status=:paid\ncount orders where status=:unpaid\ncount orders where status=:shipped\nsum total of orders where status=:shipped\ncount orders where status!=:shipped\nshow orders cols id,status,tags order id asc limit 5",
+  "show orders where status!=:paid and status!=:unpaid and status!=:shipped cols id,status,tags,note limit 20\ncount orders where status!=:paid and status!=:unpaid and status!=:shipped\ncount orders where status=:paid and tags has :unpaid\ncount orders where status=:unpaid and tags has :paid",
+  "tx w3 at 0\nput audit.paid = count orders where status=:paid\nput audit.unpaid = count orders where status=:unpaid\nput audit.shipped_total = sum total of orders where status=:shipped\nexpect count orders where status=:paid = 979\nexpect count orders where status=:unpaid = 3032\nexpect count orders where status=:shipped = 989"
+ ],
+ "end": "done",
+ "seconds": 39.68102196099997
+}

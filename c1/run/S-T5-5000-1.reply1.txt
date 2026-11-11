@@ -1,0 +1,6 @@
+```shuttle
+count orders where status = :paid
+count orders where status != :paid
+show orders where status != :paid order total desc limit 3 cols id,status,total,tags,note
+sum total of orders where status != :paid
+```

@@ -1,0 +1,3 @@
+```json
+[{"op": "replace", "path": "/orders/0/qty", "value": 4}]
+```

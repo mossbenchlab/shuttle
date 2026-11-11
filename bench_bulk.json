@@ -1,0 +1,90 @@
+{
+ "1000": {
+  "keyed set (control)": {
+   "ms": 0.15795600006640598,
+   "receipt": "ok v=1 set:1 vid=c51e3e7508b1"
+  },
+  "count where status=:unpaid": {
+   "ms": 0.41040900009647885,
+   "receipt": "ok v=0  vid=000000000000"
+  },
+  "bulk set ~25% rows (2 terms)": {
+   "ms": 1.0145969999939553,
+   "receipt": "ok v=1 set:249 vid=faecb1848e1a"
+  },
+  "bulk set all rows (where true)": {
+   "ms": 0.4167639999650419,
+   "receipt": "ok v=1 set:1000 vid=988a07a6cf4c"
+  },
+  "bulk set + expect": {
+   "ms": 0.48911999999745603,
+   "receipt": "ok v=1 set:214 expect:1 vid=b898435a40c9"
+  }
+ },
+ "10000": {
+  "keyed set (control)": {
+   "ms": 0.1654669999879843,
+   "receipt": "ok v=1 set:1 vid=12ae416c48fa"
+  },
+  "count where status=:unpaid": {
+   "ms": 1.8368880000707577,
+   "receipt": "ok v=0  vid=000000000000"
+  },
+  "bulk set ~25% rows (2 terms)": {
+   "ms": 8.473394000020562,
+   "receipt": "ok v=1 set:2535 vid=faecb1848e1a"
+  },
+  "bulk set all rows (where true)": {
+   "ms": 4.464578000010988,
+   "receipt": "ok v=1 set:10000 vid=988a07a6cf4c"
+  },
+  "bulk set + expect": {
+   "ms": 3.744019999999182,
+   "receipt": "ok v=1 set:2005 expect:1 vid=b898435a40c9"
+  }
+ },
+ "100000": {
+  "keyed set (control)": {
+   "ms": 0.19721099999969738,
+   "receipt": "ok v=1 set:1 vid=abd2dabb76ff"
+  },
+  "count where status=:unpaid": {
+   "ms": 17.914114999939557,
+   "receipt": "ok v=0  vid=000000000000"
+  },
+  "bulk set ~25% rows (2 terms)": {
+   "ms": 94.1949719999684,
+   "receipt": "ok v=1 set:25305 vid=faecb1848e1a"
+  },
+  "bulk set all rows (where true)": {
+   "ms": 54.88958399996591,
+   "receipt": "ok v=1 set:100000 vid=988a07a6cf4c"
+  },
+  "bulk set + expect": {
+   "ms": 41.31514599998809,
+   "receipt": "ok v=1 set:19907 expect:1 vid=b898435a40c9"
+  }
+ },
+ "500000": {
+  "keyed set (control)": {
+   "ms": 0.20048299995778507,
+   "receipt": "ok v=1 set:1 vid=ccfcd03b8cb5"
+  },
+  "count where status=:unpaid": {
+   "ms": 94.86412700005076,
+   "receipt": "ok v=0  vid=000000000000"
+  },
+  "bulk set ~25% rows (2 terms)": {
+   "ms": 530.0750650000055,
+   "receipt": "ok v=1 set:125416 vid=faecb1848e1a"
+  },
+  "bulk set all rows (where true)": {
+   "ms": 730.0990479999427,
+   "receipt": "ok v=1 set:500000 vid=988a07a6cf4c"
+  },
+  "bulk set + expect": {
+   "ms": 248.26812200001314,
+   "receipt": "ok v=1 set:99891 expect:1 vid=b898435a40c9"
+  }
+ }
+}

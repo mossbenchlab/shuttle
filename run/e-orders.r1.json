@@ -1,0 +1,8 @@
+{
+ "task": "e-orders",
+ "round": 1,
+ "tx": "add orders.lines where id=7006 : :p03, 2, 3.10m\nset orders where id=7010 : status=:paid\nadd orders after where id=7003 : id=7099, placed=#2026-11-05T18:05:00Z, status=:new, priority=2, tags=[]\nadd orders.lines where id=7099 : :p41, 1, 12.00m\n",
+ "receipt": "ok v=1 set:1 add:3 state=24ad7e65da25",
+ "pass": true,
+ "tx_chars": 242
+}

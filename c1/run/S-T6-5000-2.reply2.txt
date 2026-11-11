@@ -1,0 +1,4 @@
+```shuttle
+show orders.lines where id=900002 cols sku,qty,amount
+expect count orders where id=900002 = 1
+```

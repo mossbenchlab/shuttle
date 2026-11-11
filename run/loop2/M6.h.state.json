@@ -1,0 +1,9 @@
+{
+ "log": [
+  {
+   "who": "solver",
+   "message": "tx add-99001 at 0\nadd orders : id=99001, status=:unpaid, due=#2026-12-01, total=25.50m, tags=[], note=nil\nadd orders.lines where id=99001 : :p01, 2, 20.00m\nadd orders.lines where id=99001 : :p02, 1, 5.50m\nexpect count orders where id=99001 = 1\nexpect count orders.lines where id=99001 = 2\nget orders where id=99001",
+   "receipt": "ok v=1 add:3 expect:2 vid=69500109c8dc\nget orders: 1 row(s)\n  due: #2026-12-01 id: 99001 note: nil status: :unpaid tags: [] total: 25.50m"
+  }
+ ]
+}

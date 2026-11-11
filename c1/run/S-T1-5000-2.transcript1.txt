@@ -1,0 +1,7 @@
+===== YOUR REPLY 1 =====
+```shuttle
+set? orders where id=5165 and status!=:shipped : qty+=2
+```
+
+===== MACHINE RESULT 1 =====
+ok v=1 set:1 vid=0549867356f8

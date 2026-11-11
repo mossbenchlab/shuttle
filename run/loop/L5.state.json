@@ -1,0 +1,10 @@
+{
+ "messages": [
+  "show orders where status = :unpaid order total desc limit 3",
+  "tx t1 at 0\nset orders where id = 3500 and status = :unpaid : status=:review, note=\"top\"\nexpect count orders where status = :review = 1"
+ ],
+ "receipts": [
+  "ok v=0  vid=000000000000\nshow orders: 3045 row(s), showing 3\n  due: #2026-03-25 id: 3500 note: nil qty: 5 status: :unpaid tags: [] total: 999.99m\n  due: #2026-09-07 id: 2799 note: nil qty: 7 status: :unpaid tags: [:a] total: 999.84m\n  due: #2026-01-04 id: 3070 note: nil qty: 2 status: :unpaid tags: [] total: 999.66m",
+  "ok v=1 set:1 expect:1 vid=ead0b5284259"
+ ]
+}

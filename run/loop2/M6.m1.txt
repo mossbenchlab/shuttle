@@ -1,0 +1,3 @@
+add orders : id=99001, status=:unpaid, due=#2026-12-01, tags=[], total=25.50m
+add orders.lines where id=99001 : :p01, 2, 20.00m
+add orders.lines where id=99001 : :p02, 1, 5.50m

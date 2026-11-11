@@ -1,0 +1,41 @@
+{
+ "cell": "S-T4-50-2",
+ "log": [
+  {
+   "reply": "```shuttle\ntx m1 at 0\nset orders.lines where status=:unpaid and sku=:p03 : qty=0\nset orders where status=:unpaid and any lines where sku=:p03 : tags|=:p03-cancelled\nexpect count orders.lines where status=:unpaid and sku=:p03 and qty != 0 = 0\n```\n",
+   "model_ms": 9618.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.0010957829999824753,
+   "feedback": "ok v=1 set:38 expect:1 vid=33fa0c63c1c5",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "```shuttle\ncount orders where status=:unpaid and any lines where sku=:p03 and not tags has :p03-cancelled\ncount orders where status!=:unpaid and tags has :p03-cancelled\ncount orders where status=:unpaid and any lines where sku=:p03 and tags has :p03-cancelled\ncount orders where status=:unpaid and any lines where sku=:p03 and qty != 0\n```\n",
+   "model_ms": 14377.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.0009084509999865986,
+   "feedback": "ok v=1  vid=33fa0c63c1c5\ncount orders = 0\ncount orders = 0\ncount orders = 15\ncount orders = 0",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE",
+   "model_ms": 6628.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 1.5589999975418323e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "tx m1 at 0\nset orders.lines where status=:unpaid and sku=:p03 : qty=0\nset orders where status=:unpaid and any lines where sku=:p03 : tags|=:p03-cancelled\nexpect count orders.lines where status=:unpaid and sku=:p03 and qty != 0 = 0",
+  "count orders where status=:unpaid and any lines where sku=:p03 and not tags has :p03-cancelled\ncount orders where status!=:unpaid and tags has :p03-cancelled\ncount orders where status=:unpaid and any lines where sku=:p03 and tags has :p03-cancelled\ncount orders where status=:unpaid and any lines where sku=:p03 and qty != 0"
+ ],
+ "end": "done",
+ "seconds": 30.625005792999968
+}

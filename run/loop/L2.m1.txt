@@ -1,0 +1,2 @@
+set orders where id = 3412 and status != :shipped : qty += 2
+show orders where id = 3412 cols id,status,qty

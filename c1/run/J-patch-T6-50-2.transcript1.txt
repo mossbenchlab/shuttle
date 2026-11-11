@@ -1,0 +1,7 @@
+===== YOUR REPLY 1 =====
+```json
+[{"op": "add", "path": "/orders/-", "value": {"id": 900002, "status": "unpaid", "due": "2026-12-12", "total": "30.01", "qty": 1, "tags": [], "note": null, "lines": [{"sku": "p01", "qty": 2, "amount": "8.24"}, {"sku": "p02", "qty": 1, "amount": "21.77"}]}}]
+```
+
+===== MACHINE RESULT 1 =====
+applied: 1 operations

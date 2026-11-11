@@ -1,0 +1,6 @@
+MACHINE RESULT:
+ok v=0  vid=000000000000
+show orders: 1 row(s)
+  {id: 1090, status: :shipped, qty: 7}
+
+Reply with your next submission (one fenced code block) or DONE. Replies used: 2 of 6.

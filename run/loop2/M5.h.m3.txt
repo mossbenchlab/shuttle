@@ -1,0 +1,4 @@
+tx mark-top-review-2 at 0
+set orders where id=31000 and status=:unpaid and total=999.99m : status=:review, note="top"
+expect count orders where id=31000 and status=:review and note="top" = 1
+expect count orders where status=:unpaid and total>=999.99m = 0

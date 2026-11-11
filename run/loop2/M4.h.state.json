@@ -1,0 +1,9 @@
+{
+ "log": [
+  {
+   "who": "solver",
+   "message": "count orders where status=:unpaid and any lines where sku=:p03\nset orders.lines where status=:unpaid and sku=:p03 : qty=0\nset orders where status=:unpaid and any lines where sku=:p03 and not tags has :p03-cancelled : tags+=:p03-cancelled\nexpect count orders where status=:unpaid and any lines where sku=:p03 and not tags has :p03-cancelled = 0\ncount orders.lines where status=:unpaid and sku=:p03 and qty!=0",
+   "receipt": "ok v=1 set:27386 expect:1 vid=14256650380d\ncount orders = 12333\ncount orders.lines = 0"
+  }
+ ]
+}

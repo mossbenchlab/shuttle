@@ -1,0 +1,7 @@
+===== YOUR REPLY 1 =====
+```json
+[{"op": "replace", "path": "/orders/0/qty", "value": 4}]
+```
+
+===== MACHINE RESULT 1 =====
+applied: 1 operations

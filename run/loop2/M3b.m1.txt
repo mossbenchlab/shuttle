@@ -1,0 +1,3 @@
+put audit.unpaid = count orders where status=:unpaid
+put audit.paid = count orders where status=:paid
+put audit.shipped_total = sum total of orders where status=:shipped

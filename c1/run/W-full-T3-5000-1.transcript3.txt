@@ -1,0 +1,25 @@
+===== YOUR REPLY 1 =====
+(no reply file was written)
+
+===== MACHINE RESULT 1 =====
+FORMAT: reply with exactly one fenced code block and nothing else, or the single word DONE. Nothing was submitted.
+
+===== YOUR REPLY 2 =====
+NO SUBMISSION. I did not produce a state block for this reply.
+
+Reason: the CURRENT STATE in the task file has 5,064 order rows (about 430 KB of text). The submission must be the complete new state with every row in the same order, and the audit fields need counts over all rows (unpaid, paid) and a decimal sum of totals over all shipped rows. I cannot write all of those rows in one reply, and I cannot compute those counts and sums reliably by hand without running code, which this solver is not allowed to do. A partial state or guessed audit values would be wrong, so I am not submitting either. Nothing has been changed in the state.
+
+Possible ways forward: a task split that allows the audit to be computed row by row, or a larger reply budget with a tool that can count. I am not reporting DONE because the state is not verified as correct.
+
+===== MACHINE RESULT 2 =====
+FORMAT: reply with exactly one fenced code block and nothing else, or the single word DONE. Nothing was submitted.
+
+===== YOUR REPLY 3 =====
+NO SUBMISSION. I did not produce a state block for this reply.
+
+Reason: the CURRENT STATE has 5,064 order rows (about 430 KB of text). A submission must be the complete new state with every row in the same order, and the audit fields need counts over all rows (unpaid, paid) and a decimal sum of totals over all shipped rows. This solver has only Read and Write and no way to compute counts or sums, and I cannot reliably count and add about 5,000 values by hand. Writing a guessed state or guessed audit values would be fabricated, so I am not submitting one. Nothing has been changed in the state.
+
+I am not reporting DONE because the state is not verified as correct.
+
+===== MACHINE RESULT 3 =====
+FORMAT: reply with exactly one fenced code block and nothing else, or the single word DONE. Nothing was submitted.

@@ -1,0 +1,3 @@
+```shuttle
+set? orders where id=5165 and status!=:shipped : qty+=2
+```

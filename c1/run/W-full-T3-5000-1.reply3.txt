@@ -1,0 +1,5 @@
+NO SUBMISSION. I did not produce a state block for this reply.
+
+Reason: the CURRENT STATE has 5,064 order rows (about 430 KB of text). A submission must be the complete new state with every row in the same order, and the audit fields need counts over all rows (unpaid, paid) and a decimal sum of totals over all shipped rows. This solver has only Read and Write and no way to compute counts or sums, and I cannot reliably count and add about 5,000 values by hand. Writing a guessed state or guessed audit values would be fabricated, so I am not submitting one. Nothing has been changed in the state.
+
+I am not reporting DONE because the state is not verified as correct.

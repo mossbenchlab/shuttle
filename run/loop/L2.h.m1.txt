@@ -1,0 +1,3 @@
+tx orders-3412-qty-plus-2 at 0
+set? orders where id=3412 and status!=:shipped : qty+=2
+show orders where id=3412 cols id,status,qty

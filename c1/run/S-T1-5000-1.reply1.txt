@@ -1,0 +1,4 @@
+```shuttle
+tx m1 at 0
+set? orders where id=2014 and status!=:shipped : qty+=2
+```

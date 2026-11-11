@@ -1,0 +1,3 @@
+set orders where status=:unpaid and due < #2026-02-01 : status=:hold
+put audit.policy = "strict"
+expect count orders where status=:unpaid and due < #2026-02-01 = 0

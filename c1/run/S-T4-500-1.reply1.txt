@@ -1,0 +1,4 @@
+```shuttle
+set orders.lines where status=:unpaid and sku=:p03 : qty=0
+set orders where status=:unpaid and any lines where sku=:p03 : tags|=:p03-cancelled
+```

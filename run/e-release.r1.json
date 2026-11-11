@@ -1,0 +1,8 @@
+{
+ "task": "e-release",
+ "round": 1,
+ "tx": "put summary = \"Faster sync.\nFixes the \\\"stuck queue\\\" bug.\nDrops support for v1 and v0 tokens.\n\"\nput changes[0].issue = 813\nput changes[2].replacement.guide = \"https://example.org/migrate\"\n",
+ "receipt": "ok v=1 put:3 state=02daf7214b5a",
+ "pass": true,
+ "tx_chars": 189
+}

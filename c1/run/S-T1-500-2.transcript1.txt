@@ -1,0 +1,10 @@
+===== YOUR REPLY 1 =====
+```shuttle
+set? orders where id=1451 and status!=:shipped : qty+=2
+get orders where id=1451
+```
+
+===== MACHINE RESULT 1 =====
+ok v=0 set:0 vid=000000000000
+get orders: 1 row(s)
+  {id: 1451, status: :shipped, due: #2026-03-08, total: 425.36m, qty: 9, tags: [], note: nil}

@@ -1,0 +1,8 @@
+{
+ "task": "e-config",
+ "round": 1,
+ "tx": "put limits.timeout_ms = 4500\nset endpoints where path = \"/v1/upload\" : burst=69\nadd flags : :beta\n",
+ "receipt": "ok v=1 set:1 add:1 put:1 state=2b737a94317b",
+ "pass": true,
+ "tx_chars": 98
+}

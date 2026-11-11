@@ -1,0 +1,28 @@
+===== YOUR REPLY 1 =====
+```shuttle
+count orders where status=:unpaid
+count orders where status=:paid
+count orders where status=:pending
+count orders where due < #2026-06-01
+count orders where status=:unpaid and due < #2026-06-01
+show orders where due < #2026-06-01 cols id,status,due,tags,total order id asc limit 10
+```
+
+===== MACHINE RESULT 1 =====
+ok v=0  vid=000000000000
+count orders = 3032
+count orders = 979
+count orders = 0
+count orders = 1996
+count orders = 1236
+show orders: 1996 row(s), showing 10
+  {id: 1000, status: :shipped, due: #2026-01-07, tags: [:a], total: 774.95m}
+  {id: 1002, status: :unpaid, due: #2026-05-06, tags: [], total: 621.18m}
+  {id: 1003, status: :unpaid, due: #2026-02-04, tags: [], total: 652.03m}
+  {id: 1004, status: :unpaid, due: #2026-05-04, tags: [], total: 740.52m}
+  {id: 1008, status: :unpaid, due: #2026-04-12, tags: [], total: 138.58m}
+  {id: 1010, status: :shipped, due: #2026-04-21, tags: [:a], total: 478.72m}
+  {id: 1011, status: :paid, due: #2026-01-27, tags: [:a], total: 171.26m}
+  {id: 1014, status: :paid, due: #2026-05-13, tags: [], total: 303.33m}
+  {id: 1020, status: :unpaid, due: #2026-05-08, tags: [:a], total: 649.96m}
+  {id: 1021, status: :unpaid, due: #2026-02-21, tags: [], total: 246.59m}

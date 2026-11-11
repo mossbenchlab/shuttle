@@ -1,0 +1,30 @@
+{
+ "cell": "J-patch-T6-500-1",
+ "log": [
+  {
+   "reply": "```json\n[{\"op\": \"add\", \"path\": \"/orders/-\", \"value\": {\"id\": 900001, \"status\": \"unpaid\", \"due\": \"2026-12-04\", \"total\": \"80.18\", \"qty\": 1, \"tags\": [], \"note\": null, \"lines\": [{\"sku\": \"p01\", \"qty\": 2, \"amount\": \"35.63\"}, {\"sku\": \"p02\", \"qty\": 1, \"amount\": \"44.55\"}]}}]\n```\n",
+   "model_ms": 12383.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.014153873000054773,
+   "feedback": "applied: 1 operations",
+   "tool_uses": 4,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 11298.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 3.3569999686733354e-06,
+   "feedback": null,
+   "tool_uses": 5,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "[{\"op\": \"add\", \"path\": \"/orders/-\", \"value\": {\"id\": 900001, \"status\": \"unpaid\", \"due\": \"2026-12-04\", \"total\": \"80.18\", \"qty\": 1, \"tags\": [], \"note\": null, \"lines\": [{\"sku\": \"p01\", \"qty\": 2, \"amount\": \"35.63\"}, {\"sku\": \"p02\", \"qty\": 1, \"amount\": \"44.55\"}]}}]"
+ ],
+ "end": "done",
+ "seconds": 23.69515723000002
+}

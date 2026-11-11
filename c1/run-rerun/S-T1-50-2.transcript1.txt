@@ -1,0 +1,10 @@
+===== YOUR REPLY 1 =====
+```shuttle
+set? orders where id=1011 and status!=:shipped : qty+=2
+show orders where id=1011 cols id,status,qty
+```
+
+===== MACHINE RESULT 1 =====
+ok v=1 set:1 vid=f0c0cbb2724e
+show orders: 1 row(s)
+  {id: 1011, status: :unpaid, qty: 5}

@@ -1,0 +1,5 @@
+tx solver1 at 0
+set? orders where status=:shipped and tags has :a : tags-=:a
+set? orders where due >= #2026-03-01 and due < #2026-04-01 and missing note : note="Q1"
+expect count orders where status=:shipped and tags has :a = 0
+expect count orders where due >= #2026-03-01 and due < #2026-04-01 and missing note = 0

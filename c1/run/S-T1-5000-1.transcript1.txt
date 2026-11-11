@@ -1,0 +1,8 @@
+===== YOUR REPLY 1 =====
+```shuttle
+tx m1 at 0
+set? orders where id=2014 and status!=:shipped : qty+=2
+```
+
+===== MACHINE RESULT 1 =====
+ok v=1 set:1 vid=92ce8849a955

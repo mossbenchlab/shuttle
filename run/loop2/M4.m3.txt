@@ -1,0 +1,2 @@
+count orders where status=:unpaid and lines has {sku: :p03}
+show orders where status=:unpaid and lines has {sku: :p03} cols id,tags,lines limit 3

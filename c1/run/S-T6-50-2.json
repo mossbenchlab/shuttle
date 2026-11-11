@@ -1,0 +1,40 @@
+{
+ "cell": "S-T6-50-2",
+ "log": [
+  {
+   "reply": "```shuttle\ntx ord900002 at 0\nadd orders : id=900002, status=:unpaid, due=#2026-12-12, total=30.01m, qty=1, tags=[], note=nil\nadd orders.lines where id=900002 : :p01, 2, 8.24m\nadd orders.lines where id=900002 : :p02, 1, 21.77m\nexpect count orders where id=900002 = 1\n```\n",
+   "model_ms": 9322.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.003363825999997516,
+   "feedback": "ok v=1 add:3 expect:1 vid=e9f4e6f25cc6",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "```shuttle\ntx t1 at 0\nadd orders : id=900002, status=:unpaid, due=#2026-12-12, total=30.01m, qty=1, tags=[], note=nil\nadd orders.lines where id=900002 : :p01, 2, 8.24m\nadd orders.lines where id=900002 : :p02, 1, 21.77m\nexpect count orders where id=900002 = 1\nexpect sum amount of orders.lines where id=900002 = 30.01m\n```\n",
+   "model_ms": 8833.0,
+   "finish_reason": null,
+   "kind": "rejected",
+   "machine_s": 0.00016088899997157569,
+   "feedback": "fail stale: you assumed version 0, current is 1\n  hint: another writer changed the store. Read again before writing (the rows you chose may differ now), and guard the write with the condition you relied on (e.g. `and status=:unpaid`)",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 7681.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 1.7570000068189984e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "tx ord900002 at 0\nadd orders : id=900002, status=:unpaid, due=#2026-12-12, total=30.01m, qty=1, tags=[], note=nil\nadd orders.lines where id=900002 : :p01, 2, 8.24m\nadd orders.lines where id=900002 : :p02, 1, 21.77m\nexpect count orders where id=900002 = 1"
+ ],
+ "end": "done",
+ "seconds": 25.839526471999978
+}

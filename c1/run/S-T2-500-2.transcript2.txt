@@ -1,0 +1,19 @@
+===== YOUR REPLY 1 =====
+```shuttle
+set orders where status=:unpaid and due<#2026-06-01 : status=:hold, tags|=:late
+```
+
+===== MACHINE RESULT 1 =====
+ok v=1 set:130 vid=4559d13b37a8
+
+===== YOUR REPLY 2 =====
+```shuttle
+count orders where status=:unpaid and due<#2026-06-01
+count orders where status=:hold and tags has :late
+expect count orders where status=:unpaid and due<#2026-06-01 = 0
+```
+
+===== MACHINE RESULT 2 =====
+ok v=1  expect:1 vid=4559d13b37a8
+count orders = 0
+count orders = 130

@@ -1,0 +1,9 @@
+{
+ "log": [
+  {
+   "who": "solver",
+   "message": "put audit.unpaid = count orders where status=:unpaid\nput audit.paid = count orders where status=:paid\nput audit.shipped_total = sum total of orders where status=:shipped",
+   "receipt": "ok v=1 put:3 vid=fe008ee3f40d\ncomputed count orders = 30051\ncomputed count orders = 9989\ncomputed sum total of orders = 4944994.12m"
+  }
+ ]
+}

@@ -1,0 +1,5 @@
+MACHINE RESULT:
+fail stale: you assumed version 0, current is 1
+  hint: another writer changed the store. Read again before writing (the rows you chose may differ now), and guard the write with the condition you relied on (e.g. `and status=:unpaid`)
+
+Reply with your next submission (one fenced code block) or DONE. Replies used: 2 of 6.

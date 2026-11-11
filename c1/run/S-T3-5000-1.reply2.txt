@@ -1,0 +1,6 @@
+```shuttle
+show orders where status!=:paid and status!=:unpaid and status!=:shipped cols id,status,tags,note limit 20
+count orders where status!=:paid and status!=:unpaid and status!=:shipped
+count orders where status=:paid and tags has :unpaid
+count orders where status=:unpaid and tags has :paid
+```

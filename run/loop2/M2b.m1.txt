@@ -1,0 +1,1 @@
+set orders where id=7006 : total = sum amount of orders.lines where id=7006

@@ -1,0 +1,6 @@
+MACHINE RESULT:
+ok v=1 set:1 vid=f0c0cbb2724e
+show orders: 1 row(s)
+  {id: 1011, status: :unpaid, qty: 5}
+
+Reply with your next submission (one fenced code block) or DONE. Replies used: 1 of 6.

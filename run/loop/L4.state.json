@@ -1,0 +1,10 @@
+{
+ "messages": [
+  "count orders where status = :paid and tags has :a and total >= 500.00m",
+  "put audit.count = 148\nput audit.checked = #2026-11-08"
+ ],
+ "receipts": [
+  "ok v=0  vid=000000000000\ncount orders = 148",
+  "ok v=1 put:2 vid=b92ed8199772"
+ ]
+}

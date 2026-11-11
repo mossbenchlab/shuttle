@@ -1,0 +1,26 @@
+===== YOUR REPLY 1 =====
+```json
+[
+{"op": "replace", "path": "/orders/0/status", "value": "hold"},
+{"op": "add", "path": "/orders/0/tags/-", "value": "late"},
+{"op": "replace", "path": "/orders/2/status", "value": "hold"},
+{"op": "add", "path": "/orders/2/tags/-", "value": "late"},
+{"op": "replace", "path": "/orders/3/status", "value": "hold"},
+{"op": "add", "path": "/orders/3/tags/-", "value": "late"},
+{"op": "replace", "path": "/orders/10/status", "value": "hold"},
+{"op": "add", "path": "/orders/10/tags/-", "value": "late"},
+{"op": "replace", "path": "/orders/11/status", "value": "hold"},
+{"op": "add", "path": "/orders/11/tags/-", "value": "late"},
+{"op": "replace", "path": "/orders/21/status", "value": "hold"},
+{"op": "add", "path": "/orders/21/tags/-", "value": "late"},
+{"op": "replace", "path": "/orders/23/status", "value": "hold"},
+{"op": "add", "path": "/orders/23/tags/-", "value": "late"},
+{"op": "replace", "path": "/orders/26/status", "value": "hold"},
+{"op": "add", "path": "/orders/26/tags/-", "value": "late"},
+{"op": "replace", "path": "/orders/37/status", "value": "hold"},
+{"op": "add", "path": "/orders/37/tags/-", "value": "late"}
+]
+```
+
+===== MACHINE RESULT 1 =====
+applied: 18 operations

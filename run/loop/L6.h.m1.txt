@@ -1,0 +1,7 @@
+tx fix-orders-a-q1 at 0
+set? orders where status=:shipped and tags has :a : tags-=:a
+set? orders where due>=#2026-03-01T00:00:00Z and due<#2026-04-01T00:00:00Z and missing note : note="Q1"
+expect count orders where status=:shipped and tags has :a = 0
+expect count orders where due>=#2026-03-01T00:00:00Z and due<#2026-04-01T00:00:00Z and missing note = 0
+count orders where status=:shipped
+count orders where due>=#2026-03-01T00:00:00Z and due<#2026-04-01T00:00:00Z

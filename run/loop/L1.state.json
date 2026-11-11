@@ -1,0 +1,8 @@
+{
+ "messages": [
+  "set orders where status=:unpaid and due < #2026-06-01 : status=:hold, tags+=:late\nexpect count orders where status=:unpaid and due < #2026-06-01 = 0"
+ ],
+ "receipts": [
+  "ok v=1 set:1287 expect:1 vid=0e9753f4c664"
+ ]
+}

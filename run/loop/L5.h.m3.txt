@@ -1,0 +1,3 @@
+tx w1 at 0
+set orders where id=3500 and status=:unpaid : status=:review, note="top"
+expect count orders where id=3500 and status=:review and note="top" = 1

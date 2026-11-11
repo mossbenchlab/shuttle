@@ -1,0 +1,12 @@
+===== YOUR REPLY 1 =====
+```shuttle
+put audit.unpaid = count orders where status=:unpaid
+put audit.paid = count orders where status=:paid
+put audit.shipped_total = sum total of orders where status=:shipped
+```
+
+===== MACHINE RESULT 1 =====
+ok v=1 put:3 vid=fe008ee3f40d
+computed count orders = 3017
+computed count orders = 996
+computed sum total of orders = 498821.13m

@@ -1,0 +1,30 @@
+{
+ "cell": "S-T1-50-2",
+ "log": [
+  {
+   "reply": "```shuttle\nset? orders where id=1011 and status!=:shipped : qty+=2\nshow orders where id=1011 cols id,status,qty\n```\n",
+   "model_ms": 6308.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.001026463000002309,
+   "feedback": "ok v=1 set:1 vid=f0c0cbb2724e\nshow orders: 1 row(s)\n  {id: 1011, status: :unpaid, qty: 5}",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 5870.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 9.119999972995174e-07,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "set? orders where id=1011 and status!=:shipped : qty+=2\nshow orders where id=1011 cols id,status,qty"
+ ],
+ "end": "done",
+ "seconds": 12.179027375
+}

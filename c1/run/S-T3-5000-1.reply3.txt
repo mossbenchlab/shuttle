@@ -1,0 +1,9 @@
+```shuttle
+tx w3 at 0
+put audit.paid = count orders where status=:paid
+put audit.unpaid = count orders where status=:unpaid
+put audit.shipped_total = sum total of orders where status=:shipped
+expect count orders where status=:paid = 979
+expect count orders where status=:unpaid = 3032
+expect count orders where status=:shipped = 989
+```

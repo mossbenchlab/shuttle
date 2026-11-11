@@ -1,0 +1,30 @@
+{
+ "cell": "S-T3-5000-2",
+ "log": [
+  {
+   "reply": "```shuttle\nput audit.unpaid = count orders where status=:unpaid\nput audit.paid = count orders where status=:paid\nput audit.shipped_total = sum total of orders where status=:shipped\n```\n",
+   "model_ms": 7466.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.0439878860000249,
+   "feedback": "ok v=1 put:3 vid=fe008ee3f40d\ncomputed count orders = 3017\ncomputed count orders = 996\ncomputed sum total of orders = 498821.13m",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 8668.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 2.2209999883671117e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "put audit.unpaid = count orders where status=:unpaid\nput audit.paid = count orders where status=:paid\nput audit.shipped_total = sum total of orders where status=:shipped"
+ ],
+ "end": "done",
+ "seconds": 16.177990107000014
+}

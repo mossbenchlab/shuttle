@@ -1,0 +1,26 @@
+===== YOUR REPLY 1 =====
+```shuttle
+tx add-900002-1 at 0
+add orders : id=900002, status=:unpaid, due=#2026-12-12, qty=1, tags=[], note=nil, total=34.60m
+add orders.lines where id=900002 : :p01, 2, 10.10m
+add orders.lines where id=900002 : :p02, 1, 24.50m
+expect count orders where id=900002 = 1
+show orders where id=900002 cols id,status,due,total,qty,tags,note
+```
+
+===== MACHINE RESULT 1 =====
+ok v=1 add:3 expect:1 vid=1d019535fe9e
+show orders: 1 row(s)
+  {id: 900002, status: :unpaid, due: #2026-12-12, total: 34.60m, qty: 1, tags: [], note: nil}
+
+===== YOUR REPLY 2 =====
+```shuttle
+show orders.lines where id=900002 cols sku,qty,amount
+expect count orders where id=900002 = 1
+```
+
+===== MACHINE RESULT 2 =====
+ok v=1  expect:1 vid=1d019535fe9e
+show orders.lines: 2 row(s)
+  {sku: :p01, qty: 2, amount: 10.10m}
+  {sku: :p02, qty: 1, amount: 24.50m}

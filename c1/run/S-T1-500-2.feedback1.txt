@@ -1,0 +1,6 @@
+MACHINE RESULT:
+ok v=0 set:0 vid=000000000000
+get orders: 1 row(s)
+  {id: 1451, status: :shipped, due: #2026-03-08, total: 425.36m, qty: 9, tags: [], note: nil}
+
+Reply with your next submission (one fenced code block) or DONE. Replies used: 1 of 6.

@@ -1,0 +1,8 @@
+===== YOUR REPLY 1 =====
+```shuttle
+tx t1 at 0
+set orders where status=:unpaid order total desc limit 1 : status=:review, note="top"
+```
+
+===== MACHINE RESULT 1 =====
+ok v=1 set:1 vid=f16cf257bb19

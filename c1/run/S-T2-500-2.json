@@ -1,0 +1,41 @@
+{
+ "cell": "S-T2-500-2",
+ "log": [
+  {
+   "reply": "```shuttle\nset orders where status=:unpaid and due<#2026-06-01 : status=:hold, tags|=:late\n```\n",
+   "model_ms": 5609.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.007564730000012787,
+   "feedback": "ok v=1 set:130 vid=4559d13b37a8",
+   "tool_uses": 2,
+   "reply_file_written": true
+  },
+  {
+   "reply": "```shuttle\ncount orders where status=:unpaid and due<#2026-06-01\ncount orders where status=:hold and tags has :late\nexpect count orders where status=:unpaid and due<#2026-06-01 = 0\n```\n",
+   "model_ms": 11727.0,
+   "finish_reason": null,
+   "kind": "accepted",
+   "machine_s": 0.005454677000216179,
+   "feedback": "ok v=1  expect:1 vid=4559d13b37a8\ncount orders = 0\ncount orders = 130",
+   "tool_uses": 3,
+   "reply_file_written": true
+  },
+  {
+   "reply": "DONE\n",
+   "model_ms": 4654.0,
+   "finish_reason": null,
+   "kind": "done",
+   "machine_s": 1.7400000000833415e-06,
+   "feedback": null,
+   "tool_uses": 3,
+   "reply_file_written": true
+  }
+ ],
+ "accepted": [
+  "set orders where status=:unpaid and due<#2026-06-01 : status=:hold, tags|=:late",
+  "count orders where status=:unpaid and due<#2026-06-01\ncount orders where status=:hold and tags has :late\nexpect count orders where status=:unpaid and due<#2026-06-01 = 0"
+ ],
+ "end": "done",
+ "seconds": 22.003021147000226
+}

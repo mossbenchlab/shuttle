@@ -1,0 +1,1 @@
+expect sum total of orders where status=:shipped >= 3000000m

@@ -1,0 +1,26 @@
+{
+ "M1": {
+  "digest": "8f6f5876d2ab",
+  "note": "2589 matching orders"
+ },
+ "M2": {
+  "digest": "9200a87d6b0c",
+  "note": "total=550.62, 2 lines"
+ },
+ "M3": {
+  "digest": "36cb8782a3ac",
+  "note": "unpaid=30051 paid=9989 shipped_total=4944994.12"
+ },
+ "M4": {
+  "digest": "a1dca671f08f",
+  "note": "15053 lines in 12333 orders"
+ },
+ "M5": {
+  "digest": "c3d46e468b11",
+  "note": "31000 became paid externally; 31001 must be reviewed"
+ },
+ "M6": {
+  "digest": "7353e62dccba",
+  "note": "new order appended"
+ }
+}
